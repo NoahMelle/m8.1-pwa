@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-red: oklch(62.415% 0.22499 28.879);
+  --color-red-50: oklch(90.968% 0.04157 21.61);
+  --color-red-100: oklch(87.043% 0.06215 22.104);
+  --color-red-200: oklch(79.537% 0.10567 23.259);
+  --color-red-300: oklch(72.596% 0.14949 24.845);
+  --color-red-400: oklch(66.729% 0.19302 26.916);
+  --color-red-500: oklch(62.415% 0.22499 28.879);
+  --color-red-600: oklch(55.4% 0.21662 29.529);
+  --color-red-700: oklch(44.905% 0.1733 29.573);
+  --color-red-800: oklch(33.941% 0.12819 29.226);
+  --color-red-900: oklch(21.884% 0.07628 28.71);
+  --color-red-950: oklch(15.251% 0.04856 28.779);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+html.light {
+  --background: #ffffff;
+  --foreground: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000000;
+    --foreground: #ffffff;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Sansation, Arial, Helvetica, sans-serif;
+}
+
+.gradient-background {
+  background: radial-gradient(
+      circle at top right,
+      var(--color-red-500),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      var(--color-red-500),
+      transparent 50%
+    );
+  background-size: 150% 150%;
+  animation: moveCorners 10s ease-in-out infinite alternate;
+}
+@keyframes moveCorners {
+  0% {
+    background-size: 150% 150%;
+    background-position: 0% 0%;
+  }
+  10% {
+    background-size: 200% 200%;
+    background-position: 20% 40%;
+  }
+  20% {
+    background-size: 200% 200%;
+    background-position: 40% 20%;
+  }
+  30% {
+    background-size: 200% 200%;
+    background-position: 60% 40%;
+  }
+  40% {
+    background-size: 200% 200%;
+    background-position: 80% 20%;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: 100% 0%;
+  }
+  60% {
+    background-size: 200% 200%;
+    background-position: 80% 20%;
+  }
+  70% {
+    background-size: 150% 100%;
+    background-position: 60% 40%;
+  }
+  80% {
+    background-size: 200% 200%;
+    background-position: 40% 20%;
+  }
+  90% {
+    background-size: 200% 200%;
+    background-position: 20% 40%;
+  }
+  100% {
+    background-size: 200% 200%;
+    background-position: 0% 0%;
+  }
+}
