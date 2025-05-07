@@ -19,7 +19,7 @@ export default function Logo({
         height={height}
         {...props}
         alt="Logo"
-        src={`/logo/logo_${theme === "dark" ? "black" : "white"}.webp`}
+        src={`/logo/logo_${theme === "dark" ? "black" : "white"}.png`}
         key={theme}
       />
     </ThemeMountWrapper>

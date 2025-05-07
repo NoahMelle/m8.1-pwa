@@ -61,6 +61,8 @@ body {
       transparent 50%
     );
   background-size: 150% 150%;
+  background-attachment: fixed;
+
   animation: moveCorners 10s ease-in-out infinite alternate;
 }
 @keyframes moveCorners {
@@ -108,4 +110,10 @@ body {
     background-size: 200% 200%;
     background-position: 0% 0%;
   }
+}
+
+button,
+a {
+  font-weight: 300;
+  font-style: italic;
 }

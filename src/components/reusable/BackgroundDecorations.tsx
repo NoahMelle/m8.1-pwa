@@ -8,7 +8,7 @@ export default function BackgroundDecorations(
     <div
       {...props}
       className={twMerge(
-        "h-full w-full absolute top-0 left-0 -z-10 gradient-background",
+        "h-full w-full fixed top-0 left-0 -z-10 gradient-background",
         props.className
       )}
     ></div>

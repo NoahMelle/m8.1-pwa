@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
 
 interface Link {
   url: string;
@@ -12,7 +12,29 @@ interface Link {
 }
 
 export default function Navbar() {
+  const [highlightPosition, setHighlightPosition] = React.useState(0);
+  const [highlightWidth, setHighlightWidth] = React.useState(0);
+  const highlightContainerRef = React.useRef<HTMLDivElement>(null);
+
   const pathname = usePathname();
+
+  useEffect(() => {
+    const activeLink = highlightContainerRef.current?.querySelector(
+      ".active"
+    ) as HTMLElement;
+
+    if (activeLink) {
+      const containerWidth = highlightContainerRef.current?.clientWidth || 0;
+      const linkWidth = activeLink.clientWidth;
+      const linkOffsetLeft = activeLink.offsetLeft;
+
+      console.log((linkOffsetLeft / containerWidth) * 100);
+
+      setHighlightWidth(linkWidth);
+
+      setHighlightPosition((linkOffsetLeft / containerWidth) * 100);
+    }
+  }, [pathname]);
 
   const links: Link[] = [
     {
@@ -49,27 +71,41 @@ export default function Navbar() {
 
   return (
     <div className="fixed bottom-4 w-full px-2">
-      <nav className="from-red to-red-600 bg-gradient-to-b rounded-full p-1 h-12 flex gap-2">
+      <nav
+        className="from-red to-red-600 bg-gradient-to-b rounded-full p-1 h-12 flex relative"
+        ref={highlightContainerRef}
+      >
         {links.map((link) => (
           <Link
             href={link.url}
             key={link.url}
-            className={`flex items-center gap-2 h-full ${
-              pathname === link.url
-                ? "bg-white grow text-black rounded-full px-3"
-                : "aspect-square justify-center"
+            className={`flex grow relative z-10 items-center justify-center gap-2 h-full active:scale-90 ${
+              pathname === link.url ? "text-black rounded-full active" : ""
             }`}
           >
             <Image
               src={link.iconUrl}
-              className={pathname === link.url ? "invert" : ""}
+              className={`${
+                pathname === link.url ? "invert" : ""
+              } transition-all`}
               alt={link.text}
               width={24}
               height={24}
             />
-            {link.url === pathname && link.text}
           </Link>
         ))}
+        <div className="absolute py-1 w-full h-full left-0 top-0 pointer-events-none">
+          <div className="relative h-full w-full">
+            <div
+              className="absolute bg-white rounded-full transition-all duration-300 ease-in-out h-full"
+              style={{
+                left: `${highlightPosition}%`,
+                width: `${highlightWidth}px`,
+                height: "100%",
+              }}
+            ></div>
+          </div>
+        </div>
       </nav>
     </div>
   );

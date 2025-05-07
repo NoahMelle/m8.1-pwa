@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="w-full">
-      <BackgroundDecorations className="opacity-40" />
+      <BackgroundDecorations className="opacity-60" />
 
       <main className="min-h-screen flex flex-col items-center justify-center gap-4">
         <div className="grid grid-cols-2">
