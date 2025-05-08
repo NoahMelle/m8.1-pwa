@@ -1,3 +1,11 @@
+import { Locale } from "./settings";
+
+type LocalizedString = Record<Locale, string>;
+
+type LocalizedTree = {
+  [key: string]: LocalizedString | LocalizedTree;
+};
+
 export const messages = {
   homepage: {
     about: {
@@ -9,4 +17,4 @@ export const messages = {
       nl: "Blokkenschema",
     },
   },
-} as const;
+} as const satisfies LocalizedTree;

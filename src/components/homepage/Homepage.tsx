@@ -1,7 +1,6 @@
 "use client";
 
 import Logo from "@/components/Logo";
-import BackgroundDecorations from "@/components/reusable/BackgroundDecorations";
 import { messages } from "@/i18n/messages";
 import { useTranslations } from "@/i18n/useTranslations";
 import Link from "next/link";
@@ -11,8 +10,6 @@ export default function Homepage() {
 
   return (
     <div className="w-full h-full flex flex-col justify-center grow pb-20">
-      <BackgroundDecorations className="opacity-60" />
-
       <main className="flex flex-col items-center justify-center gap-4">
         <div className="grid grid-cols-2">
           <Logo width={150} height={150} />

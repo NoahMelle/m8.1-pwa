@@ -1,6 +1,6 @@
 "use client";
 
-import { cookieName, locales } from "@/i18n/settings";
+import { cookieName, Locale } from "@/i18n/settings";
 import { setCookie } from "cookies-next";
 import {
   createContext,
@@ -12,14 +12,15 @@ import {
 } from "react";
 
 type LanguageContextType = {
-  language: (typeof locales)[number];
-  setLanguage: Dispatch<SetStateAction<(typeof locales)[number]>>;
+  language: Locale;
+  setLanguage: Dispatch<SetStateAction<Locale>>;
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(
   undefined
 );
 
+// Make sure the type is not undefined
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
   if (!context) {
@@ -32,11 +33,12 @@ export const LanguageProvider = ({
   initialLanguage,
   children,
 }: {
-  initialLanguage: (typeof locales)[number];
+  initialLanguage: Locale;
   children: React.ReactNode;
 }) => {
   const [language, setLanguage] = useState(initialLanguage);
 
+  // Save preferred language in a cookie on save
   useEffect(() => {
     setCookie(cookieName, language);
   }, [language]);

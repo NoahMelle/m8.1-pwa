@@ -6,7 +6,9 @@ import AppThemeProvider from "@/components/context/Theme";
 import Navbar from "@/components/Navbar";
 import TopBar from "@/components/TopBar";
 import { LanguageProvider } from "@/components/context/LanguageContext";
-import { cookieName, defaultLocale, locales } from "@/i18n/settings";
+import { cookieName, defaultLocale } from "@/i18n/settings";
+import BackgroundDecorations from "@/components/reusable/BackgroundDecorations";
+import { isLocale } from "@/i18n/helpers";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,14 +21,16 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const theme = (await cookies()).get("__theme__")?.value || "dark";
-  const language = ((await cookies()).get(cookieName)?.value ||
-    defaultLocale) as (typeof locales)[number];
+  const languageCookie = (await cookies()).get(cookieName)?.value;
+  const language =
+    languageCookie && isLocale(languageCookie) ? languageCookie : defaultLocale;
 
   return (
     <html lang="en" suppressHydrationWarning className={theme}>
       <body>
         <AppThemeProvider attribute="class" defaultTheme={theme} enableSystem>
           <LanguageProvider initialLanguage={language}>
+            <BackgroundDecorations />
             <TopBar />
             {children}
             <Navbar />
