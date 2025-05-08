@@ -10,10 +10,10 @@ export default function TopBar() {
   const { setLanguage, language } = useLanguage();
 
   return (
-    <div className="sticky top-0 w-full dark:bg-black/30 bg-white/30 backdrop-blur-lg flex justify-end">
+    <div className="sticky top-0 w-full dark:bg-black/30 bg-white/30 backdrop-blur-lg flex justify-end p-2">
       <button
         onClick={() => setTheme((prev) => (prev === "dark" ? "light" : "dark"))}
-        className="red-gradient bg-gradient-to-b text-white rounded-md w-fit flex p-4 justify-center aspect-square"
+        className="red-gradient bg-gradient-to-b text-white rounded-md w-fit flex p-2 justify-center aspect-square"
       >
         <span className="h-6 overflow-hidden">
           <span className="dark:-translate-y-1/2 block transition-all dark:invert-0 invert">
@@ -34,12 +34,12 @@ export default function TopBar() {
       </button>
       <button
         onClick={() => setLanguage((prev) => (prev === "en" ? "nl" : "en"))}
-        className="red-gradient bg-gradient-to-b text-white rounded-md w-fit flex p-4 justify-center aspect-square"
+        className="red-gradient bg-gradient-to-b text-white rounded-md w-fit flex p-2 justify-center aspect-square"
       >
         <span className="h-6 overflow-hidden rounded-full">
           <span
             className={`${
-              language === "nl" ? "-translate-y-1/2" : ""
+              language === "en" ? "-translate-y-1/2" : ""
             } block transition-all`}
           >
             <Image
