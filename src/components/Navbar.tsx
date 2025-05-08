@@ -28,8 +28,6 @@ export default function Navbar() {
       const linkWidth = activeLink.clientWidth;
       const linkOffsetLeft = activeLink.offsetLeft;
 
-      console.log((linkOffsetLeft / containerWidth) * 100);
-
       setHighlightWidth(linkWidth);
 
       setHighlightPosition((linkOffsetLeft / containerWidth) * 100);

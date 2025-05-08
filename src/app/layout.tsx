@@ -5,6 +5,8 @@ import { cookies } from "next/headers";
 import AppThemeProvider from "@/components/context/Theme";
 import Navbar from "@/components/Navbar";
 import TopBar from "@/components/TopBar";
+import { LanguageProvider } from "@/components/context/LanguageContext";
+import { cookieName, defaultLocale, locales } from "@/i18n/settings";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,14 +19,18 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const theme = (await cookies()).get("__theme__")?.value || "dark";
+  const language = ((await cookies()).get(cookieName)?.value ||
+    defaultLocale) as (typeof locales)[number];
 
   return (
     <html lang="en" suppressHydrationWarning className={theme}>
       <body>
         <AppThemeProvider attribute="class" defaultTheme={theme} enableSystem>
-          <TopBar />
-          {children}
-          <Navbar />
+          <LanguageProvider initialLanguage={language}>
+            <TopBar />
+            {children}
+            <Navbar />
+          </LanguageProvider>
         </AppThemeProvider>
       </body>
     </html>
