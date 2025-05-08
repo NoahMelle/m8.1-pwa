@@ -70,7 +70,7 @@ export default function Navbar() {
   return (
     <div className="fixed bottom-4 w-full px-2">
       <nav
-        className="from-red to-red-600 bg-gradient-to-b rounded-full p-1 h-12 flex relative"
+        className="bg-red rounded-full p-1 h-12 flex relative"
         ref={highlightContainerRef}
       >
         {links.map((link) => (
