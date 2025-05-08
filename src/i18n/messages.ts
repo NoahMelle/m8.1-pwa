@@ -1,12 +1,22 @@
 import { Locale } from "./settings";
 
-type LocalizedString = Record<Locale, string>;
+export type LocalizedString = Record<Locale, string>;
 
 type LocalizedTree = {
-  [key: string]: LocalizedString | LocalizedTree;
+  [key: string]: LocalizedString | LocalizedTree | LocalizedTree[];
 };
 
 export const messages = {
+  global: {
+    showMore: {
+      en: "Show More",
+      nl: "Toon meer",
+    },
+    showLess: {
+      en: "Show Less",
+      nl: "Toon minder",
+    },
+  },
   homepage: {
     about: {
       en: "About the festival",
@@ -15,6 +25,12 @@ export const messages = {
     timetable: {
       en: "Timetable",
       nl: "Blokkenschema",
+    },
+  },
+  info: {
+    transportOptions: {
+      en: "Transport Options",
+      nl: "Vervoeropties",
     },
   },
 } as const satisfies LocalizedTree;
