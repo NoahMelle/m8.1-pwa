@@ -40,7 +40,7 @@ export default function TopBar() {
           <span
             className={`${
               language === "nl" ? "-translate-y-1/2" : ""
-            } block transition-all dark:invert-0 invert`}
+            } block transition-all`}
           >
             <Image
               src={"/icons/dutch_flag.png"}

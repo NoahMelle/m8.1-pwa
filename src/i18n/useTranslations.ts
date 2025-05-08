@@ -1,12 +1,11 @@
 import { useLanguage } from "@/components/context/LanguageContext";
-import { locales } from "./settings";
+import { Locale } from "./settings";
 
+// Helper function to return a message based on the current language
 export const useTranslations = () => {
-  const lang = useLanguage();
+  const { language } = useLanguage();
 
-  const language = lang?.language;
-
-  return (path: Record<(typeof locales)[number], string>): string => {
+  return (path: Record<Locale, string>): string => {
     return language ? path[language] : "";
   };
 };
