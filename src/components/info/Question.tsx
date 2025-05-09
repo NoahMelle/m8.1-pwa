@@ -11,7 +11,7 @@ export default function Question({ question }: { question: QuestionType }) {
       <div className="flex flex-col">
         <button
           onClick={() => setIsOpen((prev) => !prev)}
-          className="flex justify-between w-full py-4 "
+          className="flex justify-between w-full py-4 text-start"
         >
           <span>{question.question}</span>
           <Image

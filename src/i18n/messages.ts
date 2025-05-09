@@ -33,8 +33,14 @@ export const messages = {
       nl: "Informatie",
     },
     subHeading: {
-      en: "Het ❤️U Festival is voor (nieuwe) studenten in de regio Utrecht en is een aanvulling op UIT.",
+      en: "The ❤️U Festival is for (new) students in the Utrecht region and is an addition to UIT.",
       nl: "Het ❤️U Festival is voor (nieuwe) studenten in de regio Utrecht en is een aanvulling op UIT.",
+    },
+    general: {
+      date: {
+        nl: "Zaterdag 6 september 2025 - 12:00 tot 23:00 uur",
+        en: "Saturday September 6, 2025 - 12:00 to 23:00",
+      },
     },
     transportOptions: {
       en: "Transport Options",
