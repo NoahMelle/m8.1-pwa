@@ -4,13 +4,19 @@ import Image from "next/image";
 import React from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
+import { usePathname } from "next/navigation";
 
 export default function TopBar() {
   const { setLanguage, language } = useLanguage();
   const { toggleTheme } = useTheme();
+  const pathname = usePathname();
 
   return (
-    <div className="sticky top-0 w-full dark:bg-black/30 bg-white/30 backdrop-blur-xs flex justify-end p-2">
+    <div
+      className={`${
+        pathname === "/map" ? "fixed" : "sticky"
+      } top-0 w-full flex justify-end p-2 z-10`}
+    >
       <button
         onClick={toggleTheme}
         className="red-gradient bg-gradient-to-b text-white rounded-md w-fit flex p-2 justify-center aspect-square"
