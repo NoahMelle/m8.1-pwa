@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Module 8.1 - Progressive Web App
+
+A progressive web app for the fictional ❤️U festival: a festival for (new) students in Utrecht.
+
+- [Module 8.1 - Progressive Web App](#module-81---progressive-web-app)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+  - [Installation (development environment)](#installation-development-environment)
+  - [Installation (PWA on a mobile device)](#installation-pwa-on-a-mobile-device)
 
 ## Getting Started
 
-First, run the development server:
+Follow the steps below to set up and run the project locally.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ensure you have the following installed before proceeding:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Bun** (or another package manager, this guide uses [Bun](https://bun.sh/))
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Installation (development environment)
 
-## Learn More
+1. Install dependencies:
+   ```
+   bun i
+   ```
+2. Run the dev server:
+   ```
+   bun run dev
+   ```
+3. Visit http://localhost:3000 to view the site!\*
 
-To learn more about Next.js, take a look at the following resources:
+\*_Tip: use your browser's responsive development tools to simulate the dimensions of a mobile device_
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Installation (PWA on a mobile device)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Visit the live site on a Chromium based browser: https://pwa.noeycodes.com*
+2. Click on the three dots in the top-right corner.
+3. Select `Add to home screen`, a pop-up will show up prompting you to install the app
+4. Click on the `Install` button, located in the bottom-right corner of the pop-up.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+\*_Exposing localhost won't work because localhost gets served over HTTP, and PWA's require HTTPS._

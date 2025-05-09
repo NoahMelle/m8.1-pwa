@@ -3,6 +3,8 @@ name: Run ESLint and TSC tests
 on:
   push:
     branches: [master, main]
+    paths-ignore:
+      - "**/README.md"
 
 jobs:
   build:

@@ -18,7 +18,7 @@ export default function Navbar() {
 
   const pathname = usePathname();
 
-  useEffect(() => {
+  function handlePathnameChange() {
     const activeLink = highlightContainerRef.current?.querySelector(
       ".active"
     ) as HTMLElement;
@@ -32,7 +32,19 @@ export default function Navbar() {
 
       setHighlightPosition((linkOffsetLeft / containerWidth) * 100);
     }
+  }
+
+  useEffect(() => {
+    handlePathnameChange();
   }, [pathname]);
+
+  useEffect(() => {
+    window.addEventListener("resize", handlePathnameChange);
+
+    return () => {
+      window.removeEventListener("resize", handlePathnameChange);
+    };
+  }, []);
 
   const links: Link[] = [
     {

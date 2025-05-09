@@ -6,6 +6,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import HighlightedPopup from "./HighlightedPopup";
 import { AnimatePresence } from "motion/react";
+import ChevronDown from "../icons/ChevronDown";
 
 export interface TransportOption {
   id: number;
@@ -29,7 +30,7 @@ export default function TransportOptions() {
         nl: "Fiets",
       }),
       description: t({
-        en: "Er is een grote gratis fietsenstalling aanwezig waar je jouw fiets de gehele dag kunt stallen.",
+        en: "There is a large free bicycle shed where you can park your bike all day.",
         nl: "Er is een grote gratis fietsenstalling aanwezig waar je jouw fiets de gehele dag kunt stallen.",
       }),
       imageUrl: "/icons/bike.svg",
@@ -41,7 +42,7 @@ export default function TransportOptions() {
         nl: "Auto",
       }),
       description: t({
-        en: "Je kunt een parkingticket aanschaffen. Parkeren kan op P+R Papendorp, volg hiervoor de borden 'P online ticket'. Heb je geen ticket van te voren gekocht? Dan kun je bij de parkeerwachter op locatie een parkeerticket aanschaffen (PIN ONLY). Let wel op: VOL=VOL",
+        en: "You can purchase a parking ticket. You can park at P+R Papendorp, follow the signs 'P online ticket'. Did you not purchase a ticket in advance? Then you can purchase a parking ticket from the parking attendant on location (PIN ONLY). Please note: FULL=FULL",
         nl: "Je kunt een parkingticket aanschaffen. Parkeren kan op P+R Papendorp, volg hiervoor de borden 'P online ticket'. Heb je geen ticket van te voren gekocht? Dan kun je bij de parkeerwachter op locatie een parkeerticket aanschaffen (PIN ONLY). Let wel op: VOL=VOL",
       }),
       imageUrl: "/icons/car.svg",
@@ -49,13 +50,25 @@ export default function TransportOptions() {
     {
       id: 2,
       name: t({
+        en: "Public Transport",
+        nl: "OV",
+      }),
+      description: t({
+        en: "Are you coming to Lief by public transport? Then plan your trip via 9292.nl.",
+        nl: "Kom je met het openbaar vervoer naar Lief? Plan dan je trip via 9292.nl.",
+      }),
+      imageUrl: "/icons/public_transport.svg",
+    },
+    {
+      id: 3,
+      name: t({
         en: "Shuttle Bus",
         nl: "Shuttlebus",
       }),
       description: t({
-        en: `Vanaf Utrecht Centraal kun je onze gratis shuttlebus richting het festivalterrein pakken. Je vindt deze bus op het centraal station aan de Mineurslaan. Volg de witte bordjes met zwarte pijlen én ' ❤️U Festival'. 
+        en: `From Utrecht Central Station you can take our free shuttle bus to the festival site. You can find this bus at the central station on Mineurslaan. Follow the white signs with black arrows and ' ❤️U Festival'. 
 
-De bus rijdt tussen 12:00 uur & 19:00 uur richting het festival en vanaf 21:00 uur kun je weer instappen om richting het station te gaan.`,
+The bus runs between 12:00 and 19:00 towards the festival and from 21:00 you can get on again to go to the station.`,
         nl: `
         Vanaf Utrecht Centraal kun je onze gratis shuttlebus richting het festivalterrein pakken. Je vindt deze bus op het centraal station aan de Mineurslaan. Volg de witte bordjes met zwarte pijlen én ' ❤️U Festival'. 
 
@@ -63,20 +76,30 @@ De bus rijdt tussen 12:00 uur & 19:00 uur richting het festival en vanaf 21:00 u
       }),
       imageUrl: "/icons/shuttle_bus.svg",
     },
+    {
+      id: 4,
+      name: t({
+        en: "Taxi + Kiss & Ride",
+        nl: "Taxi + Kiss & Ride",
+      }),
+      description: t({
+        en: `Navigate to Strijkviertel, De Meern (Utrecht). Follow the signs "Kiss & Ride ❤️U Festival", once you are near the festival grounds.`,
+        nl: `Navigeer naar Strijkviertel, De Meern (Utrecht). Volg de borden "Kiss & Ride ❤️U Festival", zodra je in de buurt bent van het festivalterrein.`,
+      }),
+      imageUrl: "/icons/taxi.svg",
+    },
   ];
 
   return (
-    <div className="px-4 py-12">
-      <h2 className="font-bold text-2xl mb-4">
-        {t(messages.info.transportOptions)}
-      </h2>
+    <div>
+      <h2>{t(messages.info.transportOptions)}</h2>
 
       <div className="grid grid-cols-2 gap-4">
         {transportOptions.map((transportOption, i) =>
           !isShowingMore && i > 1 ? null : (
             <div
               key={transportOption.imageUrl}
-              className="relative aspect-square flex flex-col justify-between dark:bg-black/30 bg-white/30 backdrop-blur-lg rounded-lg p-4 border dark:border-white/20 border-black/10 shadow-sm"
+              className="relative aspect-square flex flex-col justify-between dark:bg-neutral-800/50 bg-white/30 backdrop-blur-lg rounded-lg p-4 border dark:border-white/20 border-black/10 shadow-sm"
             >
               <div className="w-full justify-end flex">
                 <button onClick={() => setHighlightedOption(transportOption)}>
@@ -103,10 +126,20 @@ De bus rijdt tussen 12:00 uur & 19:00 uur richting het festival en vanaf 21:00 u
           )
         )}
       </div>
-      <button onClick={() => setIsShowingMore((prev) => !prev)} className="">
+      <button
+        onClick={() => setIsShowingMore((prev) => !prev)}
+        className={`text-red mt-2 flex items-center`}
+      >
         {isShowingMore
           ? t(messages.global.showLess)
           : t(messages.global.showMore)}
+        <span
+          className={` ${
+            isShowingMore ? "rotate-180" : ""
+          } transition-transform`}
+        >
+          <ChevronDown />
+        </span>
       </button>
       <AnimatePresence mode="sync">
         {highlightedOption !== null && (
