@@ -44,10 +44,17 @@ html.light {
   }
 }
 
+h1,
 h2 {
-  font-weight: 700;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  @apply font-bold text-2xl;
+}
+
+h2 {
+  @apply mb-4;
+}
+
+h1 {
+  @apply text-4xl;
 }
 
 body {

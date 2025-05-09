@@ -42,8 +42,16 @@ De beveiliging zal jouw documentatie beoordelen en de medicijnen controleren. He
         nl: "Zijn er lockers?",
       }),
       answer: t({
-        en: `Yes, these are available! On site you can rent medium & large lockers.`,
-        nl: `Yes, deze zijn er! Op het terrein kun je medium & grote lockers huren.`,
+        en: `Yes, there are! On the festival grounds you can rent medium & large lockers where you can safely store your belongings!
+
+These can fit 3 to 4 coats. Good to know: you can open and close your locker as often as you like throughout the day.
+
+It is not possible to reserve a locker online.`,
+        nl: `Yes, deze zijn er! Op het festivalterrein kun je medium & grote lockers huren waar je je spullen veilig kunt opbergen!
+
+Hier passen 3 à 4 jassen in. Goed om te weten: je kunt je kluisje gedurende de hele dag openen en sluiten zo vaak je wilt.
+
+Het is niet mogelijk om online een kluisje te reserveren.`,
       }),
     },
   ];
