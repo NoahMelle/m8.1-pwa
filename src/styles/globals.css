@@ -18,7 +18,6 @@
   --color-red-300: oklch(72.596% 0.14949 24.845);
   --color-red-400: oklch(66.729% 0.19302 26.916);
   --color-red-500: oklch(62.415% 0.22499 28.879);
-  --color-red-600: oklch(55.4% 0.21662 29.529);
   --color-red-700: oklch(44.905% 0.1733 29.573);
   --color-red-800: oklch(33.941% 0.12819 29.226);
   --color-red-900: oklch(21.884% 0.07628 28.71);
@@ -43,6 +42,12 @@ html.light {
     --background: #000000;
     --foreground: #ffffff;
   }
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 body {

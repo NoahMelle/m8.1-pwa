@@ -32,5 +32,9 @@ export const messages = {
       en: "Transport Options",
       nl: "Vervoeropties",
     },
+    faq: {
+      en: "Frequently Asked Questions",
+      nl: "Veel Gestelde Vragen",
+    },
   },
 } as const satisfies LocalizedTree;

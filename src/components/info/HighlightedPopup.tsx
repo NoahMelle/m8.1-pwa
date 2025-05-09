@@ -35,7 +35,7 @@ export default function HighlightedPopup({
           duration: 0.2,
         }}
       >
-        <div className="bg-white dark:bg-black border-white/10 border p-4 rounded-md relative z-20">
+        <div className="bg-white dark:bg-neutral-900 border-white/10 border p-4 rounded-md relative z-20">
           <div className="w-full justify-between flex items-center mb-2">
             <h3 className="font-semibold text-lg">{option.name}</h3>
             <button onClick={() => setIsShowing(null)}>X</button>
