@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { QuestionType } from "./Faq";
 import Image from "next/image";
+import { AnimatePresence, motion } from "motion/react";
 
 export default function Question({ question }: { question: QuestionType }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
-      <div className="py-4 flex flex-col gap-2">
+      <div className="flex flex-col">
         <button
           onClick={() => setIsOpen((prev) => !prev)}
-          className="flex justify-between w-full"
+          className="flex justify-between w-full py-4 "
         >
           <span>{question.question}</span>
           <Image
@@ -23,7 +24,18 @@ export default function Question({ question }: { question: QuestionType }) {
             }`}
           />
         </button>
-        {isOpen && <p>{question.answer}</p>}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="overflow-hidden"
+            >
+              <p className="pb-4">{question.answer}</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       <hr className="opacity-50" />

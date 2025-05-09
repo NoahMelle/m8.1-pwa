@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import "@/styles/app.scss";
 import { cookies } from "next/headers";
-import AppThemeProvider from "@/components/context/Theme";
 import Navbar from "@/components/Navbar";
 import TopBar from "@/components/TopBar";
-import { LanguageProvider } from "@/components/context/LanguageContext";
+import { LanguageProvider } from "@/context/LanguageContext";
 import { cookieName, defaultLocale } from "@/i18n/settings";
 import BackgroundDecorations from "@/components/reusable/BackgroundDecorations";
 import { isLocale } from "@/i18n/helpers";
+import { ThemeProvider } from "@/context/ThemeContext";
+import { isTheme } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,22 +21,23 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const theme = (await cookies()).get("__theme__")?.value || "dark";
+  const themeCookie = (await cookies()).get("theme")?.value || "system";
   const languageCookie = (await cookies()).get(cookieName)?.value;
   const language =
     languageCookie && isLocale(languageCookie) ? languageCookie : defaultLocale;
+  const theme = themeCookie && isTheme(themeCookie) ? themeCookie : "system";
 
   return (
     <html lang="en" suppressHydrationWarning className={theme}>
       <body>
-        <AppThemeProvider attribute="class" defaultTheme={theme} enableSystem>
+        <ThemeProvider initialTheme={theme}>
           <LanguageProvider initialLanguage={language}>
             <BackgroundDecorations />
             <TopBar />
-            {children}
+            <main className="pb-20 grow flex flex-col">{children}</main>
             <Navbar />
           </LanguageProvider>
-        </AppThemeProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

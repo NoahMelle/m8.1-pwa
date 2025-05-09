@@ -1,18 +1,18 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import Image from "next/image";
 import React from "react";
-import { useLanguage } from "./context/LanguageContext";
+import { useLanguage } from "../context/LanguageContext";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function TopBar() {
-  const { setTheme } = useTheme();
   const { setLanguage, language } = useLanguage();
+  const { toggleTheme } = useTheme();
 
   return (
-    <div className="sticky top-0 w-full dark:bg-black/30 bg-white/30 backdrop-blur-lg flex justify-end p-2">
+    <div className="sticky top-0 w-full dark:bg-black/30 bg-white/30 backdrop-blur-xs flex justify-end p-2">
       <button
-        onClick={() => setTheme((prev) => (prev === "dark" ? "light" : "dark"))}
+        onClick={toggleTheme}
         className="red-gradient bg-gradient-to-b text-white rounded-md w-fit flex p-2 justify-center aspect-square"
       >
         <span className="h-6 overflow-hidden">

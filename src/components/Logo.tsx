@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import React from "react";
-import ThemeMountWrapper from "./reusable/ThemeMountWrapper";
-import { useTheme } from "next-themes";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function Logo({
   width,
@@ -13,15 +12,13 @@ export default function Logo({
   const { theme } = useTheme();
 
   return (
-    <ThemeMountWrapper>
-      <Image
-        width={width}
-        height={height}
-        {...props}
-        alt="Logo"
-        src={`/logo/logo_${theme === "dark" ? "black" : "white"}.png`}
-        key={theme}
-      />
-    </ThemeMountWrapper>
+    <Image
+      width={width}
+      height={height}
+      {...props}
+      alt="Logo"
+      src={`/logo/logo_${theme === "dark" ? "black" : "white"}.png`}
+      key={theme}
+    />
   );
 }

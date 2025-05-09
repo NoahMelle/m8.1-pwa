@@ -9,7 +9,7 @@ export default function Homepage() {
   const t = useTranslations();
 
   return (
-    <div className="w-full h-full flex flex-col justify-center grow pb-20">
+    <div className="w-full h-full flex flex-col justify-center grow">
       <main className="flex flex-col items-center justify-center gap-4">
         <div className="grid grid-cols-2">
           <Logo width={150} height={150} />

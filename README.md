@@ -7,6 +7,7 @@ A progressive web app for the fictional ❤️U festival: a festival for (new) s
     - [Prerequisites](#prerequisites)
   - [Installation (development environment)](#installation-development-environment)
   - [Installation (PWA on a mobile device)](#installation-pwa-on-a-mobile-device)
+  - [Project Structure](#project-structure)
 
 ## Getting Started
 
@@ -40,3 +41,19 @@ Ensure you have the following installed before proceeding:
 4. Click on the `Install` button, located in the bottom-right corner of the pop-up.
 
 \*_Exposing localhost won't work because localhost gets served over HTTP, and PWA's require HTTPS._
+
+## Project Structure
+
+```
+m8.1-pwa/
+├── .github/workflows/ # Github Action Workflows
+├── src/ # Source code files
+│ ├── @types/ # Type definitions
+│ ├── app/ # The website itself
+│ ├── context/ # React Context wrappers
+│ ├── components/ # UI Components
+│ ├── i18n/ # Functions for i18n
+│ └── styles/ # CSS/SCSS Files
+├── public/ # Static files (e.g., images, favicon)
+└── docs/ # Project documentation
+```

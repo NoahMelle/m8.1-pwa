@@ -12,8 +12,12 @@ interface Link {
 }
 
 export default function Navbar() {
-  const [highlightPosition, setHighlightPosition] = React.useState(0);
-  const [highlightWidth, setHighlightWidth] = React.useState(0);
+  const [highlightPosition, setHighlightPosition] = React.useState<
+    number | null
+  >(null);
+  const [highlightWidth, setHighlightWidth] = React.useState<number | null>(
+    null
+  );
   const highlightContainerRef = React.useRef<HTMLDivElement>(null);
 
   const pathname = usePathname();

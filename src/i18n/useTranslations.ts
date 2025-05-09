@@ -1,4 +1,4 @@
-import { useLanguage } from "@/components/context/LanguageContext";
+import { useLanguage } from "@/context/LanguageContext";
 import { Locale } from "./settings";
 
 // Helper function to return a message based on the current language
