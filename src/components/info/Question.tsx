@@ -32,7 +32,7 @@ export default function Question({ question }: { question: QuestionType }) {
               exit={{ height: 0, opacity: 0 }}
               className="overflow-hidden"
             >
-              <p className="pb-4">{question.answer}</p>
+              <p className="pb-4 whitespace-pre-wrap">{question.answer}</p>
             </motion.div>
           )}
         </AnimatePresence>
