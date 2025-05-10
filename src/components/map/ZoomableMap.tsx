@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import {
   KeepScale,
   ReactZoomPanPinchRef,
@@ -10,6 +10,7 @@ import {
 } from "react-zoom-pan-pinch";
 import Spinner from "../reusable/Spinner";
 import { UserLocation } from "@/@types/types";
+import { getDistance } from "@/lib/geoLocation";
 
 interface Location {
   name: string;
@@ -24,6 +25,15 @@ export default function ZoomableMap() {
   const [userLocation, setUserLocation] = useState<UserLocation | null>(null);
   const [hasInitialized, setHasInitialized] = useState(false);
 
+  const [userOffset, setUserOffset] = useState<{ x: number; y: number } | null>(
+    null
+  );
+
+  const initialPosition = useRef<UserLocation | null>(null);
+
+  const MAP_HEIGHT = 750;
+  const MAP_WIDTH = 250;
+
   function handleTransform(e: ReactZoomPanPinchRef) {
     setScale(e.instance.transformState.scale);
   }
@@ -34,8 +44,12 @@ export default function ZoomableMap() {
     if (navigator.geolocation) {
       watchId = navigator.geolocation.watchPosition(
         (position) => {
-          console.log("Position updated:", position);
           const { latitude, longitude } = position.coords;
+
+          if (!initialPosition.current) {
+            initialPosition.current = { latitude, longitude };
+          }
+
           setUserLocation({ latitude, longitude });
         },
         (error) => {
@@ -55,6 +69,36 @@ export default function ZoomableMap() {
       }
     };
   }, []);
+
+  useEffect(() => {
+    if (!initialPosition.current || !userLocation) return;
+
+    console.log(initialPosition.current, userLocation);
+
+    const xDirection =
+      initialPosition.current.longitude > userLocation.longitude ? -1 : 1;
+
+    const yDirection =
+      initialPosition.current.longitude > userLocation.latitude ? -1 : 1;
+
+    const xDistance =
+      getDistance(initialPosition.current, {
+        latitude: initialPosition.current.latitude,
+        longitude: userLocation.longitude,
+      }) * xDirection;
+    const yDistance =
+      getDistance(initialPosition.current, {
+        latitude: userLocation.latitude,
+        longitude: initialPosition.current.longitude,
+      }) * yDirection;
+
+    console.log(xDistance, yDistance);
+
+    setUserOffset({
+      x: ((MAP_WIDTH / 2 + xDistance) / MAP_WIDTH) * 100,
+      y: ((MAP_HEIGHT / 2 + yDistance) / MAP_HEIGHT) * 100,
+    });
+  }, [userLocation]);
 
   const locations: Location[] = [
     {
@@ -93,6 +137,15 @@ export default function ZoomableMap() {
             </div>
           )}
           <TransformComponent wrapperClass="w-full! h-full! relative z-0 isolate">
+            {userOffset !== null && (
+              <KeepScale
+                style={{
+                  left: `${userOffset.x}%`,
+                  top: `${userOffset.y}%`,
+                }}
+                className="absolute -translate-1/2 z-[1] bg-red h-4 w-4 rounded-full"
+              ></KeepScale>
+            )}
             <div>
               {locations.map((location) => (
                 <KeepScale
