@@ -3,6 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #000000;
+
+  --green: #49915b;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -23,6 +25,8 @@
   --color-red-900: oklch(21.884% 0.07628 28.71);
   --color-red-950: oklch(15.251% 0.04856 28.779);
 
+  --color-green: var(--green);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -30,17 +34,23 @@
 html.dark {
   --background: #000000;
   --foreground: #ffffff;
+
+  --green: #1b6852;
 }
 
 html.light {
   --background: #ffffff;
   --foreground: #000000;
+
+  --green: #49915b;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #000000;
     --foreground: #ffffff;
+
+    --green: #1b6852;
   }
 }
 

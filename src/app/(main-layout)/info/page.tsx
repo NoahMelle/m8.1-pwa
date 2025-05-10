@@ -1,15 +1,13 @@
-"use client";
-
 import Faq from "@/components/info/Faq";
 import GoldenGlu from "@/components/info/GoldenGlu";
 import TransportOptions from "@/components/info/TransportOptions";
 import { messages } from "@/i18n/messages";
-import { useTranslations } from "@/i18n/useTranslations";
+import { getServerSideTranslations } from "@/i18n/server";
 import Image from "next/image";
 import React from "react";
 
-export default function Info() {
-  const t = useTranslations();
+export default async function Info() {
+  const t = await getServerSideTranslations();
 
   return (
     <div className="px-4 py-12 flex flex-col gap-8">
