@@ -1,9 +1,18 @@
 import { UserLocation } from "@/@types/types";
 
+/**
+ * @see {@link https://www.movable-type.co.uk/scripts/latlong.html}
+ * @param initPos The starting position
+ * @param currentPos The current position
+ * @returns Real-world distance between 2 points on a globe
+ */
 export function getDistance(initPos: UserLocation, currentPos: UserLocation) {
   const earthRadius = 6371;
+
   const dLat = toRad(currentPos.latitude - initPos.latitude);
   const dLon = toRad(currentPos.longitude - initPos.longitude);
+
+  // Some haversine formula stuff I definitely understand (no)
   const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
     Math.cos(toRad(initPos.latitude)) *

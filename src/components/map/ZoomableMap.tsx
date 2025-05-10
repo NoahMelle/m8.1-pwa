@@ -79,7 +79,7 @@ export default function ZoomableMap() {
       initialPosition.current.longitude > userLocation.longitude ? -1 : 1;
 
     const yDirection =
-      initialPosition.current.longitude > userLocation.latitude ? -1 : 1;
+      initialPosition.current.latitude > userLocation.latitude ? -1 : 1;
 
     const xDistance =
       getDistance(initialPosition.current, {
@@ -137,15 +137,15 @@ export default function ZoomableMap() {
             </div>
           )}
           <TransformComponent wrapperClass="w-full! h-full! relative z-0 isolate">
-            {userOffset !== null && (
-              <KeepScale
-                style={{
-                  left: `${userOffset.x}%`,
-                  top: `${userOffset.y}%`,
-                }}
-                className="absolute -translate-1/2 z-[1] bg-red h-4 w-4 rounded-full"
-              ></KeepScale>
-            )}
+            <KeepScale
+              style={{
+                left: `${userOffset?.x}%`,
+                top: `${userOffset?.y}%`,
+              }}
+              className={`absolute -translate-1/2 z-[1] bg-red h-4 w-4 rounded-full ${
+                userOffset === null ? "hidden" : ""
+              }`}
+            ></KeepScale>
             <div>
               {locations.map((location) => (
                 <KeepScale
