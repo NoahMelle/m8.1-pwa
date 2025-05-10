@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Map() {
   return (
-    <div className="h-[100dvh] bg-[#49915B]">
+    <div className="h-[100dvh] bg-green">
       <ZoomableMap />
     </div>
   );

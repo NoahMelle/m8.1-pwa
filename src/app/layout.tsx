@@ -5,9 +5,8 @@ import { cookies } from "next/headers";
 import Navbar from "@/components/Navbar";
 import TopBar from "@/components/TopBar";
 import { LanguageProvider } from "@/context/LanguageContext";
-import { cookieName, defaultLocale } from "@/i18n/settings";
 import BackgroundDecorations from "@/components/reusable/BackgroundDecorations";
-import { isLocale } from "@/i18n/helpers";
+import { getLocaleFromCookies } from "@/i18n/helpers";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { isTheme } from "@/lib/utils";
 
@@ -21,11 +20,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const themeCookie = (await cookies()).get("theme")?.value || "system";
-  const languageCookie = (await cookies()).get(cookieName)?.value;
-  const language =
-    languageCookie && isLocale(languageCookie) ? languageCookie : defaultLocale;
+  const cookieStore = await cookies();
+
+  const themeCookie = cookieStore.get("theme")?.value || "system";
   const theme = themeCookie && isTheme(themeCookie) ? themeCookie : "system";
+
+  const language = getLocaleFromCookies(cookieStore);
 
   return (
     <html lang="en" suppressHydrationWarning className={theme}>
@@ -34,7 +34,7 @@ export default async function RootLayout({
           <LanguageProvider initialLanguage={language}>
             <BackgroundDecorations />
             <TopBar />
-            <main className="pb-20 grow flex flex-col">{children}</main>
+            <main className={"grow flex flex-col"}>{children}</main>
             <Navbar />
           </LanguageProvider>
         </ThemeProvider>

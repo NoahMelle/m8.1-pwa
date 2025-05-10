@@ -84,7 +84,7 @@ export default function Navbar() {
   ];
 
   return (
-    <div className="fixed bottom-4 w-full px-2">
+    <div className="fixed bottom-4 w-full px-2 z-10 isolate">
       <nav
         className="bg-red rounded-full p-1 h-12 flex relative"
         ref={highlightContainerRef}
@@ -93,7 +93,7 @@ export default function Navbar() {
           <Link
             href={link.url}
             key={link.url}
-            className={`flex grow relative z-10 items-center justify-center gap-2 h-full active:scale-90 ${
+            className={`flex grow relative items-center z-20 justify-center gap-2 h-full active:scale-90 ${
               pathname === link.url ? "text-black rounded-full active" : ""
             }`}
           >
@@ -111,7 +111,7 @@ export default function Navbar() {
         <div className="absolute py-1 w-full h-full left-0 top-0 pointer-events-none">
           <div className="relative h-full w-full">
             <div
-              className="absolute bg-white rounded-full transition-all duration-300 ease-in-out h-full"
+              className="absolute bg-white rounded-full transition-all duration-300 z-10 ease-in-out h-full"
               style={{
                 left: `${highlightPosition}%`,
                 width: `${highlightWidth}px`,
