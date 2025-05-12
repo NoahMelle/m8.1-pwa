@@ -4,6 +4,8 @@ import { PerformanceType, StageType } from "@/@types/types";
 import { getCurrentActForStage, getNextActForStage } from "@/lib/fetchers";
 import Image from "next/image";
 import { formatDateToTime } from "@/lib/utils";
+import { useTranslations } from "@/i18n/useTranslations";
+import { messages } from "@/i18n/messages";
 
 export default function LocationPopup({
   stage,
@@ -18,6 +20,7 @@ export default function LocationPopup({
   const [currentAct, setCurrentAct] = useState<
     PerformanceType | null | undefined
   >(null);
+  const t = useTranslations();
 
   useEffect(() => {
     getNextActForStage(stage.id).then((data) => {
@@ -64,11 +67,12 @@ export default function LocationPopup({
             <button onClick={() => setIsShowing(null)}>X</button>
           </div>
           <p className="leading-tight whitespace-pre-wrap my-4">
-            {stage.description?.trim()}
+            {t(stage.description).trim()}
           </p>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <h3>Current act:</h3>
+              <h3>{t(messages.map.popup.currentAct)}:</h3>
+
               <div className="relative aspect-square flex flex-col justify-between dark:bg-neutral-800/50 bg-white/30 backdrop-blur-lg rounded-lg p-4 border dark:border-white/20 border-black/10 shadow-sm">
                 <div className="flex flex-col justify-end h-full">
                   {!!currentAct ? (
@@ -104,14 +108,14 @@ export default function LocationPopup({
                         alt="No music"
                         className="dark:invert-0 invert absolute top-1/2 left-1/2 -translate-1/2 opacity-10"
                       />
-                      <p>No current act.</p>
+                      <p>{t(messages.map.popup.noCurrent)}</p>
                     </>
                   )}
                 </div>
               </div>
             </div>
             <div>
-              <h3>Next up:</h3>
+              <h3>{t(messages.map.popup.nextAct)}:</h3>
               <div className="relative aspect-square flex flex-col justify-between dark:bg-neutral-800/50 bg-white/30 backdrop-blur-lg rounded-lg p-4 border dark:border-white/20 border-black/10 shadow-sm">
                 <div className="flex flex-col justify-end h-full">
                   {!!nextAct ? (
@@ -143,7 +147,7 @@ export default function LocationPopup({
                         alt="No music"
                         className="dark:invert-0 invert absolute top-1/2 left-1/2 -translate-1/2 opacity-10"
                       />
-                      <p>No act planned.</p>
+                      <p>{t(messages.map.popup.noNextAct)}</p>
                     </>
                   )}
                 </div>

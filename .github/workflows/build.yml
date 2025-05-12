@@ -50,4 +50,8 @@ jobs:
             source ~/.nvm/nvm.sh
             cd ..
             git pull
+            bun i
+
+            bunx drizzle-kit migrate
+
             pm2 restart ecosystem.config.js

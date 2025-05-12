@@ -1,11 +1,22 @@
 "use server";
 
 import { db } from "@/db";
-import { performancesTable } from "@/db/schemas";
+import { performancesTable, stagesTable } from "@/db/schemas";
 import { and, eq, gte, lt } from "drizzle-orm";
 
 export async function getStages() {
-  const stages = await db.query.stagesTable.findMany();
+  const stages = await db
+    .select({
+      id: stagesTable.id,
+      name: stagesTable.name,
+      description: {
+        en: stagesTable.englishDescription,
+        nl: stagesTable.dutchDescription,
+      },
+      xPosition: stagesTable.xPosition,
+      yPosition: stagesTable.yPosition,
+    })
+    .from(stagesTable);
 
   return stages;
 }

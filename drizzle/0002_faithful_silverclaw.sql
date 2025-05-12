@@ -1,0 +1,1 @@
+ALTER TABLE `stages_table` ADD `dutch_description` varchar(1024);

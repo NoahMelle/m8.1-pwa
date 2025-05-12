@@ -5,7 +5,7 @@ import { Locale } from "./settings";
 export const useTranslations = () => {
   const { language } = useLanguage();
 
-  return (path: Record<Locale, string>): string => {
-    return language ? path[language] : "";
+  return (path: Record<Locale, string | null>): string => {
+    return language ? path[language] ?? "" : "";
   };
 };
