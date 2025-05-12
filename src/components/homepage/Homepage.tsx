@@ -22,13 +22,13 @@ export default function Homepage() {
         <div className="flex flex-col gap-2 items-center justify-center w-full px-4 max-w-[350px] mx-auto">
           <Link
             href={"/info"}
-            className="bg-red from-red bg-gradient-to-b active:scale-[98%] transition-transform to-red-600 text-white rounded-md w-full flex justify-center p-4"
+            className="bg-red active:scale-[98%] transition-transform text-white rounded-lg w-full flex justify-center p-4"
           >
             {t(messages.homepage.about)}
           </Link>
           <Link
             href={"/timetable"}
-            className="border-red border-2 active:scale-[98%] transition-transform rounded-md w-full flex justify-center p-4"
+            className="border-red border-2 active:scale-[98%] transition-transform rounded-lg w-full flex justify-center p-4"
           >
             {t(messages.homepage.timetable)}
           </Link>

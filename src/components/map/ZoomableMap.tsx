@@ -25,6 +25,7 @@ export default function ZoomableMap({ stages }: { stages: StageType[] }) {
   const [userOffset, setUserOffset] = useState<{ x: number; y: number } | null>(
     null
   );
+  const [userDirection, setUserDirection] = useState<number | null>(null);
 
   const initialPosition = useRef<UserLocation | null>(null);
 
@@ -41,7 +42,9 @@ export default function ZoomableMap({ stages }: { stages: StageType[] }) {
     if (navigator.geolocation) {
       watchId = navigator.geolocation.watchPosition(
         (position) => {
-          const { latitude, longitude } = position.coords;
+          const { latitude, longitude, heading } = position.coords;
+
+          setUserDirection(heading);
 
           if (!initialPosition.current) {
             initialPosition.current = { latitude, longitude };
@@ -106,7 +109,20 @@ export default function ZoomableMap({ stages }: { stages: StageType[] }) {
             className={`absolute -translate-1/2 z-[1] bg-red h-4 w-4 rounded-full ${
               userOffset === null ? "hidden" : ""
             }`}
-          ></KeepScale>
+          >
+            <div
+              className={`absolute inset-0 flex justify-center items-center w-fit h-fit ${
+                userDirection === null ? "hidden" : ""
+              }`}
+            >
+              <div
+                style={{
+                  transform: `rotate(${userDirection}deg)`,
+                }}
+                className="w-4 h-4 border-t-2 border-l-2 border-black dark:border-white transform origin-center"
+              />
+            </div>
+          </KeepScale>
           <div>
             {stages.map((stage) => (
               <MapLocation
