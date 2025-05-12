@@ -27,3 +27,29 @@ export function getDistance(initPos: UserLocation, currentPos: UserLocation) {
 function toRad(value: number) {
   return (value * Math.PI) / 180;
 }
+
+export function getRelativeMapOffset(
+  initPos: UserLocation,
+  currentPos: UserLocation
+): { xDistance: number; yDistance: number } {
+  const xDirection = initPos.longitude > currentPos.longitude ? -1 : 1;
+  const yDirection = initPos.latitude > currentPos.latitude ? -1 : 1;
+
+  console.log(`xDirection: ${xDirection}, yDirection: ${yDirection}`);
+
+  const xDistance =
+    getDistance(initPos, {
+      latitude: initPos.latitude,
+      longitude: currentPos.longitude,
+    }) * xDirection;
+  const yDistance =
+    getDistance(initPos, {
+      latitude: currentPos.latitude,
+      longitude: initPos.longitude,
+    }) * yDirection;
+
+  return {
+    xDistance,
+    yDistance,
+  };
+}

@@ -16,6 +16,7 @@ jobs:
 
       - run: bun install --frozen-lockfile
       - run: bun run lint
+      - run: bun run test
 
       - run: bunx tsc
 
@@ -49,4 +50,8 @@ jobs:
             source ~/.nvm/nvm.sh
             cd ..
             git pull
+            bun i
+
+            bunx drizzle-kit migrate
+
             pm2 restart ecosystem.config.js
