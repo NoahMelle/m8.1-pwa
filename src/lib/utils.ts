@@ -7,3 +7,14 @@ import { Theme, themes } from "@/@types/theme";
 export function isTheme(value: string): value is Theme {
   return (themes as readonly string[]).includes(value);
 }
+
+/**
+ * Formats a date to time only (excluding seconds)
+ * @param date The date you want to format
+ */
+export function formatDateToTime(date: Date) {
+  return date.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
