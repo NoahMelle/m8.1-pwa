@@ -35,8 +35,6 @@ export function getRelativeMapOffset(
   const xDirection = initPos.longitude > currentPos.longitude ? -1 : 1;
   const yDirection = initPos.latitude > currentPos.latitude ? -1 : 1;
 
-  console.log(`xDirection: ${xDirection}, yDirection: ${yDirection}`);
-
   const xDistance =
     getDistance(initPos, {
       latitude: initPos.latitude,
