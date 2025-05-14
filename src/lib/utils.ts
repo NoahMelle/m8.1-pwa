@@ -1,4 +1,5 @@
 import { Theme, themes } from "@/@types/theme";
+import { PerformanceWithStageType } from "@/@types/types";
 
 /**
  * Checks whether the string is inside of the 'themes' array
@@ -13,8 +14,25 @@ export function isTheme(value: string): value is Theme {
  * @param date The date you want to format
  */
 export function formatDateToTime(date: Date) {
-  return date.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
+  const hours = date.getUTCHours().toString().padStart(2, "0");
+  const minutes = date.getUTCMinutes().toString().padStart(2, "0");
+  return `${hours}:${minutes}`;
+}
+
+export function groupPerformancesByStage(acts: PerformanceWithStageType[]) {
+  const groupMap = new Map<string, PerformanceWithStageType[]>();
+
+  acts.forEach((act) => {
+    if (act.stage) {
+      const existingEntry = groupMap.get(act.stage.name);
+
+      if (existingEntry) {
+        groupMap.set(act.stage.name, [...existingEntry, act]);
+      } else {
+        groupMap.set(act.stage.name, [act]);
+      }
+    }
   });
+
+  return groupMap;
 }

@@ -5,6 +5,8 @@ export interface UserLocation {
   longitude: number;
 }
 
+export type DayType = "saturday" | "sunday";
+
 export type StageType = Awaited<ReturnType<typeof getStages>>[0];
 export type PerformanceType = Awaited<ReturnType<typeof getPerformances>>[0];
 export type PerformanceWithStageType = Awaited<

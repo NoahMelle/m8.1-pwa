@@ -4,6 +4,7 @@ import { db } from "@/db";
 import { performancesTable, stagesTable } from "@/db/schemas";
 import dayjs from "dayjs";
 import { and, eq, gte, lt, lte } from "drizzle-orm";
+import { groupPerformancesByStage } from "./utils";
 
 export async function getStages() {
   const stages = await db
@@ -92,4 +93,8 @@ export async function getActsForDate(date: "saturday" | "sunday") {
     .leftJoin(stagesTable, eq(stagesTable.id, performancesTable.stageId));
 
   return acts;
+}
+
+export async function getGroupedActsForDate(date: "saturday" | "sunday") {
+  return groupPerformancesByStage(await getActsForDate(date));
 }
