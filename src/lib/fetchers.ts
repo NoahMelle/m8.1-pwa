@@ -2,7 +2,9 @@
 
 import { db } from "@/db";
 import { performancesTable, stagesTable } from "@/db/schemas";
-import { and, eq, gte, lt } from "drizzle-orm";
+import dayjs from "dayjs";
+import { and, eq, gte, lt, lte } from "drizzle-orm";
+import { groupPerformancesByStage } from "./utils";
 
 export async function getStages() {
   const stages = await db
@@ -58,4 +60,41 @@ export async function getCurrentActForStage(stageId: number) {
     .limit(1);
 
   return currentAct.length === 1 ? currentAct[0] : null;
+}
+
+export async function getActsForDate(date: "saturday" | "sunday") {
+  const day = dayjs(date === "saturday" ? "2025-09-06" : "2025-09-07");
+
+  const startOfDay = day.startOf("day").toDate();
+  const endOfDay = day.endOf("day").toDate();
+
+  const acts = await db
+    .select({
+      id: performancesTable.id,
+      imageUrl: performancesTable.imageUrl,
+      title: performancesTable.title,
+      startsAt: performancesTable.startsAt,
+      endsAt: performancesTable.endsAt,
+      stage: {
+        name: stagesTable.name,
+      },
+      description: {
+        en: performancesTable.englishDescription,
+        nl: performancesTable.dutchDescription,
+      },
+    })
+    .from(performancesTable)
+    .where(
+      and(
+        gte(performancesTable.startsAt, startOfDay),
+        lte(performancesTable.startsAt, endOfDay)
+      )
+    )
+    .leftJoin(stagesTable, eq(stagesTable.id, performancesTable.stageId));
+
+  return acts;
+}
+
+export async function getGroupedActsForDate(date: "saturday" | "sunday") {
+  return groupPerformancesByStage(await getActsForDate(date));
 }

@@ -7,6 +7,14 @@ export const performancesTable = mysqlTable("performances_table", {
   title: varchar("title", { length: 255 }).notNull(),
   startsAt: timestamp("starts_at").notNull(),
   endsAt: timestamp("ends_at").notNull(),
+
+  imageUrl: varchar("image_url", { length: 512 })
+    .notNull()
+    .default("https://placehold.co/200x200"),
+
+  englishDescription: varchar("description", { length: 1024 }),
+  dutchDescription: varchar("dutch_description", { length: 1024 }),
+
   stageId: int("stage_id")
     .notNull()
     .references(() => stagesTable.id, {

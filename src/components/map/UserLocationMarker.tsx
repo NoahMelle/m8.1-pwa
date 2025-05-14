@@ -37,7 +37,6 @@ export default function UserLocationMarker() {
         () => {
           setUserLocation(null);
           setUserOffset(null);
-          setUserDirection(null);
         },
         {
           enableHighAccuracy: true,

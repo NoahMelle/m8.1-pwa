@@ -41,9 +41,9 @@ export default function ZoomableMap({ stages }: { stages: StageType[] }) {
           <div>
             {stages.map((stage) => (
               <MapLocation
+                key={stage.name}
                 stage={stage}
                 scale={scale}
-                key={stage.name}
                 setHighlightedLocation={setHighlightedLocation}
               />
             ))}

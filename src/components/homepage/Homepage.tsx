@@ -15,7 +15,9 @@ export default function Homepage() {
           <Logo width={150} height={150} />
           <div className="flex flex-col justify-center">
             <p className="text-4xl font-semibold">Festival</p>
-            <p className="text-red text-5xl">2025</p>
+            <p className="text-red text-7xl font-handwritten leading-[70%]">
+              2025
+            </p>
           </div>
         </div>
 

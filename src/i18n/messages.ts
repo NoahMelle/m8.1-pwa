@@ -16,6 +16,16 @@ export const messages = {
       en: "Show Less",
       nl: "Toon minder",
     },
+    weekdays: {
+      saturday: {
+        en: "Saturday",
+        nl: "Zaterdag",
+      },
+      sunday: {
+        en: "Sunday",
+        nl: "Zondag",
+      },
+    },
   },
   homepage: {
     about: {
