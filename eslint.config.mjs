@@ -20,7 +20,7 @@ const eslintConfig = [
       "no-console": ["error"],
       "no-warning-comments": ["error"]
     },
-    ignores: ["db/seed.ts", "cron-jobs/**"]
+    ignores: ["src/db/seed.ts", "cron-jobs/**"]
   }
 ];
 
