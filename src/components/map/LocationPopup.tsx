@@ -116,18 +116,19 @@ export default function LocationPopup({
             </div>
             <div>
               <h3>{t(messages.map.popup.nextAct)}:</h3>
-              <div className="relative aspect-square flex flex-col justify-between dark:bg-neutral-800/50 bg-white/30 backdrop-blur-lg rounded-lg p-4 border dark:border-white/20 border-black/10 shadow-sm">
+              <div className="relative aspect-square flex overflow-hidden flex-col justify-between dark:bg-neutral-800/50 bg-white/30 backdrop-blur-lg rounded-lg p-4 border dark:border-white/20 border-black/10 shadow-sm">
                 <div className="flex flex-col justify-end h-full">
                   {!!nextAct ? (
                     <>
                       <Image
-                        src={"/icons/fast_forward.svg"}
-                        height={100}
-                        width={100}
+                        src={nextAct.imageUrl}
+                        height={0}
+                        width={0}
+                        layout="fill"
                         alt="Fast forward"
-                        className="dark:invert-0 invert absolute top-1/2 left-1/2 -translate-1/2 opacity-10"
+                        className="absolute -z-[1]"
                       />
-                      <div>
+                      <div className="z-10 relative text-white">
                         <p>{nextAct.title}</p>
                         <div className="opacity-50 text-sm leading-tight">
                           <p>{nextAct.startsAt.toLocaleDateString()}</p>
@@ -150,6 +151,7 @@ export default function LocationPopup({
                       <p>{t(messages.map.popup.noNextAct)}</p>
                     </>
                   )}
+                  <div className="bg-gradient-to-b from-transparent to-black/60 absolute top-0 left-0 w-full h-full"></div>
                 </div>
               </div>
             </div>
