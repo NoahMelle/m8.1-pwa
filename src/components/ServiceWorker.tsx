@@ -4,17 +4,10 @@ import { useEffect } from "react";
 
 export default function ServiceWorker() {
   useEffect(() => {
-    if ("serviceWorker" in navigator && "PushManager" in window) {
-      registerServiceWorker();
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js");
     }
   }, []);
-
-  async function registerServiceWorker() {
-    await navigator.serviceWorker.register("/sw.js", {
-      scope: "/",
-      updateViaCache: "none",
-    });
-  }
 
   return null;
 }

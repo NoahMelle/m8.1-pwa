@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.6.1",
-    "@serwist/next": "^9.0.14",
     "@t3-oss/env-core": "^0.13.4",
     "@types/jest": "^29.5.14",
     "@types/negotiator": "^0.6.3",

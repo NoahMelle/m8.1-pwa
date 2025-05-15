@@ -37,9 +37,9 @@ export default async function RootLayout({
             <TopBar />
             <main className={"grow flex flex-col"}>{children}</main>
             <Navbar />
+            <ServiceWorker />
           </LanguageProvider>
         </ThemeProvider>
-        <ServiceWorker />
       </body>
     </html>
   );

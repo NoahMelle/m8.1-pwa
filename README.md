@@ -35,6 +35,10 @@ Ensure you have the following installed before proceeding:
 
 ## Installation (PWA on a mobile device)
 
+![QR Code](./public/img/qr-code.png)
+
+To install the PWA, you can use the QR above code or:
+
 1. Visit the live site on a Chromium based browser: https://pwa.noeycodes.com*
 2. Click on the three dots in the top-right corner.
 3. Select `Add to home screen`, a pop-up will show up prompting you to install the app
