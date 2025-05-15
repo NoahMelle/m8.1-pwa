@@ -3,6 +3,7 @@
 import { db } from "@/db";
 import { performancesTable, stagesTable } from "@/db/schemas";
 import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
 import { and, eq, gte, lt, lte } from "drizzle-orm";
 import { groupPerformancesByStage } from "./utils";
 
@@ -63,7 +64,8 @@ export async function getCurrentActForStage(stageId: number) {
 }
 
 export async function getActsForDate(date: "saturday" | "sunday") {
-  const day = dayjs(date === "saturday" ? "2025-09-06" : "2025-09-07");
+  dayjs.extend(utc);
+  const day = dayjs.utc(date === "saturday" ? "2025-09-06" : "2025-09-07");
 
   const startOfDay = day.startOf("day").toDate();
   const endOfDay = day.endOf("day").toDate();

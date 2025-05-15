@@ -23,7 +23,9 @@ export default function MapLocation({
       className="absolute -translate-1/2 z-[1]"
       onClick={() => setHighlightedLocation(stage)}
     >
-      <div className="h-4 w-4 rounded-full bg-red border-red-700 dark:bg-red-700 dark:border-red-800 border-2"></div>
+      <div className="h-8 w-8 flex items-center text-white justify-center rounded-full bg-red border-red-700 dark:bg-red-700 dark:border-red-800 border-2">
+        {stage.id}
+      </div>
       <AnimatePresence>
         {scale > 3 && (
           <motion.h3
