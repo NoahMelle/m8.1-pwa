@@ -6,6 +6,8 @@ import { getServerSideTranslations } from "@/i18n/server";
 import Image from "next/image";
 import React from "react";
 
+export const dynamic = "force-static";
+
 export default async function Info() {
   const t = await getServerSideTranslations();
 
