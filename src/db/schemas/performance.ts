@@ -10,7 +10,7 @@ export const performancesTable = mysqlTable("performances_table", {
 
   imageUrl: varchar("image_url", { length: 512 })
     .notNull()
-    .default("https://placehold.co/200x200"),
+    .default("https://placehold.co/200x200/png"),
 
   englishDescription: varchar("description", { length: 1024 }),
   dutchDescription: varchar("dutch_description", { length: 1024 }),
