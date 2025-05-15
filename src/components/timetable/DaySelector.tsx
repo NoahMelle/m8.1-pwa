@@ -28,7 +28,7 @@ export default function DaySelector({
           selectedDay === "sunday" ? "bg-red text-white" : "hover:bg-red/20"
         } p-4 rounded-md border-2 border-red transition-colors`}
       >
-        {t(messages.global.weekdays.saturday)}
+        {t(messages.global.weekdays.sunday)}
       </button>
     </div>
   );
