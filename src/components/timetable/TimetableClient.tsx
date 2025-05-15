@@ -8,20 +8,17 @@ import ActPopup from "./ActPopup";
 import DaySelector from "./DaySelector";
 import StageRow from "./StageRow";
 import TimeMarkers from "./TimeMarkers";
+import { useTimetable } from "./TimetableContext";
 
-export default function TimetableClient({
-  initialActs,
-}: {
-  initialActs: Map<string, PerformanceWithStageType[]>;
-}) {
+export default function TimetableClient() {
   const [selectedDay, setSelectedDay] = useState<"saturday" | "sunday">(
     "saturday"
   );
-  const [groupedActs, setGroupedActs] =
-    useState<Map<string, PerformanceWithStageType[]>>(initialActs);
   const [highlightedAct, setHighlightedAct] =
     useState<PerformanceWithStageType | null>(null);
   const isFirstRender = useRef(true);
+
+  const { groupedActs, setGroupedActs } = useTimetable();
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -32,7 +29,7 @@ export default function TimetableClient({
     getGroupedActsForDate(selectedDay).then((data) => {
       setGroupedActs(data);
     });
-  }, [selectedDay]);
+  }, [selectedDay, setGroupedActs]);
 
   return (
     <div>

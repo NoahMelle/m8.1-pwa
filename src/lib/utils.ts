@@ -36,3 +36,16 @@ export function groupPerformancesByStage(acts: PerformanceWithStageType[]) {
 
   return groupMap;
 }
+
+export function toggleArrayItem<T>(arr: Array<T>, item: T): Array<T> {
+  const copy = [...arr];
+  const index = copy.indexOf(item);
+
+  if (index != -1) {
+    copy.splice(index, 1);
+  } else {
+    copy.push(item);
+  }
+
+  return copy;
+}

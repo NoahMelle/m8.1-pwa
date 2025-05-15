@@ -62,11 +62,6 @@ export default function Navbar() {
       iconUrl: "/icons/info.svg",
     },
     {
-      url: "/weather",
-      text: "Weather",
-      iconUrl: "/icons/cloud.svg",
-    },
-    {
       url: "/map",
       text: "Map",
       iconUrl: "/icons/location.svg",

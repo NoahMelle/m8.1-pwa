@@ -4,6 +4,8 @@ import { PerformanceWithStageType } from "@/@types/types";
 import Image from "next/image";
 import { formatDateToTime } from "@/lib/utils";
 import { useTranslations } from "@/i18n/useTranslations";
+import Star from "../icons/Star";
+import { useTimetable } from "./TimetableContext";
 
 export default function ActPopup({
   act,
@@ -13,6 +15,8 @@ export default function ActPopup({
   setIsShowing: Dispatch<SetStateAction<PerformanceWithStageType | null>>;
 }) {
   const t = useTranslations();
+
+  const { toggleFavouriteAct, favouriteActs } = useTimetable();
 
   return (
     <motion.div
@@ -54,13 +58,20 @@ export default function ActPopup({
               className="aspect-[5/2] object-cover w-full h-full"
               sizes="100%"
             />
-            <div className="grid grid-cols-[min-content_1fr] gap-x-4 leading-tight">
-              <p className="text-nowrap">Starts at: </p>
-              <p>{formatDateToTime(act.startsAt)}</p>
-              <p className="text-nowrap">Ends at: </p>
-              <p>{formatDateToTime(act.endsAt)}</p>
-              <p className="text-nowrap">Stage:</p>
-              <p>{act.stage?.name}</p>
+            <div className="flex justify-between items-start">
+              <div className="grid grid-cols-[min-content_1fr] gap-x-4 leading-tight">
+                <p className="text-nowrap">Starts at: </p>
+                <p>{formatDateToTime(act.startsAt)}</p>
+                <p className="text-nowrap">Ends at: </p>
+                <p>{formatDateToTime(act.endsAt)}</p>
+                <p className="text-nowrap">Stage:</p>
+                <p>{act.stage?.name}</p>
+              </div>
+              {favouriteActs && (
+                <button onClick={() => toggleFavouriteAct(act.id)}>
+                  <Star filled={favouriteActs?.includes(act.id)} />
+                </button>
+              )}
             </div>
             <p className="leading-tight">{t(act.description)}</p>
           </div>

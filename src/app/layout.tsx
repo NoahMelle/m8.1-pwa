@@ -9,6 +9,7 @@ import BackgroundDecorations from "@/components/reusable/BackgroundDecorations";
 import { getLocaleFromCookies } from "@/i18n/helpers";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { isTheme } from "@/lib/utils";
+import ServiceWorker from "@/components/ServiceWorker";
 
 export const metadata: Metadata = {
   title: "LoveU Festival App",
@@ -38,6 +39,7 @@ export default async function RootLayout({
             <Navbar />
           </LanguageProvider>
         </ThemeProvider>
+        <ServiceWorker />
       </body>
     </html>
   );

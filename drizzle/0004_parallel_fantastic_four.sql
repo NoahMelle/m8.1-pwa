@@ -1,0 +1,1 @@
+ALTER TABLE `performances_table` MODIFY COLUMN `image_url` varchar(512) NOT NULL DEFAULT 'https://placehold.co/200x200/png';

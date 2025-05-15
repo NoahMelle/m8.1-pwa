@@ -32,6 +32,6 @@ export function middleware(request: NextRequest) {
 // Don't run on internal routes/assets
 export const config = {
   matcher: [
-    "/((?!api|_next/static|_next/image|icons|fonts|img|favicon.ico|sitemap.xml|robots.txt).*)",
+    "/((?!api|_next/static|_next/image|icons|offline|manifest.json|fonts|img|favicon.ico|sitemap.xml|robots.txt).*)",
   ],
 };
