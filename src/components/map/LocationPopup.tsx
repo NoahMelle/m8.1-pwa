@@ -121,7 +121,7 @@ export default function LocationPopup({
                   {!!nextAct ? (
                     <>
                       <Image
-                        src={nextAct.imageUrl}
+                        src={nextAct.imageUrl ?? "/icons/fast_forward.svg"}
                         height={0}
                         width={0}
                         layout="fill"

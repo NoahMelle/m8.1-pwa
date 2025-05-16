@@ -50,14 +50,27 @@ export default function ActPopup({
             <button onClick={() => setIsShowing(null)}>X</button>
           </div>
           <div className="flex flex-col gap-4">
-            <Image
-              src={act.imageUrl}
-              width={0}
-              height={0}
-              alt={act.title}
-              className="aspect-[5/2] object-cover w-full h-full"
-              sizes="100%"
-            />
+            {act.imageUrl && (
+              <Image
+                src={act.imageUrl}
+                width={0}
+                height={0}
+                alt={act.title}
+                className="aspect-[5/2] object-cover w-full h-full"
+                sizes="100%"
+              />
+            )}
+            {act.videoUrl && (
+              <iframe
+                width="560"
+                height="315"
+                src={act.videoUrl}
+                title="YouTube video player"
+                className="w-full aspect-video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+              ></iframe>
+            )}
             <div className="flex justify-between items-start">
               <div className="grid grid-cols-[min-content_1fr] gap-x-4 leading-tight">
                 <p className="text-nowrap">Starts at: </p>

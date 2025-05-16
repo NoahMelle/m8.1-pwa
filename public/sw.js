@@ -1,7 +1,23 @@
 const cacheName = 'v1'
+const excludedRoutes = [
+    "/map",
+    "/timetable"
+]
 
 const cacheClone = async (e) => {
+    const url = new URL(e.request.url);
+
+    // Prevent caching for excluded routes
+    if (excludedRoutes.some(route => url.pathname.startsWith(route))) {
+        try {
+            return await fetch(e.request);
+        } catch {
+            return await caches.match(e.request) || new Response('Network error', { status: 408 });
+        }
+    }
+
     const res = await fetch(e.request);
+
     const resClone = res.clone()
 
     const cache = await caches.open(cacheName)

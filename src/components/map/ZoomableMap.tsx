@@ -129,7 +129,7 @@ export default function ZoomableMap({ stages }: { stages: StageType[] }) {
   return (
     <div className="overflow-hidden h-full">
       <TransformWrapper
-        initialScale={1.5}
+        initialScale={1}
         centerOnInit={true}
         centerZoomedOut
         limitToBounds
@@ -140,7 +140,7 @@ export default function ZoomableMap({ stages }: { stages: StageType[] }) {
         {!hasInitialized && <Loading />}
         <TransformComponent wrapperClass="w-full! h-full! relative z-0 isolate">
           <UserLocationMarker />
-          <div>
+          <div className="h-full w-full">
             {markers.map((marker, index) => (
               <Marker key={index} {...marker} scale={scale} />
             ))}
@@ -152,14 +152,16 @@ export default function ZoomableMap({ stages }: { stages: StageType[] }) {
                 setHighlightedLocation={setHighlightedLocation}
               />
             ))}
-            <Image
-              src={"/img/map_no_bg.png"}
-              sizes="100vh"
-              alt="Map of the terrain"
-              width={0}
-              height={0}
-              className="w-full h-full dark:brightness-75 dark:contrast-125 dark:hue-rotate-30"
-            />
+            <div className="relative aspect-[1353/2330] h-full w-auto">
+              <Image
+                src={"/img/map.svg"}
+                sizes="100vw"
+                alt="Map of the terrain"
+                width={1353}
+                height={2330}
+                className="dark:brightness-75 dark:contrast-125 dark:hue-rotate-30 object-cover"
+              />
+            </div>
           </div>
         </TransformComponent>
       </TransformWrapper>
