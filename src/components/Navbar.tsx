@@ -1,6 +1,13 @@
 "use client";
 
-import Image from "next/image";
+import {
+  Home,
+  Info,
+  LucideIcon,
+  MapPin,
+  Settings,
+  SquareChartGantt,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect } from "react";
@@ -8,7 +15,7 @@ import React, { useEffect } from "react";
 interface Link {
   url: string;
   text: string;
-  iconUrl: string;
+  iconUrl: LucideIcon;
 }
 
 export default function Navbar() {
@@ -54,27 +61,27 @@ export default function Navbar() {
     {
       url: "/",
       text: "Home",
-      iconUrl: "/icons/home.svg",
+      iconUrl: Home,
     },
     {
       url: "/info",
       text: "Info",
-      iconUrl: "/icons/info.svg",
+      iconUrl: Info,
     },
     {
       url: "/map",
       text: "Map",
-      iconUrl: "/icons/location.svg",
+      iconUrl: MapPin,
     },
     {
       url: "/timetable",
       text: "Time table",
-      iconUrl: "/icons/time.svg",
+      iconUrl: SquareChartGantt,
     },
     {
       url: "/settings",
       text: "Settings",
-      iconUrl: "/icons/settings.svg",
+      iconUrl: Settings,
     },
   ];
 
@@ -92,14 +99,13 @@ export default function Navbar() {
               pathname === link.url ? "text-black rounded-full active" : ""
             }`}
           >
-            <Image
-              src={link.iconUrl}
+            <link.iconUrl
               className={`${
                 pathname === link.url ? "invert" : ""
               } transition-all`}
-              alt={link.text}
               width={24}
               height={24}
+              color="white"
             />
           </Link>
         ))}

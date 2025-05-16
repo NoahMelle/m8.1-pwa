@@ -27,9 +27,13 @@ export default function TimetableClient() {
       return;
     }
 
-    getGroupedActsForDate(selectedDay).then((data) => {
-      setGroupedActs(data);
-    });
+    try {
+      getGroupedActsForDate(selectedDay).then((data) => {
+        setGroupedActs(data);
+      });
+    } catch {
+      throw new Error("Failed to fetch data");
+    }
   }, [selectedDay, setGroupedActs]);
 
   return (

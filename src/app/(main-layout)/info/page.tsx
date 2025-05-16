@@ -3,7 +3,7 @@ import GoldenGlu from "@/components/info/GoldenGlu";
 import TransportOptions from "@/components/info/TransportOptions";
 import { messages } from "@/i18n/messages";
 import { getServerSideTranslations } from "@/i18n/server";
-import Image from "next/image";
+import { Calendar, Map, MapPin } from "lucide-react";
 import React from "react";
 
 export const dynamic = "force-static";
@@ -17,33 +17,15 @@ export default async function Info() {
       <p>{t(messages.info.subHeading)}</p>
       <div className="text-sm leading-tight">
         <div className="flex gap-2 items-center">
-          <Image
-            src={"/icons/location.svg"}
-            height={24}
-            width={24}
-            alt="Location Pin"
-            className="dark:invert-0 invert"
-          />
+          <MapPin height={24} width={24} />
           <p>Strijkviertel, Utrecht</p>
         </div>
         <div className="flex items-center gap-2">
-          <Image
-            src={"/icons/map.svg"}
-            height={24}
-            width={24}
-            alt="Map"
-            className="dark:invert-0 invert"
-          />
+          <Map height={24} width={24} />
           <p>Strijkviertelweg, Utrecht</p>
         </div>
         <div className="flex gap-2 items-center">
-          <Image
-            src={"/icons/date.svg"}
-            height={24}
-            width={24}
-            alt="Calendar"
-            className="dark:invert-0 invert"
-          />
+          <Calendar height={24} width={24} />
           <p>{t(messages.info.general.date)}</p>
         </div>
       </div>

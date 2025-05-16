@@ -4,8 +4,8 @@ import { PerformanceWithStageType } from "@/@types/types";
 import Image from "next/image";
 import { formatDateToTime } from "@/lib/utils";
 import { useTranslations } from "@/i18n/useTranslations";
-import Star from "../icons/Star";
 import { useTimetable } from "./TimetableContext";
+import { Star } from "lucide-react";
 
 export default function ActPopup({
   act,
@@ -82,7 +82,13 @@ export default function ActPopup({
               </div>
               {favouriteActs && (
                 <button onClick={() => toggleFavouriteAct(act.id)}>
-                  <Star filled={favouriteActs?.includes(act.id)} />
+                  <Star
+                    fill={
+                      favouriteActs?.includes(act.id) ? "white" : "transparent"
+                    }
+                    width={20}
+                    height={20}
+                  />
                 </button>
               )}
             </div>
