@@ -8,9 +8,8 @@ export const performancesTable = mysqlTable("performances_table", {
   startsAt: timestamp("starts_at").notNull(),
   endsAt: timestamp("ends_at").notNull(),
 
-  imageUrl: varchar("image_url", { length: 512 })
-    .notNull()
-    .default("https://placehold.co/200x200/png"),
+  videoUrl: varchar("video_url", { length: 512 }),
+  imageUrl: varchar("image_url", { length: 512 }),
 
   englishDescription: varchar("description", { length: 1024 }),
   dutchDescription: varchar("dutch_description", { length: 1024 }),

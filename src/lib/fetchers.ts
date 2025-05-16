@@ -74,6 +74,7 @@ export async function getActsForDate(date: "saturday" | "sunday") {
     .select({
       id: performancesTable.id,
       imageUrl: performancesTable.imageUrl,
+      videoUrl: performancesTable.videoUrl,
       title: performancesTable.title,
       startsAt: performancesTable.startsAt,
       endsAt: performancesTable.endsAt,
