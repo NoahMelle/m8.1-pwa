@@ -1,6 +1,7 @@
 import { relations } from "drizzle-orm";
 import { int, mysqlTable, timestamp, varchar } from "drizzle-orm/mysql-core";
 import { stagesTable } from "./stage";
+import { genresToPerformancesTable } from "./genresToPerformances";
 
 export const performancesTable = mysqlTable("performances_table", {
   id: int().primaryKey().autoincrement(),
@@ -21,9 +22,14 @@ export const performancesTable = mysqlTable("performances_table", {
     }),
 });
 
-export const performanceRelations = relations(performancesTable, ({ one }) => ({
-  stage: one(stagesTable, {
-    fields: [performancesTable.stageId],
-    references: [stagesTable.id],
-  }),
-}));
+export const performanceRelations = relations(
+  performancesTable,
+  ({ one, many }) => ({
+    stage: one(stagesTable, {
+      fields: [performancesTable.stageId],
+      references: [stagesTable.id],
+    }),
+
+    genres: many(genresToPerformancesTable),
+  })
+);

@@ -1,4 +1,9 @@
-import { getActsForDate, getPerformances, getStages } from "@/lib/fetchers";
+import {
+  getActsForDate,
+  getAllGenres,
+  getPerformances,
+  getStages,
+} from "@/lib/fetchers";
 
 export interface UserLocation {
   latitude: number;
@@ -12,3 +17,4 @@ export type PerformanceType = Awaited<ReturnType<typeof getPerformances>>[0];
 export type PerformanceWithStageType = Awaited<
   ReturnType<typeof getActsForDate>
 >[0];
+export type GenreType = Awaited<ReturnType<typeof getAllGenres>>[0];

@@ -1,11 +1,12 @@
 "use server";
 
 import { db } from "@/db";
-import { performancesTable, stagesTable } from "@/db/schemas";
+import { genresTable, performancesTable, stagesTable } from "@/db/schemas";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import { and, eq, gte, lt, lte } from "drizzle-orm";
 import { groupPerformancesByStage } from "./utils";
+import { formatDatabaseEntryToLocales } from "@/i18n/helpers";
 
 export async function getStages() {
   const stages = await db
@@ -70,34 +71,56 @@ export async function getActsForDate(date: "saturday" | "sunday") {
   const startOfDay = day.startOf("day").toDate();
   const endOfDay = day.endOf("day").toDate();
 
-  const acts = await db
-    .select({
-      id: performancesTable.id,
-      imageUrl: performancesTable.imageUrl,
-      videoUrl: performancesTable.videoUrl,
-      title: performancesTable.title,
-      startsAt: performancesTable.startsAt,
-      endsAt: performancesTable.endsAt,
+  const acts = await db.query.performancesTable.findMany({
+    columns: {
+      id: true,
+      imageUrl: true,
+      videoUrl: true,
+      title: true,
+      startsAt: true,
+      endsAt: true,
+      englishDescription: true,
+      dutchDescription: true,
+    },
+    where: and(
+      gte(performancesTable.startsAt, startOfDay),
+      lte(performancesTable.startsAt, endOfDay)
+    ),
+    with: {
       stage: {
-        name: stagesTable.name,
+        columns: {
+          id: true,
+          name: true,
+        },
       },
-      description: {
-        en: performancesTable.englishDescription,
-        nl: performancesTable.dutchDescription,
+      genres: {
+        with: {
+          genre: true,
+        },
       },
-    })
-    .from(performancesTable)
-    .where(
-      and(
-        gte(performancesTable.startsAt, startOfDay),
-        lte(performancesTable.startsAt, endOfDay)
-      )
-    )
-    .leftJoin(stagesTable, eq(stagesTable.id, performancesTable.stageId));
+    },
+  });
 
-  return acts;
+  return acts.map((act) =>
+    formatDatabaseEntryToLocales(act, "description", {
+      englishTranslationKey: "englishDescription",
+      dutchTranslationKey: "dutchDescription",
+    })
+  );
 }
 
 export async function getGroupedActsForDate(date: "saturday" | "sunday") {
-  return groupPerformancesByStage(await getActsForDate(date));
+  return groupPerformancesByStage(
+    await getActsForDate(date),
+    await getStages()
+  );
+}
+
+export async function getAllGenres() {
+  return await db
+    .select({
+      name: genresTable.name,
+      id: genresTable.id,
+    })
+    .from(genresTable);
 }

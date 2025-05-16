@@ -22,3 +22,42 @@ export function getLocaleFromCookies(
 
   return language;
 }
+
+export function formatDatabaseEntryToLocales<
+  T extends Record<string, TVal>,
+  TVal,
+  NewKey extends string,
+  EnglishKey extends keyof T,
+  DutchKey extends keyof T
+>(
+  entry: T,
+  newKeyname: NewKey,
+  {
+    englishTranslationKey,
+    dutchTranslationKey,
+  }: { englishTranslationKey: EnglishKey; dutchTranslationKey: DutchKey }
+): Omit<T, EnglishKey | DutchKey> & {
+  [K in NewKey]: {
+    en: T[EnglishKey];
+    nl: T[DutchKey];
+  };
+} {
+  const {
+    [englishTranslationKey]: enValue,
+    [dutchTranslationKey]: nlValue,
+    ...rest
+  } = entry;
+
+  return {
+    ...rest,
+    [newKeyname]: {
+      nl: nlValue,
+      en: enValue,
+    },
+  } as Omit<T, EnglishKey | DutchKey> & {
+    [K in NewKey]: {
+      en: T[EnglishKey];
+      nl: T[DutchKey];
+    };
+  };
+}

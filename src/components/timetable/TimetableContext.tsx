@@ -6,13 +6,17 @@ import { toggleArrayItem } from "@/lib/utils";
 import {
   createContext,
   Dispatch,
+  RefObject,
   SetStateAction,
   useContext,
   useEffect,
+  useRef,
   useState,
 } from "react";
 
 interface TimetableClientType {
+  allActs: RefObject<PerformanceWithStageType[]>;
+
   groupedActs: Map<string, PerformanceWithStageType[]>;
   setGroupedActs: Dispatch<
     SetStateAction<Map<string, PerformanceWithStageType[]>>
@@ -45,6 +49,7 @@ export const TimetableContextProvider = ({
 }) => {
   const [groupedActs, setGroupedActs] = useState(initialGroupedActs);
   const [favouriteActs, setFavouriteActs] = useState<number[] | null>(null);
+  const allActsRef = useRef(Array.from(initialGroupedActs.values()).flat());
 
   const toggleFavouriteAct = (id: number) => {
     setFavouriteActs((prev) => (!prev ? [id] : toggleArrayItem(prev, id)));
@@ -83,6 +88,7 @@ export const TimetableContextProvider = ({
         favouriteActs,
         setFavouriteActs,
         toggleFavouriteAct,
+        allActs: allActsRef,
       }}
     >
       {children}
