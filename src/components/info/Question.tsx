@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { QuestionType } from "./Faq";
-import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
+import { Plus } from "lucide-react";
 
 export default function Question({ question }: { question: QuestionType }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,14 +14,10 @@ export default function Question({ question }: { question: QuestionType }) {
           className="flex justify-between w-full py-4 text-start"
         >
           <span>{question.question}</span>
-          <Image
-            src={"/icons/plus.svg"}
-            alt="Plus"
+          <Plus
             width={24}
             height={24}
-            className={`transition-transform dark:invert-0 invert ${
-              isOpen ? "rotate-45" : ""
-            }`}
+            className={`transition-transform  ${isOpen ? "rotate-45" : ""}`}
           />
         </button>
         <AnimatePresence>

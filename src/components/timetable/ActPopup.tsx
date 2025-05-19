@@ -4,8 +4,8 @@ import { PerformanceWithStageType } from "@/@types/types";
 import Image from "next/image";
 import { formatDateToTime } from "@/lib/utils";
 import { useTranslations } from "@/i18n/useTranslations";
-import Star from "../icons/Star";
 import { useTimetable } from "./TimetableContext";
+import { Star } from "lucide-react";
 
 export default function ActPopup({
   act,
@@ -20,7 +20,7 @@ export default function ActPopup({
 
   return (
     <motion.div
-      className="fixed bg-black/20 dark:bg-black/60 p-4 left-0 top-0 h-[100dvh] w-full z-10"
+      className="fixed bg-black/20 dark:bg-black/60 p-4 left-0 top-0 h-[100dvh] w-full z-20"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -44,7 +44,7 @@ export default function ActPopup({
           duration: 0.2,
         }}
       >
-        <div className="bg-white dark:bg-neutral-900 border-white/10 border p-4 rounded-md w-full relative z-20">
+        <div className="bg-white dark:bg-neutral-900 border-white/10 border p-4 rounded-md w-full max-w-[500px] relative z-20 overflow-y-auto max-h-full">
           <div className="w-full justify-between flex items-center mb-2">
             <h3 className="font-semibold text-lg">{act.title}</h3>
             <button onClick={() => setIsShowing(null)}>X</button>
@@ -82,7 +82,13 @@ export default function ActPopup({
               </div>
               {favouriteActs && (
                 <button onClick={() => toggleFavouriteAct(act.id)}>
-                  <Star filled={favouriteActs?.includes(act.id)} />
+                  <Star
+                    fill={
+                      favouriteActs?.includes(act.id) ? "white" : "transparent"
+                    }
+                    width={20}
+                    height={20}
+                  />
                 </button>
               )}
             </div>

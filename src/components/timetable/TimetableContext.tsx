@@ -13,6 +13,13 @@ import {
 } from "react";
 
 interface TimetableClientType {
+  initialActs: Record<
+    "saturday" | "sunday",
+    Map<string, PerformanceWithStageType[]>
+  >;
+  allActs: PerformanceWithStageType[];
+  setAllActs: Dispatch<SetStateAction<PerformanceWithStageType[]>>;
+
   groupedActs: Map<string, PerformanceWithStageType[]>;
   setGroupedActs: Dispatch<
     SetStateAction<Map<string, PerformanceWithStageType[]>>
@@ -40,11 +47,17 @@ export const TimetableContextProvider = ({
   initialGroupedActs,
   children,
 }: {
-  initialGroupedActs: Map<string, PerformanceWithStageType[]>;
+  initialGroupedActs: Record<
+    "saturday" | "sunday",
+    Map<string, PerformanceWithStageType[]>
+  >;
   children: React.ReactNode;
 }) => {
-  const [groupedActs, setGroupedActs] = useState(initialGroupedActs);
+  const [groupedActs, setGroupedActs] = useState(initialGroupedActs.saturday);
   const [favouriteActs, setFavouriteActs] = useState<number[] | null>(null);
+  const [allActs, setAllActs] = useState<PerformanceWithStageType[]>(
+    Array.from(initialGroupedActs.saturday.values()).flat()
+  );
 
   const toggleFavouriteAct = (id: number) => {
     setFavouriteActs((prev) => (!prev ? [id] : toggleArrayItem(prev, id)));
@@ -78,11 +91,14 @@ export const TimetableContextProvider = ({
   return (
     <TimetableContext.Provider
       value={{
-        groupedActs,
+        initialActs: initialGroupedActs,
+        groupedActs: groupedActs,
         setGroupedActs,
         favouriteActs,
         setFavouriteActs,
         toggleFavouriteAct,
+        allActs,
+        setAllActs,
       }}
     >
       {children}

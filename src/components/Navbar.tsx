@@ -1,6 +1,13 @@
 "use client";
 
-import Image from "next/image";
+import {
+  Home,
+  Info,
+  LucideIcon,
+  MapPin,
+  Newspaper,
+  SquareChartGantt,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect } from "react";
@@ -8,7 +15,7 @@ import React, { useEffect } from "react";
 interface Link {
   url: string;
   text: string;
-  iconUrl: string;
+  iconUrl: LucideIcon;
 }
 
 export default function Navbar() {
@@ -54,27 +61,27 @@ export default function Navbar() {
     {
       url: "/",
       text: "Home",
-      iconUrl: "/icons/home.svg",
+      iconUrl: Home,
+    },
+    {
+      url: "/news",
+      text: "Nieuws",
+      iconUrl: Newspaper,
     },
     {
       url: "/info",
       text: "Info",
-      iconUrl: "/icons/info.svg",
+      iconUrl: Info,
     },
     {
       url: "/map",
       text: "Map",
-      iconUrl: "/icons/location.svg",
+      iconUrl: MapPin,
     },
     {
       url: "/timetable",
       text: "Time table",
-      iconUrl: "/icons/time.svg",
-    },
-    {
-      url: "/settings",
-      text: "Settings",
-      iconUrl: "/icons/settings.svg",
+      iconUrl: SquareChartGantt,
     },
   ];
 
@@ -89,17 +96,20 @@ export default function Navbar() {
             href={link.url}
             key={link.url}
             className={`flex grow relative items-center z-20 justify-center gap-2 h-full active:scale-90 ${
-              pathname === link.url ? "text-black rounded-full active" : ""
+              pathname === link.url || pathname.startsWith(link.url + "/")
+                ? "text-black rounded-full active"
+                : ""
             }`}
           >
-            <Image
-              src={link.iconUrl}
+            <link.iconUrl
               className={`${
-                pathname === link.url ? "invert" : ""
+                pathname === link.url || pathname.startsWith(link.url + "/")
+                  ? "invert"
+                  : ""
               } transition-all`}
-              alt={link.text}
               width={24}
               height={24}
+              color="white"
             />
           </Link>
         ))}

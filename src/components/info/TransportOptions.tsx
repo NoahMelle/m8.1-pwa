@@ -2,23 +2,32 @@
 
 import { messages } from "@/i18n/messages";
 import { useTranslations } from "@/i18n/useTranslations";
-import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HighlightedPopup from "./HighlightedPopup";
 import { AnimatePresence } from "motion/react";
-import ChevronDown from "../icons/ChevronDown";
+import {
+  Bike,
+  Bus,
+  Car,
+  CarTaxiFront,
+  ChevronDown,
+  Info,
+  LucideIcon,
+  Ticket,
+} from "lucide-react";
 
 export interface TransportOption {
   id: number;
   name: string;
   description: string;
-  imageUrl: string;
+  image: LucideIcon;
 }
 
 export default function TransportOptions() {
   const [highlightedOption, setHighlightedOption] =
     useState<TransportOption | null>(null);
   const [isShowingMore, setIsShowingMore] = useState(false);
+  const [screenSize, setScreenSize] = useState<number | null>(null);
 
   const t = useTranslations();
 
@@ -33,7 +42,7 @@ export default function TransportOptions() {
         en: "There is a large free bicycle shed where you can park your bike all day.",
         nl: "Er is een grote gratis fietsenstalling aanwezig waar je jouw fiets de gehele dag kunt stallen.",
       }),
-      imageUrl: "/icons/bike.svg",
+      image: Bike,
     },
     {
       id: 1,
@@ -45,7 +54,7 @@ export default function TransportOptions() {
         en: "You can purchase a parking ticket. You can park at P+R Papendorp, follow the signs 'P online ticket'. Did you not purchase a ticket in advance? Then you can purchase a parking ticket from the parking attendant on location (PIN ONLY). Please note: FULL=FULL",
         nl: "Je kunt een parkingticket aanschaffen. Parkeren kan op P+R Papendorp, volg hiervoor de borden 'P online ticket'. Heb je geen ticket van te voren gekocht? Dan kun je bij de parkeerwachter op locatie een parkeerticket aanschaffen (PIN ONLY). Let wel op: VOL=VOL",
       }),
-      imageUrl: "/icons/car.svg",
+      image: Car,
     },
     {
       id: 2,
@@ -57,7 +66,7 @@ export default function TransportOptions() {
         en: "Are you coming to Lief by public transport? Then plan your trip via 9292.nl.",
         nl: "Kom je met het openbaar vervoer naar Lief? Plan dan je trip via 9292.nl.",
       }),
-      imageUrl: "/icons/public_transport.svg",
+      image: Ticket,
     },
     {
       id: 3,
@@ -74,7 +83,7 @@ The bus runs between 12:00 and 19:00 towards the festival and from 21:00 you can
 
 De bus rijdt tussen 12:00 uur & 19:00 uur richting het festival en vanaf 21:00 uur kun je weer instappen om richting het station te gaan.`,
       }),
-      imageUrl: "/icons/shuttle_bus.svg",
+      image: Bus,
     },
     {
       id: 4,
@@ -86,39 +95,59 @@ De bus rijdt tussen 12:00 uur & 19:00 uur richting het festival en vanaf 21:00 u
         en: `Navigate to Strijkviertel, De Meern (Utrecht). Follow the signs "Kiss & Ride ❤️U Festival", once you are near the festival grounds.`,
         nl: `Navigeer naar Strijkviertel, De Meern (Utrecht). Volg de borden "Kiss & Ride ❤️U Festival", zodra je in de buurt bent van het festivalterrein.`,
       }),
-      imageUrl: "/icons/taxi.svg",
+      image: CarTaxiFront,
     },
   ];
+
+  useEffect(() => {
+    function updateScreenSize() {
+      if (!window) return;
+
+      setScreenSize(window.innerWidth);
+    }
+
+    updateScreenSize();
+
+    document.addEventListener("resize", updateScreenSize);
+
+    return () => {
+      document.removeEventListener("resize", updateScreenSize);
+    };
+  }, []);
+
+  function mapScreenSizeToGridColumns() {
+    if (!screenSize) return 2;
+
+    if (screenSize >= 768) {
+      return 4;
+    } else if (screenSize >= 640) {
+      return 3;
+    }
+
+    return 2;
+  }
 
   return (
     <div>
       <h2>{t(messages.info.transportOptions)}</h2>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {transportOptions.map((transportOption, i) =>
-          !isShowingMore && i > 1 ? null : (
+          !isShowingMore && i >= mapScreenSizeToGridColumns() ? null : (
             <div
-              key={transportOption.imageUrl}
+              key={transportOption.id}
               className="relative aspect-square flex flex-col justify-between dark:bg-neutral-800/50 bg-white/30 backdrop-blur-lg rounded-lg p-4 border dark:border-white/20 border-black/10 shadow-sm"
             >
               <div className="w-full justify-end flex">
                 <button onClick={() => setHighlightedOption(transportOption)}>
-                  <Image
-                    src={"/icons/info.svg"}
-                    height={24}
-                    width={24}
-                    alt="Information"
-                    className="dark:invert-0 invert"
-                  />
+                  <Info height={24} width={24} />
                 </button>
               </div>{" "}
               <div className="absolute pointer-events-none w-full h-full top-1/2 left-1/2 -translate-1/2 flex items-center justify-center">
-                <Image
-                  src={transportOption.imageUrl}
-                  alt={transportOption.name}
+                <transportOption.image
                   width={64}
                   height={64}
-                  className="dark:invert-0 invert"
+                  strokeWidth={1.5}
                 />
               </div>
               <h3>{transportOption.name}</h3>

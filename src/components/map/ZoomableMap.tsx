@@ -14,6 +14,7 @@ import { AnimatePresence } from "motion/react";
 import UserLocationMarker from "./UserLocationMarker";
 import Loading from "./Loading";
 import Marker, { MarkerProps } from "./Marker";
+import { IceCream, Lock, Martini, Shirt, Utensils } from "lucide-react";
 
 export default function ZoomableMap({ stages }: { stages: StageType[] }) {
   const [scale, setScale] = useState(1);
@@ -27,98 +28,98 @@ export default function ZoomableMap({ stages }: { stages: StageType[] }) {
 
   const markers: MarkerProps[] = [
     {
-      icon: "/icons/icecream.svg",
+      Icon: IceCream,
       position: {
         xPosition: 15,
         yPosition: 17,
       },
     },
     {
-      icon: "/icons/bar.svg",
+      Icon: Martini,
       position: {
         xPosition: 27,
         yPosition: 18,
       },
     },
     {
-      icon: "/icons/bar.svg",
+      Icon: Martini,
       position: {
         xPosition: 31,
         yPosition: 28,
       },
     },
     {
-      icon: "/icons/icecream.svg",
+      Icon: IceCream,
       position: {
         xPosition: 34,
         yPosition: 37,
       },
     },
     {
-      icon: "/icons/t-shirt.svg",
+      Icon: Shirt,
       position: {
         xPosition: 44,
         yPosition: 36,
       },
     },
     {
-      icon: "/icons/restaurant.svg",
+      Icon: Utensils,
       position: {
         xPosition: 40,
         yPosition: 49,
       },
     },
     {
-      icon: "/icons/icecream.svg",
+      Icon: IceCream,
       position: {
         xPosition: 41,
         yPosition: 58,
       },
     },
     {
-      icon: "/icons/restaurant.svg",
+      Icon: Utensils,
       position: {
         xPosition: 43,
         yPosition: 65,
       },
     },
     {
-      icon: "/icons/t-shirt.svg",
+      Icon: Shirt,
       position: {
         xPosition: 37,
         yPosition: 70,
       },
     },
     {
-      icon: "/icons/restaurant.svg",
+      Icon: Utensils,
       position: {
         xPosition: 62,
         yPosition: 88,
       },
     },
     {
-      icon: "/icons/bar.svg",
+      Icon: Martini,
       position: {
         xPosition: 74,
         yPosition: 87,
       },
     },
     {
-      icon: "/icons/t-shirt.svg",
+      Icon: Shirt,
       position: {
         xPosition: 82,
         yPosition: 82,
       },
     },
     {
-      icon: "/icons/lock.svg",
+      Icon: Lock,
       position: {
         xPosition: 85,
         yPosition: 77,
       },
     },
     {
-      icon: "/icons/lock.svg",
+      Icon: Lock,
       position: {
         xPosition: 85,
         yPosition: 68,

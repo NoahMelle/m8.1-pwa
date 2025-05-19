@@ -1,10 +1,11 @@
 import { reset } from "drizzle-seed";
-import { performancesTable, stagesTable } from "./schemas";
+import { performancesTable, stagesTable, genresTable } from "./schemas";
 import dayjs from "dayjs";
 import "dotenv/config";
 import * as schema from "./schemas/index";
 import { drizzle } from "drizzle-orm/mysql2";
 import utc from "dayjs/plugin/utc";
+import { genresToPerformancesTable } from "./schemas/genresToPerformances";
 
 function constructDateWithTime(
   date: "saturday" | "sunday",
@@ -20,6 +21,10 @@ function constructDateWithTime(
     .millisecond(0);
   return day.toDate();
 }
+
+type PerformanceInsertType = (typeof performancesTable.$inferInsert & {
+  genres?: number[];
+})[];
 
 async function main() {
   if (!process.env.DATABASE_URL) {
@@ -81,42 +86,91 @@ async function main() {
     )[0].id,
   };
 
-  const hangarPerformances: (typeof performancesTable.$inferInsert)[] = [
+  const genreIds = {
+    dance: (
+      await db
+        .insert(genresTable)
+        .values({
+          name: "Dance",
+        })
+        .$returningId()
+    )[0].id,
+    indie: (
+      await db
+        .insert(genresTable)
+        .values({
+          name: "Indie",
+        })
+        .$returningId()
+    )[0].id,
+    rock: (
+      await db
+        .insert(genresTable)
+        .values({
+          name: "Rock",
+        })
+        .$returningId()
+    )[0].id,
+    pop: (
+      await db
+        .insert(genresTable)
+        .values({
+          name: "Pop",
+        })
+        .$returningId()
+    )[0].id,
+    metal: (
+      await db
+        .insert(genresTable)
+        .values({
+          name: "Metal",
+        })
+        .$returningId()
+    )[0].id,
+  };
+
+  const hangarPerformances: PerformanceInsertType = [
     {
       title: "DJ Set 1",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("saturday", { hour: 10, minute: 0 }),
       endsAt: constructDateWithTime("saturday", { hour: 11, minute: 0 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 2",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("saturday", { hour: 11, minute: 0 }),
       endsAt: constructDateWithTime("saturday", { hour: 12, minute: 30 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 3",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("saturday", { hour: 12, minute: 30 }),
       endsAt: constructDateWithTime("saturday", { hour: 14, minute: 0 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 4",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("saturday", { hour: 14, minute: 0 }),
       endsAt: constructDateWithTime("saturday", { hour: 15, minute: 30 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 5",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("saturday", { hour: 15, minute: 30 }),
       endsAt: constructDateWithTime("saturday", { hour: 17, minute: 30 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 6",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("saturday", { hour: 17, minute: 30 }),
       endsAt: constructDateWithTime("saturday", { hour: 19, minute: 30 }),
+      genres: [genreIds.dance],
     },
 
     {
@@ -124,12 +178,14 @@ async function main() {
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("saturday", { hour: 19, minute: 30 }),
       endsAt: constructDateWithTime("saturday", { hour: 21, minute: 30 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 8",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("saturday", { hour: 21, minute: 30 }),
       endsAt: constructDateWithTime("sunday", { hour: 0, minute: 0 }),
+      genres: [genreIds.dance],
     },
 
     {
@@ -137,52 +193,60 @@ async function main() {
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("sunday", { hour: 10, minute: 0 }),
       endsAt: constructDateWithTime("sunday", { hour: 10, minute: 30 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 2",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("sunday", { hour: 10, minute: 30 }),
       endsAt: constructDateWithTime("sunday", { hour: 12, minute: 30 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 3",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("sunday", { hour: 12, minute: 30 }),
       endsAt: constructDateWithTime("sunday", { hour: 13, minute: 30 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 4",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("sunday", { hour: 13, minute: 30 }),
       endsAt: constructDateWithTime("sunday", { hour: 15, minute: 30 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 5",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("sunday", { hour: 15, minute: 30 }),
       endsAt: constructDateWithTime("sunday", { hour: 17, minute: 0 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 6",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("sunday", { hour: 17, minute: 0 }),
       endsAt: constructDateWithTime("sunday", { hour: 18, minute: 30 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 7",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("sunday", { hour: 18, minute: 30 }),
       endsAt: constructDateWithTime("sunday", { hour: 21, minute: 0 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 8",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("sunday", { hour: 21, minute: 0 }),
       endsAt: constructDateWithTime("sunday", { hour: 24, minute: 0 }),
+      genres: [genreIds.dance],
     },
   ];
 
-  const potonPerformances: (typeof performancesTable.$inferInsert)[] = [
+  const potonPerformances: PerformanceInsertType = [
     {
       title: "Armin van Buuren",
       dutchDescription: `Five-time “World's No. 1 DJ” and trance icon, Armin delivers euphoric, high-energy sets that have headlined festivals from Tomorrowland to Ultra. His uplifting melodies and impeccable mixing keep crowds dancing for hours.`,
@@ -191,6 +255,7 @@ async function main() {
       videoUrl: "https://www.youtube.com/embed/TxvpctgU_s8?si=uoRzcQDl5e2keAqu",
       startsAt: constructDateWithTime("saturday", { hour: 10, minute: 30 }),
       endsAt: constructDateWithTime("saturday", { hour: 12, minute: 0 }),
+      genres: [genreIds.dance],
     },
     {
       title: "Kensington",
@@ -200,6 +265,7 @@ async function main() {
       stageId: stageIds.poton,
       startsAt: constructDateWithTime("saturday", { hour: 12, minute: 30 }),
       endsAt: constructDateWithTime("saturday", { hour: 14, minute: 0 }),
+      genres: [genreIds.indie, genreIds.rock],
     },
 
     {
@@ -210,6 +276,7 @@ async function main() {
       stageId: stageIds.poton,
       startsAt: constructDateWithTime("saturday", { hour: 14, minute: 30 }),
       endsAt: constructDateWithTime("saturday", { hour: 16, minute: 30 }),
+      genres: [genreIds.rock],
     },
     {
       title: "Navarone",
@@ -219,6 +286,7 @@ async function main() {
       stageId: stageIds.poton,
       startsAt: constructDateWithTime("saturday", { hour: 17, minute: 0 }),
       endsAt: constructDateWithTime("saturday", { hour: 18, minute: 30 }),
+      genres: [genreIds.rock],
     },
     {
       title: "Dotan",
@@ -228,6 +296,7 @@ async function main() {
       stageId: stageIds.poton,
       startsAt: constructDateWithTime("saturday", { hour: 19, minute: 15 }),
       endsAt: constructDateWithTime("saturday", { hour: 21, minute: 15 }),
+      genres: [genreIds.pop],
     },
     {
       title: "Froukje",
@@ -237,6 +306,7 @@ async function main() {
       stageId: stageIds.poton,
       startsAt: constructDateWithTime("saturday", { hour: 22, minute: 0 }),
       endsAt: constructDateWithTime("saturday", { hour: 24, minute: 0 }),
+      genres: [genreIds.pop],
     },
 
     // SUNDAY
@@ -248,6 +318,7 @@ async function main() {
       stageId: stageIds.poton,
       startsAt: constructDateWithTime("sunday", { hour: 11, minute: 0 }),
       endsAt: constructDateWithTime("sunday", { hour: 13, minute: 0 }),
+      genres: [genreIds.dance],
     },
 
     {
@@ -258,6 +329,7 @@ async function main() {
       stageId: stageIds.poton,
       startsAt: constructDateWithTime("sunday", { hour: 13, minute: 45 }),
       endsAt: constructDateWithTime("sunday", { hour: 15, minute: 45 }),
+      genres: [genreIds.metal],
     },
 
     {
@@ -268,6 +340,7 @@ async function main() {
       stageId: stageIds.poton,
       startsAt: constructDateWithTime("sunday", { hour: 16, minute: 30 }),
       endsAt: constructDateWithTime("sunday", { hour: 18, minute: 30 }),
+      genres: [genreIds.pop],
     },
 
     {
@@ -278,6 +351,7 @@ async function main() {
       stageId: stageIds.poton,
       startsAt: constructDateWithTime("sunday", { hour: 19, minute: 15 }),
       endsAt: constructDateWithTime("sunday", { hour: 21, minute: 15 }),
+      genres: [genreIds.pop, genreIds.indie],
     },
 
     {
@@ -288,6 +362,7 @@ async function main() {
       stageId: stageIds.poton,
       startsAt: constructDateWithTime("sunday", { hour: 22, minute: 0 }),
       endsAt: constructDateWithTime("sunday", { hour: 24, minute: 0 }),
+      genres: [genreIds.pop],
     },
   ];
 
@@ -478,7 +553,7 @@ async function main() {
     },
   ];
 
-  const performances: (typeof performancesTable.$inferInsert)[] = [
+  const performances: PerformanceInsertType = [
     ...potonPerformances,
     ...hangarPerformances,
     ...lakePerformances,
@@ -486,7 +561,19 @@ async function main() {
   ];
 
   for (const performance of performances) {
-    await db.insert(performancesTable).values(performance);
+    const [{ id }] = await db
+      .insert(performancesTable)
+      .values(performance)
+      .$returningId();
+
+    if (performance.genres) {
+      await db.insert(genresToPerformancesTable).values(
+        performance.genres.map((genre) => ({
+          performanceId: id,
+          genreId: genre,
+        }))
+      );
+    }
   }
 }
 

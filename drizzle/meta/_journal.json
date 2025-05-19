@@ -43,6 +43,41 @@
       "when": 1747379235906,
       "tag": "0005_ambiguous_photon",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1747386435444,
+      "tag": "0006_empty_firelord",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1747387820514,
+      "tag": "0007_slimy_korg",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1747637050916,
+      "tag": "0008_faithful_ego",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1747637233547,
+      "tag": "0009_cynical_swordsman",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1747637794029,
+      "tag": "0010_right_mandroid",
+      "breakpoints": true
     }
   ]
 }

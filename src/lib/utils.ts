@@ -1,5 +1,5 @@
 import { Theme, themes } from "@/@types/theme";
-import { PerformanceWithStageType } from "@/@types/types";
+import { PerformanceWithStageType, StageType } from "@/@types/types";
 
 /**
  * Checks whether the string is inside of the 'themes' array
@@ -19,8 +19,13 @@ export function formatDateToTime(date: Date) {
   return `${hours}:${minutes}`;
 }
 
-export function groupPerformancesByStage(acts: PerformanceWithStageType[]) {
-  const groupMap = new Map<string, PerformanceWithStageType[]>();
+export function groupPerformancesByStage(
+  acts: PerformanceWithStageType[],
+  stages: StageType[]
+) {
+  const groupMap = new Map<string, PerformanceWithStageType[]>(
+    stages.map((stage) => [stage.name, []])
+  );
 
   acts.forEach((act) => {
     if (act.stage) {

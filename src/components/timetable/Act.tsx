@@ -2,8 +2,8 @@ import { PerformanceWithStageType } from "@/@types/types";
 import { getDatePercent } from "@/lib/dateUtils";
 import React, { Dispatch, SetStateAction } from "react";
 import { useTimetable } from "./TimetableContext";
-import Star from "../icons/Star";
 import { formatDateToTime } from "@/lib/utils";
+import { Star } from "lucide-react";
 
 export default function Act({
   act,
@@ -42,8 +42,11 @@ export default function Act({
         </div>
         <button onClick={() => toggleFavouriteAct(act.id)}>
           <Star
-            filled={favouriteActs?.includes(act.id) || false}
             className="invert-0"
+            fill={favouriteActs?.includes(act.id) ? "white" : "transparent"}
+            color="white"
+            width={20}
+            height={20}
           />
         </button>
       </div>

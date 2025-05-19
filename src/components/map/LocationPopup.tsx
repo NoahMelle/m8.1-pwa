@@ -2,10 +2,10 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { PerformanceType, StageType } from "@/@types/types";
 import { getCurrentActForStage, getNextActForStage } from "@/lib/fetchers";
-import Image from "next/image";
 import { formatDateToTime } from "@/lib/utils";
 import { useTranslations } from "@/i18n/useTranslations";
 import { messages } from "@/i18n/messages";
+import { FastForward, VolumeOff } from "lucide-react";
 
 export default function LocationPopup({
   stage,
@@ -77,12 +77,10 @@ export default function LocationPopup({
                 <div className="flex flex-col justify-end h-full">
                   {!!currentAct ? (
                     <>
-                      <Image
-                        src={"/icons/fast_forward.svg"}
+                      <FastForward
                         height={100}
                         width={100}
-                        alt="Fast forward"
-                        className="dark:invert-0 invert absolute top-1/2 left-1/2 -translate-1/2 opacity-10"
+                        className="absolute top-1/2 left-1/2 -translate-1/2 opacity-10"
                       />
                       <div>
                         <p>{currentAct.title}</p>
@@ -101,12 +99,10 @@ export default function LocationPopup({
                     </>
                   ) : (
                     <>
-                      <Image
-                        src={"/icons/no_music.svg"}
+                      <VolumeOff
                         height={100}
                         width={100}
-                        alt="No music"
-                        className="dark:invert-0 invert absolute top-1/2 left-1/2 -translate-1/2 opacity-10"
+                        className="absolute top-1/2 left-1/2 -translate-1/2 opacity-10"
                       />
                       <p>{t(messages.map.popup.noCurrent)}</p>
                     </>
@@ -120,13 +116,10 @@ export default function LocationPopup({
                 <div className="flex flex-col justify-end h-full">
                   {!!nextAct ? (
                     <>
-                      <Image
-                        src={nextAct.imageUrl ?? "/icons/fast_forward.svg"}
+                      <FastForward
                         height={0}
                         width={0}
-                        layout="fill"
-                        alt="Fast forward"
-                        className="absolute -z-[1]"
+                        className="absolute w-full h-full -z-[1] top-0 left-0 p-8 opacity-10"
                       />
                       <div className="z-10 relative text-white">
                         <p>{nextAct.title}</p>
@@ -141,12 +134,10 @@ export default function LocationPopup({
                     </>
                   ) : (
                     <>
-                      <Image
-                        src={"/icons/no_music.svg"}
+                      <VolumeOff
                         height={100}
                         width={100}
-                        alt="No music"
-                        className="dark:invert-0 invert absolute top-1/2 left-1/2 -translate-1/2 opacity-10"
+                        className="absolute top-1/2 left-1/2 -translate-1/2 opacity-10"
                       />
                       <p>{t(messages.map.popup.noNextAct)}</p>
                     </>

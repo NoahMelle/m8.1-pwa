@@ -51,7 +51,7 @@ export default function InstallPage() {
   if (isStandalone) return null;
 
   return (
-    <div className="p-8  flex grow items-center justify-center flex-col">
+    <div className="flex grow items-center justify-center flex-col">
       <h1 className="text-center text-5xl mb-4">Install App</h1>
       {showInstallButton && (
         <button

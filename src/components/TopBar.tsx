@@ -5,6 +5,7 @@ import React from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
 import { usePathname } from "next/navigation";
+import { Moon, Sun } from "lucide-react";
 
 export default function TopBar() {
   const { setLanguage, language } = useLanguage();
@@ -23,18 +24,8 @@ export default function TopBar() {
       >
         <span className="h-6 overflow-hidden">
           <span className="dark:-translate-y-1/2 block transition-all dark:invert-0 invert">
-            <Image
-              src={"/icons/dark_mode.svg"}
-              alt="Theme Toggle"
-              width={24}
-              height={24}
-            />
-            <Image
-              src={"/icons/light_mode.svg"}
-              alt="Theme Toggle"
-              width={24}
-              height={24}
-            />
+            <Moon width={24} height={24} />
+            <Sun width={24} height={24} />
           </span>
         </span>
       </button>

@@ -1,9 +1,9 @@
-import Image from "next/image";
+import { LucideIcon } from "lucide-react";
 import React from "react";
 import { KeepScale } from "react-zoom-pan-pinch";
 
 export interface MarkerProps {
-  icon: string;
+  Icon: LucideIcon;
   position: {
     xPosition: number;
     yPosition: number;
@@ -11,7 +11,7 @@ export interface MarkerProps {
 }
 
 export default function Marker({
-  icon,
+  Icon,
   position,
   scale,
 }: MarkerProps & { scale: number }) {
@@ -26,7 +26,7 @@ export default function Marker({
       }`}
     >
       <div className="h-6 w-6 flex items-center justify-center rounded-full bg-red border-red-700 dark:bg-red-700 dark:border-red-800 border-2">
-        <Image src={icon} height={12} width={12} alt="Marker" />
+        <Icon height={12} width={12} />
       </div>
     </KeepScale>
   );
