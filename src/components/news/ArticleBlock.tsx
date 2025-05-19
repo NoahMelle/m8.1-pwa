@@ -19,7 +19,7 @@ export default function ArticleBlock({ article, ...props }: ArticleProps) {
     <Link
       {...props}
       className={clsx(
-        "relative rounded-sm overflow-hidden p-2 flex flex-col justify-end text-white",
+        "relative rounded-sm overflow-hidden p-2 flex flex-col justify-end text-white bg-gradient-to-br from-red to-red-700",
         props.className
       )}
       href={`/news/${article.id}`}
@@ -29,7 +29,7 @@ export default function ArticleBlock({ article, ...props }: ArticleProps) {
           <Image
             src={article.image}
             alt={t(article.title)}
-            className="absolute w-full h-full object-cover -z-10"
+            className="absolute w-full h-full object-cover z-0"
             fill
           />
           <span className="absolute h-full w-full top-0 left-0 bg-gradient-to-b to-black/50"></span>

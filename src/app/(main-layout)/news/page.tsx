@@ -11,13 +11,15 @@ export default async function News() {
     <>
       <h1>News</h1>
       <div className="grid grid-cols-2 grid-rows-2 aspect-video gap-2">
-        {articles.map((article, index) => (
-          <ArticleBlock
-            key={nanoid()}
-            article={article}
-            className={index === 0 ? "col-span-full" : ""}
-          />
-        ))}
+        {articles.map((article, index) =>
+          index >= 3 ? null : (
+            <ArticleBlock
+              key={nanoid()}
+              article={article}
+              className={index === 0 ? "col-span-full" : ""}
+            />
+          )
+        )}
       </div>
       <div className="flex flex-col border-t-2 border-foreground/10">
         {articles.map((article) => (
