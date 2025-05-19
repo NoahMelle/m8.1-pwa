@@ -178,11 +178,6 @@ export async function getLatestUrgentArticle() {
         en: articlesTable.englishTitle,
         nl: articlesTable.dutchTitle,
       },
-      content: {
-        en: articlesTable.englishContent,
-        nl: articlesTable.dutchContent,
-      },
-      image: articlesTable.image,
     })
     .from(articlesTable)
     .where(eq(articlesTable.urgence, true))

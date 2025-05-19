@@ -1,6 +1,8 @@
 import Homepage from "@/components/homepage/Homepage";
 import Logo from "@/components/Logo";
 
+export const dynamic = "force-static";
+
 export default async function Home() {
   return (
     <div className="w-full h-full flex flex-col justify-center grow">

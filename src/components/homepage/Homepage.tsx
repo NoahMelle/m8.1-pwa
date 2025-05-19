@@ -3,7 +3,7 @@
 import { UrgentArticleType } from "@/@types/types";
 import { messages } from "@/i18n/messages";
 import { useTranslations } from "@/i18n/useTranslations";
-import { getLatestUrgentArticle } from "@/lib/fetchers";
+import { urgentArticleResSchema } from "@/lib/schemas";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -14,16 +14,20 @@ export default function Homepage() {
   const t = useTranslations();
 
   useEffect(() => {
-    try {
-      getLatestUrgentArticle().then((data) => {
-        if (data.length >= 1) {
-          setLastestUrgentArticle(data[0]);
-        }
-      });
-    } catch {
-      throw new Error("Fetch failed.");
-    }
+    getLatestUrgentArticle();
   }, []);
+
+  async function getLatestUrgentArticle() {
+    try {
+      const res = await fetch("/api/urgent-news", { cache: "no-cache" });
+      const data = await res.json();
+
+      const parsedData = urgentArticleResSchema.parse(data.data);
+      setLastestUrgentArticle(parsedData);
+    } catch {
+      setLastestUrgentArticle(null);
+    }
+  }
 
   return (
     <>
