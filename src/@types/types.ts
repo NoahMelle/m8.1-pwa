@@ -2,6 +2,7 @@ import {
   getActsForDate,
   getAllArticles,
   getAllGenres,
+  getLatestUrgentArticle,
   getPerformances,
   getStages,
 } from "@/lib/fetchers";
@@ -20,3 +21,6 @@ export type PerformanceWithStageType = Awaited<
 >[0];
 export type GenreType = Awaited<ReturnType<typeof getAllGenres>>[0];
 export type ArticleType = Awaited<ReturnType<typeof getAllArticles>>[0];
+export type UrgentArticleType = Awaited<
+  ReturnType<typeof getLatestUrgentArticle>
+>[0];
