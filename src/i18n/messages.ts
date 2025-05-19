@@ -8,6 +8,10 @@ type LocalizedTree = {
 
 export const messages = {
   global: {
+    placedAt: {
+      en: "Placed at",
+      nl: "Geplaatst op",
+    },
     showMore: {
       en: "Show More",
       nl: "Toon meer",

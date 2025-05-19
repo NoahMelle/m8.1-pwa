@@ -9,7 +9,7 @@ import {
 } from "@/db/schemas";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
-import { and, eq, gte, lt, lte } from "drizzle-orm";
+import { and, desc, eq, gte, lt, lte } from "drizzle-orm";
 import { groupPerformancesByStage } from "./utils";
 import { formatDatabaseEntryToLocales } from "@/i18n/helpers";
 
@@ -133,6 +133,7 @@ export async function getAllGenres() {
 export async function getAllArticles() {
   return await db
     .select({
+      id: articlesTable.id,
       createdAt: articlesTable.createdAt,
       title: {
         en: articlesTable.englishTitle,
@@ -144,5 +145,47 @@ export async function getAllArticles() {
       },
       image: articlesTable.image,
     })
-    .from(articlesTable);
+    .from(articlesTable)
+    .orderBy(desc(articlesTable.createdAt));
+}
+
+export async function getArticleById(id: number) {
+  return await db
+    .select({
+      id: articlesTable.id,
+      createdAt: articlesTable.createdAt,
+      title: {
+        en: articlesTable.englishTitle,
+        nl: articlesTable.dutchTitle,
+      },
+      content: {
+        en: articlesTable.englishContent,
+        nl: articlesTable.dutchContent,
+      },
+      image: articlesTable.image,
+    })
+    .from(articlesTable)
+    .where(eq(articlesTable.id, id))
+    .limit(1);
+}
+
+export async function getLatestUrgentArticle() {
+  return await db
+    .select({
+      id: articlesTable.id,
+      createdAt: articlesTable.createdAt,
+      title: {
+        en: articlesTable.englishTitle,
+        nl: articlesTable.dutchTitle,
+      },
+      content: {
+        en: articlesTable.englishContent,
+        nl: articlesTable.dutchContent,
+      },
+      image: articlesTable.image,
+    })
+    .from(articlesTable)
+    .where(eq(articlesTable.urgence, true))
+    .orderBy(desc(articlesTable.createdAt))
+    .limit(1);
 }

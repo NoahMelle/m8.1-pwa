@@ -15,6 +15,7 @@
     "@t3-oss/env-core": "^0.13.4",
     "@types/jest": "^29.5.14",
     "@types/negotiator": "^0.6.3",
+    "clsx": "^2.1.1",
     "cookies-next": "^5.1.0",
     "dayjs": "^1.11.13",
     "dotenv": "^16.5.0",

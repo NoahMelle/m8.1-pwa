@@ -96,12 +96,16 @@ export default function Navbar() {
             href={link.url}
             key={link.url}
             className={`flex grow relative items-center z-20 justify-center gap-2 h-full active:scale-90 ${
-              pathname === link.url ? "text-black rounded-full active" : ""
+              pathname === link.url || pathname.startsWith(link.url + "/")
+                ? "text-black rounded-full active"
+                : ""
             }`}
           >
             <link.iconUrl
               className={`${
-                pathname === link.url ? "invert" : ""
+                pathname === link.url || pathname.startsWith(link.url + "/")
+                  ? "invert"
+                  : ""
               } transition-all`}
               width={24}
               height={24}
