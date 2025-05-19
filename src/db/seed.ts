@@ -129,42 +129,48 @@ async function main() {
     )[0].id,
   };
 
-  const hangarPerformances: (typeof performancesTable.$inferInsert)[] = [
+  const hangarPerformances: PerformanceInsertType = [
     {
       title: "DJ Set 1",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("saturday", { hour: 10, minute: 0 }),
       endsAt: constructDateWithTime("saturday", { hour: 11, minute: 0 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 2",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("saturday", { hour: 11, minute: 0 }),
       endsAt: constructDateWithTime("saturday", { hour: 12, minute: 30 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 3",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("saturday", { hour: 12, minute: 30 }),
       endsAt: constructDateWithTime("saturday", { hour: 14, minute: 0 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 4",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("saturday", { hour: 14, minute: 0 }),
       endsAt: constructDateWithTime("saturday", { hour: 15, minute: 30 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 5",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("saturday", { hour: 15, minute: 30 }),
       endsAt: constructDateWithTime("saturday", { hour: 17, minute: 30 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 6",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("saturday", { hour: 17, minute: 30 }),
       endsAt: constructDateWithTime("saturday", { hour: 19, minute: 30 }),
+      genres: [genreIds.dance],
     },
 
     {
@@ -172,12 +178,14 @@ async function main() {
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("saturday", { hour: 19, minute: 30 }),
       endsAt: constructDateWithTime("saturday", { hour: 21, minute: 30 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 8",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("saturday", { hour: 21, minute: 30 }),
       endsAt: constructDateWithTime("sunday", { hour: 0, minute: 0 }),
+      genres: [genreIds.dance],
     },
 
     {
@@ -185,48 +193,56 @@ async function main() {
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("sunday", { hour: 10, minute: 0 }),
       endsAt: constructDateWithTime("sunday", { hour: 10, minute: 30 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 2",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("sunday", { hour: 10, minute: 30 }),
       endsAt: constructDateWithTime("sunday", { hour: 12, minute: 30 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 3",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("sunday", { hour: 12, minute: 30 }),
       endsAt: constructDateWithTime("sunday", { hour: 13, minute: 30 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 4",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("sunday", { hour: 13, minute: 30 }),
       endsAt: constructDateWithTime("sunday", { hour: 15, minute: 30 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 5",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("sunday", { hour: 15, minute: 30 }),
       endsAt: constructDateWithTime("sunday", { hour: 17, minute: 0 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 6",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("sunday", { hour: 17, minute: 0 }),
       endsAt: constructDateWithTime("sunday", { hour: 18, minute: 30 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 7",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("sunday", { hour: 18, minute: 30 }),
       endsAt: constructDateWithTime("sunday", { hour: 21, minute: 0 }),
+      genres: [genreIds.dance],
     },
     {
       title: "DJ Set 8",
       stageId: stageIds.hangar,
       startsAt: constructDateWithTime("sunday", { hour: 21, minute: 0 }),
       endsAt: constructDateWithTime("sunday", { hour: 24, minute: 0 }),
+      genres: [genreIds.dance],
     },
   ];
 

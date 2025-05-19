@@ -12,7 +12,7 @@ export default async function Info() {
   const t = await getServerSideTranslations();
 
   return (
-    <div className="px-4 py-12 flex flex-col gap-8">
+    <>
       <h1 className="text-center pb-0 text-5xl">{t(messages.info.heading)}</h1>
       <p>{t(messages.info.subHeading)}</p>
       <div className="text-sm leading-tight">
@@ -32,6 +32,6 @@ export default async function Info() {
       <TransportOptions />
       <Faq />
       <GoldenGlu />
-    </div>
+    </>
   );
 }

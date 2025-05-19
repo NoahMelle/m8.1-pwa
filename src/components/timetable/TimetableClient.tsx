@@ -1,7 +1,6 @@
 "use client";
 
 import { GenreType, PerformanceWithStageType, StageType } from "@/@types/types";
-import { getGroupedActsForDate } from "@/lib/fetchers";
 import { AnimatePresence } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
 import ActPopup from "./ActPopup";
@@ -10,7 +9,8 @@ import StageRow from "./StageRow";
 import TimeMarkers from "./TimeMarkers";
 import { useTimetable } from "./TimetableContext";
 import TimeMarkerLines from "./TimeMarkerLines";
-import { groupPerformancesByStage, toggleArrayItem } from "@/lib/utils";
+import { groupPerformancesByStage } from "@/lib/utils";
+import Filter from "./Filter";
 
 export default function TimetableClient({
   genres,
@@ -27,7 +27,8 @@ export default function TimetableClient({
   const isFirstRender = useRef(true);
   const [selectedGenres, setSelectedGenres] = useState<number[]>([]);
 
-  const { groupedActs, setGroupedActs, allActs } = useTimetable();
+  const { groupedActs, setGroupedActs, allActs, initialActs, setAllActs } =
+    useTimetable();
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -35,20 +36,14 @@ export default function TimetableClient({
       return;
     }
 
-    try {
-      getGroupedActsForDate(selectedDay).then((data) => {
-        setGroupedActs(data);
-      });
-    } catch {
-      throw new Error("Failed to fetch data");
-    }
-  }, [selectedDay, setGroupedActs]);
+    setAllActs(Array.from(initialActs[selectedDay].values()).flat());
+  }, [selectedDay, setGroupedActs, initialActs, setAllActs]);
 
   useEffect(() => {
     const newActs =
       selectedGenres.length === 0
-        ? allActs.current
-        : allActs.current.filter((act) =>
+        ? allActs
+        : allActs.filter((act) =>
             act.genres.some((genre) => selectedGenres.includes(genre.genreId))
           );
 
@@ -59,18 +54,14 @@ export default function TimetableClient({
     <div>
       <DaySelector selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
 
-      <div>
+      <div className="flex gap-2 my-2 overflow-x-auto">
         {genres.map((genre) => (
-          <label key={`genre-${genre.id}`}>
-            <input
-              type="checkbox"
-              onChange={() =>
-                setSelectedGenres((prev) => toggleArrayItem(prev, genre.id))
-              }
-              checked={selectedGenres.includes(genre.id)}
-            />
-            {genre.name}
-          </label>
+          <Filter
+            genre={genre}
+            selectedGenres={selectedGenres}
+            setSelectedGenres={setSelectedGenres}
+            key={`genre-${genre.id}`}
+          />
         ))}
       </div>
 

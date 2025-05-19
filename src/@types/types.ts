@@ -1,5 +1,6 @@
 import {
   getActsForDate,
+  getAllArticles,
   getAllGenres,
   getPerformances,
   getStages,
@@ -18,3 +19,4 @@ export type PerformanceWithStageType = Awaited<
   ReturnType<typeof getActsForDate>
 >[0];
 export type GenreType = Awaited<ReturnType<typeof getAllGenres>>[0];
+export type ArticleType = Awaited<ReturnType<typeof getAllArticles>>[0];

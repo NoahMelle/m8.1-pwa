@@ -1,7 +1,12 @@
 "use server";
 
 import { db } from "@/db";
-import { genresTable, performancesTable, stagesTable } from "@/db/schemas";
+import {
+  articlesTable,
+  genresTable,
+  performancesTable,
+  stagesTable,
+} from "@/db/schemas";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import { and, eq, gte, lt, lte } from "drizzle-orm";
@@ -123,4 +128,21 @@ export async function getAllGenres() {
       id: genresTable.id,
     })
     .from(genresTable);
+}
+
+export async function getAllArticles() {
+  return await db
+    .select({
+      createdAt: articlesTable.createdAt,
+      title: {
+        en: articlesTable.englishTitle,
+        nl: articlesTable.dutchTitle,
+      },
+      content: {
+        en: articlesTable.englishContent,
+        nl: articlesTable.dutchContent,
+      },
+      image: articlesTable.image,
+    })
+    .from(articlesTable);
 }

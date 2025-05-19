@@ -2,7 +2,7 @@
 
 import { messages } from "@/i18n/messages";
 import { useTranslations } from "@/i18n/useTranslations";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HighlightedPopup from "./HighlightedPopup";
 import { AnimatePresence } from "motion/react";
 import {
@@ -27,6 +27,7 @@ export default function TransportOptions() {
   const [highlightedOption, setHighlightedOption] =
     useState<TransportOption | null>(null);
   const [isShowingMore, setIsShowingMore] = useState(false);
+  const [screenSize, setScreenSize] = useState<number | null>(null);
 
   const t = useTranslations();
 
@@ -98,13 +99,41 @@ De bus rijdt tussen 12:00 uur & 19:00 uur richting het festival en vanaf 21:00 u
     },
   ];
 
+  useEffect(() => {
+    function updateScreenSize() {
+      if (!window) return;
+
+      setScreenSize(window.innerWidth);
+    }
+
+    updateScreenSize();
+
+    document.addEventListener("resize", updateScreenSize);
+
+    return () => {
+      document.removeEventListener("resize", updateScreenSize);
+    };
+  }, []);
+
+  function mapScreenSizeToGridColumns() {
+    if (!screenSize) return 2;
+
+    if (screenSize >= 768) {
+      return 4;
+    } else if (screenSize >= 640) {
+      return 3;
+    }
+
+    return 2;
+  }
+
   return (
     <div>
       <h2>{t(messages.info.transportOptions)}</h2>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {transportOptions.map((transportOption, i) =>
-          !isShowingMore && i > 1 ? null : (
+          !isShowingMore && i >= mapScreenSizeToGridColumns() ? null : (
             <div
               key={transportOption.id}
               className="relative aspect-square flex flex-col justify-between dark:bg-neutral-800/50 bg-white/30 backdrop-blur-lg rounded-lg p-4 border dark:border-white/20 border-black/10 shadow-sm"

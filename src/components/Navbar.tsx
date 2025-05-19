@@ -5,7 +5,7 @@ import {
   Info,
   LucideIcon,
   MapPin,
-  Settings,
+  Newspaper,
   SquareChartGantt,
 } from "lucide-react";
 import Link from "next/link";
@@ -64,6 +64,11 @@ export default function Navbar() {
       iconUrl: Home,
     },
     {
+      url: "/news",
+      text: "Nieuws",
+      iconUrl: Newspaper,
+    },
+    {
       url: "/info",
       text: "Info",
       iconUrl: Info,
@@ -77,11 +82,6 @@ export default function Navbar() {
       url: "/timetable",
       text: "Time table",
       iconUrl: SquareChartGantt,
-    },
-    {
-      url: "/settings",
-      text: "Settings",
-      iconUrl: Settings,
     },
   ];
 
