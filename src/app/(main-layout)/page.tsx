@@ -1,14 +1,7 @@
 import Homepage from "@/components/homepage/Homepage";
 import Logo from "@/components/Logo";
-import Translated from "@/components/reusable/Translated";
-import { getLatestUrgentArticle } from "@/lib/fetchers";
-import Link from "next/link";
-
-export const dynamic = "force-static";
 
 export default async function Home() {
-  const [latestUrgentArticle] = await getLatestUrgentArticle();
-
   return (
     <div className="w-full h-full flex flex-col justify-center grow">
       <main className="flex flex-col items-center justify-center gap-4">
@@ -23,22 +16,6 @@ export default async function Home() {
         </div>
 
         <Homepage />
-
-        {!!latestUrgentArticle && (
-          <Link
-            className="flex gap-3 items-center"
-            href={`/news/${latestUrgentArticle.id}`}
-          >
-            <span className="relative flex size-2">
-              {" "}
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red opacity-75"></span>{" "}
-              <span className="relative inline-flex size-2 rounded-full bg-red"></span>
-            </span>
-            <p>
-              <Translated message={latestUrgentArticle.title} />
-            </p>
-          </Link>
-        )}
       </main>
     </div>
   );
