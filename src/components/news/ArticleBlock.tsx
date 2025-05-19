@@ -7,7 +7,7 @@ import clsx from "clsx";
 import React, { HTMLProps } from "react";
 import Link, { LinkProps } from "next/link";
 
-type ArticleProps = LinkProps &
+type ArticleProps = Partial<LinkProps> &
   HTMLProps<HTMLAnchorElement> & {
     article: ArticleType;
   };
