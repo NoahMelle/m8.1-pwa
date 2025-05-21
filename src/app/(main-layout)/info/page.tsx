@@ -6,8 +6,6 @@ import { getServerSideTranslations } from "@/i18n/server";
 import { Calendar, Map, MapPin } from "lucide-react";
 import React from "react";
 
-export const dynamic = "force-static";
-
 export default async function Info() {
   const t = await getServerSideTranslations();
 

@@ -73,7 +73,7 @@ export default function UserLocationMarker() {
         left: `${userOffset?.x}%`,
         top: `${userOffset?.y}%`,
       }}
-      className={`absolute -translate-1/2 z-[1] bg-red transition-all h-4 w-4 rounded-full ${
+      className={`absolute -translate-1/2 z-[1] bg-blue border-blue-700 border transition-all h-4 w-4 rounded-full ${
         userOffset === null ? "hidden" : ""
       }`}
     >

@@ -19,7 +19,7 @@ export default function ArticleBlock({ article, ...props }: ArticleProps) {
     <Link
       {...props}
       className={clsx(
-        "relative rounded-sm overflow-hidden p-2 flex flex-col justify-end text-white bg-gradient-to-br from-red to-red-700",
+        "relative rounded-sm overflow-hidden p-2 flex flex-col justify-end text-white bg-red",
         props.className
       )}
       href={`/news/${article.id}`}

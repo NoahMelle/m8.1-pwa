@@ -1,7 +1,7 @@
 "use client";
 
 import { cookieName, Locale } from "@/i18n/settings";
-import { setCookie } from "cookies-next";
+import { setCookie } from "cookies-next/client";
 import {
   createContext,
   Dispatch,
