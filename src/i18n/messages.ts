@@ -31,6 +31,12 @@ export const messages = {
       },
     },
   },
+  offline: {
+    subheading: {
+      nl: "Sorry, deze pagina is niet beschikbaar offline.",
+      en: "Sorry, this page isn't available offline.",
+    },
+  },
   homepage: {
     about: {
       en: "About the festival",
