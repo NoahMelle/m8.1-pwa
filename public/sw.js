@@ -13,13 +13,14 @@ const cacheClone = async (e) => {
         try {
             return await fetch(e.request);
         } catch {
-
-            try {
-                return await fetch("/~offline")
-            } catch {
-                return new Response('Network error', { status: 408 });
-
+            if (e.request.mode === 'navigate') {
+                try {
+                    return await fetch("/~offline");
+                } catch {
+                    return new Response('Network error', { status: 408 });
+                }
             }
+            return new Response('Network error', { status: 408 });
         }
     }
 
