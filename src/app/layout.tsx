@@ -9,6 +9,7 @@ import BackgroundDecorations from "@/components/reusable/BackgroundDecorations";
 import { getLocaleFromCookies } from "@/i18n/helpers";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { isTheme } from "@/lib/utils";
+import ServiceWorker from "@/components/ServiceWorker";
 
 export const metadata: Metadata = {
   title: "LoveU Festival App",
@@ -36,7 +37,7 @@ export default async function RootLayout({
             <TopBar />
             <main className={"grow flex flex-col"}>{children}</main>
             <Navbar />
-            {/* <ServiceWorker /> */}
+            <ServiceWorker />
           </LanguageProvider>
         </ThemeProvider>
       </body>
