@@ -10,18 +10,18 @@ export default async function News() {
   return (
     <>
       <h1>News</h1>
-      <div className="grid grid-cols-2 grid-rows-2 aspect-video gap-2">
+      <div className="grid grid-cols-2 grid-rows-2 sm:grid-rows-1 sm:grid-cols-3 aspect-video sm:aspect-auto gap-2">
         {articles.map((article, index) =>
           index >= 3 ? null : (
             <ArticleBlock
               key={nanoid()}
               article={article}
-              className={index === 0 ? "col-span-full" : ""}
+              className={index === 0 ? "col-span-full sm:col-span-1" : ""}
             />
           )
         )}
       </div>
-      <div className="flex flex-col border-t-2 border-foreground/10">
+      <div className="flex flex-col border-t border-foreground/10">
         {articles.map((article) => (
           <Article key={nanoid()} article={article} />
         ))}
