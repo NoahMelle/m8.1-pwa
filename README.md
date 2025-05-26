@@ -1,5 +1,12 @@
 # Module 8.1 - Progressive Web App
 
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)
+![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
+![Zod](https://img.shields.io/badge/zod-%233068b7.svg?style=for-the-badge&logo=zod&logoColor=white)
+
 A progressive web app for the fictional ❤️U festival: a festival for (new) students in Utrecht.
 
 - [Module 8.1 - Progressive Web App](#module-81---progressive-web-app)
@@ -25,11 +32,33 @@ Ensure you have the following installed before proceeding:
    ```
    bun i
    ```
-2. Run the dev server:
+2. Create a new MySQL database:
+   ```
+   # Make sure to run this inside of a MySQL shell
+   CREATE DATABASE loveu_festival;
+   ```
+3. Copy the `.env.example` file and rename it to `.env`:
+
+   ```bash
+    cp .env.example .env
+   ```
+
+4. Fill in the database url in the `.env` file with your own password and database name
+5. Migrate the database:
+   ```
+   bunx drizzle-kit migrate
+   ```
+6. Seed the database:
+   ```
+   bun ./src/db/seed.ts
+   ```
+7. Run the dev server:
+
    ```
    bun run dev
    ```
-3. Visit http://localhost:3000 to view the site!\*
+
+8. Visit http://localhost:3000 to view the site! 🚀\*
 
 \*_Tip: use your browser's responsive development tools to simulate the dimensions of a mobile device_
 
@@ -49,8 +78,9 @@ To install the PWA, you can use the QR above code or:
 ## Project Structure
 
 ```
+
 m8.1-pwa/
-├── __tests__/ # Unit tests (mostly for geolocation calculation stuff)
+├── **tests**/ # Unit tests (mostly for geolocation calculation stuff)
 ├── .github/workflows/ # Github Action Workflows
 ├── docs/ # Project documentation
 ├── drizzle/ # ORM migrations
@@ -66,4 +96,5 @@ m8.1-pwa/
 │ │ ├── seed.ts # Database seeder script
 │ ├── i18n/ # Functions and messages for i18n
 └─└── styles/ # CSS/SCSS Files
+
 ```
