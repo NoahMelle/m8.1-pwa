@@ -19,7 +19,9 @@ export default function Article({ article }: { article: ArticleType }) {
         width={50}
         className="aspect-square object-cover rounded-sm"
       />
-      <span className="text-base mb-0 font-normal">{t(article.title)}</span>
+      <span className="text-base mb-0 font-normal truncate">
+        {t(article.title)}
+      </span>
     </Link>
   );
 }

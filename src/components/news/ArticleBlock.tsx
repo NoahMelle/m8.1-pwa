@@ -38,7 +38,7 @@ export default function ArticleBlock({ article, ...props }: ArticleProps) {
       <span
         className={`absolute h-full w-full top-0 left-0 bg-gradient-to-b to-black/50`}
       ></span>
-      <span className="relative">
+      <span className="relative truncate">
         <span className="mb-0 text-shadow-lg">{t(article.title)}</span>
       </span>
     </Link>

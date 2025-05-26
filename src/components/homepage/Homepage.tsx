@@ -45,18 +45,20 @@ export default function Homepage() {
           {t(messages.homepage.timetable)}
         </Link>
       </div>
-      {!!latestUrgentArticle && (
-        <Link
-          className="flex gap-3 items-center"
-          href={`/news/${latestUrgentArticle.id}`}
-        >
-          <span className="relative flex size-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red opacity-75"></span>{" "}
-            <span className="relative inline-flex size-2 rounded-full bg-red"></span>
-          </span>
-          <p>{t(latestUrgentArticle.title)}</p>
-        </Link>
-      )}
+      <div className="max-w-[350px]">
+        {!!latestUrgentArticle && (
+          <Link
+            className="flex gap-3 items-center px-4 max-w-full"
+            href={`/news/${latestUrgentArticle.id}`}
+          >
+            <span className="relative flex size-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red opacity-75"></span>{" "}
+              <span className="relative inline-flex size-2 rounded-full bg-red"></span>
+            </span>
+            <p className="truncate">{t(latestUrgentArticle.title)}</p>
+          </Link>
+        )}
+      </div>
     </>
   );
 }

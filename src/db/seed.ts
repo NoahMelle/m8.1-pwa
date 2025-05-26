@@ -1,5 +1,10 @@
-import { reset } from "drizzle-seed";
-import { performancesTable, stagesTable, genresTable } from "./schemas";
+import { reset, seed } from "drizzle-seed";
+import {
+  performancesTable,
+  stagesTable,
+  genresTable,
+  articlesTable,
+} from "./schemas";
 import dayjs from "dayjs";
 import "dotenv/config";
 import * as schema from "./schemas/index";
@@ -252,6 +257,7 @@ async function main() {
       dutchDescription: `Five-time “World's No. 1 DJ” and trance icon, Armin delivers euphoric, high-energy sets that have headlined festivals from Tomorrowland to Ultra. His uplifting melodies and impeccable mixing keep crowds dancing for hours.`,
       englishDescription: `Five-time “World's No. 1 DJ” and trance icon, Armin delivers euphoric, high-energy sets that have headlined festivals from Tomorrowland to Ultra. His uplifting melodies and impeccable mixing keep crowds dancing for hours.`,
       stageId: stageIds.poton,
+      imageUrl: "/img/acts/armin_van_buuren.png",
       videoUrl: "https://www.youtube.com/embed/TxvpctgU_s8?si=uoRzcQDl5e2keAqu",
       startsAt: constructDateWithTime("saturday", { hour: 10, minute: 30 }),
       endsAt: constructDateWithTime("saturday", { hour: 12, minute: 0 }),
@@ -264,6 +270,7 @@ async function main() {
       videoUrl: "https://www.youtube.com/embed/IH77eOyV95o?si=F0AFd5Ub6cgQueMC",
       stageId: stageIds.poton,
       startsAt: constructDateWithTime("saturday", { hour: 12, minute: 30 }),
+      imageUrl: "/img/acts/kensington.png",
       endsAt: constructDateWithTime("saturday", { hour: 14, minute: 0 }),
       genres: [genreIds.indie, genreIds.rock],
     },
@@ -275,6 +282,7 @@ async function main() {
       videoUrl: "https://www.youtube.com/embed/0ttGgIQpAUc?si=7YCNukWo43p6y-qW",
       stageId: stageIds.poton,
       startsAt: constructDateWithTime("saturday", { hour: 14, minute: 30 }),
+      imageUrl: "/img/acts/de_staat.png",
       endsAt: constructDateWithTime("saturday", { hour: 16, minute: 30 }),
       genres: [genreIds.rock],
     },
@@ -284,6 +292,7 @@ async function main() {
       englishDescription: `Utrecht's hard-hitting rock four-piece, delivering riff-driven anthems and dynamic vocals. With a live reputation for raw intensity, they're tailor-made for late-night main stages.`,
       videoUrl: "https://www.youtube.com/embed/EvLpaCSnc4k?si=pfWsK1wAuBbvAkQn",
       stageId: stageIds.poton,
+      imageUrl: "/img/acts/navarone.png",
       startsAt: constructDateWithTime("saturday", { hour: 17, minute: 0 }),
       endsAt: constructDateWithTime("saturday", { hour: 18, minute: 30 }),
       genres: [genreIds.rock],
@@ -293,6 +302,7 @@ async function main() {
       dutchDescription: `Folk-pop singer-songwriter whose intimate voice and acoustic arrangements (notably on “Home”) have earned him platinum sales and sell-out shows. His heartfelt storytelling connects deeply on festival acoustic stages.`,
       englishDescription: `Folk-pop singer-songwriter whose intimate voice and acoustic arrangements (notably on “Home”) have earned him platinum sales and sell-out shows. His heartfelt storytelling connects deeply on festival acoustic stages.`,
       videoUrl: "https://www.youtube.com/embed/FZEuqzW16Nw?si=sf-cFGrobFzRZyYt",
+      imageUrl: "/img/acts/dotan.png",
       stageId: stageIds.poton,
       startsAt: constructDateWithTime("saturday", { hour: 19, minute: 15 }),
       endsAt: constructDateWithTime("saturday", { hour: 21, minute: 15 }),
@@ -303,6 +313,7 @@ async function main() {
       dutchDescription: `Breakthrough pop singer Froukje Veenstra combines candid lyrics with catchy, synth-driven hooks. Since her 2021 debut, she's become a voice of her generation—ideal for mid-day festival stages.`,
       englishDescription: `Breakthrough pop singer Froukje Veenstra combines candid lyrics with catchy, synth-driven hooks. Since her 2021 debut, she's become a voice of her generation—ideal for mid-day festival stages.`,
       videoUrl: "https://www.youtube.com/embed/g4PlReX9e-E?si=UvSJ2iNJsECGXVQ0",
+      imageUrl: "/img/acts/froukje.png",
       stageId: stageIds.poton,
       startsAt: constructDateWithTime("saturday", { hour: 22, minute: 0 }),
       endsAt: constructDateWithTime("saturday", { hour: 24, minute: 0 }),
@@ -316,6 +327,7 @@ async function main() {
       englishDescription: `Broke through as a teenager with “Animals,” Martin Garrix has become one of the biggest names in EDM. His anthemic big-room tracks and stadium-sized drops make him a festival favorite across Europe.`,
       videoUrl: "https://www.youtube.com/embed/Zv1QV6lrc_Y?si=_yWEtH6m_uDtDJEd",
       stageId: stageIds.poton,
+      imageUrl: "/img/acts/martin_garrix.png",
       startsAt: constructDateWithTime("sunday", { hour: 11, minute: 0 }),
       endsAt: constructDateWithTime("sunday", { hour: 13, minute: 0 }),
       genres: [genreIds.dance],
@@ -326,6 +338,7 @@ async function main() {
       dutchDescription: `Symphonic metal pioneers fronted by Sharon den Adel. Their cinematic soundscapes and operatic vocals (think “Ice Queen,” “Mother Earth”) translate into dramatic, visually stunning festival performances.`,
       englishDescription: `Symphonic metal pioneers fronted by Sharon den Adel. Their cinematic soundscapes and operatic vocals (think “Ice Queen,” “Mother Earth”) translate into dramatic, visually stunning festival performances.`,
       videoUrl: "https://www.youtube.com/embed/iQVei5C2N4E?si=_Vn5BfzP9sVRNYBa",
+      imageUrl: "/img/acts/within_temptation.png",
       stageId: stageIds.poton,
       startsAt: constructDateWithTime("sunday", { hour: 13, minute: 45 }),
       endsAt: constructDateWithTime("sunday", { hour: 15, minute: 45 }),
@@ -337,6 +350,7 @@ async function main() {
       dutchDescription: `A four-piece from Haarlem mixing funk, pop, rock and hip-hop. Their upbeat, genre-fluid sound on songs like “Amigo” and “In Your Arms” makes for joyous, dance-floor-friendly live shows.`,
       englishDescription: `A four-piece from Haarlem mixing funk, pop, rock and hip-hop. Their upbeat, genre-fluid sound on songs like “Amigo” and “In Your Arms” makes for joyous, dance-floor-friendly live shows.`,
       videoUrl: "https://www.youtube.com/embed/l3jRIr44lss?si=dx6f-EsHYDJD8HPc",
+      imageUrl: "/img/acts/chef_special.png",
       stageId: stageIds.poton,
       startsAt: constructDateWithTime("sunday", { hour: 16, minute: 30 }),
       endsAt: constructDateWithTime("sunday", { hour: 18, minute: 30 }),
@@ -348,6 +362,7 @@ async function main() {
       dutchDescription: `Indie-pop artist crafting atmospheric, electronic-tinged songs. Her hypnotic vocals and lush production (as heard on “Ongeveer”) create a dreamlike vibe perfect for twilight festival slots.`,
       englishDescription: `Indie-pop artist crafting atmospheric, electronic-tinged songs. Her hypnotic vocals and lush production (as heard on “Ongeveer”) create a dreamlike vibe perfect for twilight festival slots.`,
       videoUrl: "https://www.youtube.com/embed/6IlLJNmLDMg?si=rDs2psBL8oI4VgNt",
+      imageUrl: "/img/acts/eefje_de_visser.png",
       stageId: stageIds.poton,
       startsAt: constructDateWithTime("sunday", { hour: 19, minute: 15 }),
       endsAt: constructDateWithTime("sunday", { hour: 21, minute: 15 }),
@@ -358,6 +373,7 @@ async function main() {
       title: "Spinvis",
       englishDescription: `Erik de Jong performs under the moniker Spinvis, crafting poetic, collage-like songs that blend spoken-word snippets, lo-fi electronics and wistful pop. Since his debut album in 2002—recorded in his attic—he's become a fixture of Dutch indie, renowned for narratives that feel both intimate and surreal. His live shows turn everyday observations into shared, dreamlike experiences.`,
       dutchDescription: `Erik de Jong performs under the moniker Spinvis, crafting poetic, collage-like songs that blend spoken-word snippets, lo-fi electronics and wistful pop. Since his debut album in 2002—recorded in his attic—he's become a fixture of Dutch indie, renowned for narratives that feel both intimate and surreal. His live shows turn everyday observations into shared, dreamlike experiences.`,
+      imageUrl: "/img/acts/spinvis.png",
       videoUrl: "https://www.youtube.com/embed/F3ZTrGWSLf4?si=11hberv0K9fE6gtD",
       stageId: stageIds.poton,
       startsAt: constructDateWithTime("sunday", { hour: 22, minute: 0 }),
@@ -575,6 +591,21 @@ async function main() {
       );
     }
   }
+
+  await seed(db, { articlesTable }).refine((f) => ({
+    articlesTable: {
+      columns: {
+        dutchTitle: f.loremIpsum({ sentencesCount: 1 }),
+        englishTitle: f.loremIpsum({ sentencesCount: 1 }),
+        image: f.default({ defaultValue: undefined }),
+
+        englishContent: f.loremIpsum(),
+        dutchContent: f.loremIpsum(),
+
+        urgence: f.boolean(),
+      },
+    },
+  }));
 }
 
 await main();
