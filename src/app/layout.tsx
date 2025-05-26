@@ -29,7 +29,7 @@ export default async function RootLayout({
   const language = getLocaleFromCookies(cookieStore);
 
   return (
-    <html lang="en" suppressHydrationWarning className={theme}>
+    <html lang={language} suppressHydrationWarning className={theme}>
       <body>
         <ThemeProvider initialTheme={theme}>
           <LanguageProvider initialLanguage={language}>

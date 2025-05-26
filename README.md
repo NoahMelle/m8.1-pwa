@@ -50,14 +50,20 @@ To install the PWA, you can use the QR above code or:
 
 ```
 m8.1-pwa/
+├── __tests__/ # Unit tests (mostly for geolocation calculation stuff)
 ├── .github/workflows/ # Github Action Workflows
+├── docs/ # Project documentation
+├── drizzle/ # ORM migrations
+├── public/ # Static files (e.g., images, favicon)
 ├── src/ # Source code files
 │ ├── @types/ # Type definitions
 │ ├── app/ # The website itself
-│ ├── context/ # React Context wrappers
 │ ├── components/ # UI Components
-│ ├── i18n/ # Functions for i18n
-│ └── styles/ # CSS/SCSS Files
-├── public/ # Static files (e.g., images, favicon)
-└── docs/ # Project documentation
+│ ├── context/ # React Context wrappers (theme and language)
+│ ├── db/ # Database stuff
+│ │ ├── schemas/ # Schema definition files
+│ │ ├── index.ts # MySQL connection pool
+│ │ ├── seed.ts # Database seeder script
+│ ├── i18n/ # Functions and messages for i18n
+└─└── styles/ # CSS/SCSS Files
 ```

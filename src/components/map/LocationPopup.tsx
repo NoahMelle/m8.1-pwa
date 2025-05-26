@@ -6,6 +6,7 @@ import { formatDateToTime } from "@/lib/utils";
 import { useTranslations } from "@/i18n/useTranslations";
 import { messages } from "@/i18n/messages";
 import { FastForward, VolumeOff } from "lucide-react";
+import LocationPopupCard from "./LocationPopupCard";
 
 export default function LocationPopup({
   stage,
@@ -70,82 +71,70 @@ export default function LocationPopup({
             {t(stage.description).trim()}
           </p>
           <div className="grid grid-cols-2 gap-4">
-            <div>
-              <h3>{t(messages.map.popup.currentAct)}:</h3>
-
-              <div className="relative aspect-square flex flex-col justify-between dark:bg-neutral-800/50 bg-white/30 backdrop-blur-lg rounded-lg p-4 border dark:border-white/20 border-black/10 shadow-sm">
-                <div className="flex flex-col justify-end h-full">
-                  {!!currentAct ? (
-                    <>
-                      <FastForward
-                        height={100}
-                        width={100}
-                        className="absolute top-1/2 left-1/2 -translate-1/2 opacity-10"
-                      />
-                      <div>
-                        <p>{currentAct.title}</p>
-                        <p>
-                          {currentAct.startsAt.toLocaleTimeString([], {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          })}{" "}
-                          -{" "}
-                          {currentAct.endsAt.toLocaleTimeString([], {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          })}
-                        </p>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <VolumeOff
-                        height={100}
-                        width={100}
-                        className="absolute top-1/2 left-1/2 -translate-1/2 opacity-10"
-                      />
-                      <p>{t(messages.map.popup.noCurrent)}</p>
-                    </>
-                  )}
-                </div>
-              </div>
-            </div>
-            <div>
-              <h3>{t(messages.map.popup.nextAct)}:</h3>
-              <div className="relative aspect-square flex overflow-hidden flex-col justify-between dark:bg-neutral-800/50 bg-white/30 backdrop-blur-lg rounded-lg p-4 border dark:border-white/20 border-black/10 shadow-sm">
-                <div className="flex flex-col justify-end h-full">
-                  {!!nextAct ? (
-                    <>
-                      <FastForward
-                        height={0}
-                        width={0}
-                        className="absolute w-full h-full -z-[1] top-0 left-0 p-8 opacity-10"
-                      />
-                      <div className="z-10 relative text-white">
-                        <p>{nextAct.title}</p>
-                        <div className="opacity-50 text-sm leading-tight">
-                          <p>{nextAct.startsAt.toLocaleDateString()}</p>
-                          <p>
-                            {formatDateToTime(nextAct.startsAt)} -{" "}
-                            {formatDateToTime(nextAct.endsAt)}
-                          </p>
-                        </div>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <VolumeOff
-                        height={100}
-                        width={100}
-                        className="absolute top-1/2 left-1/2 -translate-1/2 opacity-10"
-                      />
-                      <p>{t(messages.map.popup.noNextAct)}</p>
-                    </>
-                  )}
-                  <div className="bg-gradient-to-b from-transparent to-black/60 absolute top-0 left-0 w-full h-full"></div>
-                </div>
-              </div>
-            </div>
+            <LocationPopupCard title={t(messages.map.popup.currentAct)}>
+              {!!currentAct ? (
+                <>
+                  <FastForward
+                    height={100}
+                    width={100}
+                    className="absolute top-1/2 left-1/2 -translate-1/2 opacity-10"
+                  />
+                  <div className="z-10 relative text-white">
+                    <p>{currentAct.title}</p>
+                    <p>
+                      {currentAct.startsAt.toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}{" "}
+                      -{" "}
+                      {currentAct.endsAt.toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
+                    </p>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <VolumeOff
+                    height={100}
+                    width={100}
+                    className="absolute top-1/2 left-1/2 -translate-1/2 opacity-10"
+                  />
+                  <p>{t(messages.map.popup.noCurrent)}</p>
+                </>
+              )}
+            </LocationPopupCard>
+            <LocationPopupCard title={t(messages.map.popup.nextAct)}>
+              {!!nextAct ? (
+                <>
+                  <FastForward
+                    height={0}
+                    width={0}
+                    className="absolute w-full h-full -z-[1] top-0 left-0 p-8 opacity-10"
+                  />
+                  <div className="z-10 relative text-white">
+                    <p>{nextAct.title}</p>
+                    <div className="opacity-50 text-sm leading-tight">
+                      <p>{nextAct.startsAt.toLocaleDateString()}</p>
+                      <p>
+                        {formatDateToTime(nextAct.startsAt)} -{" "}
+                        {formatDateToTime(nextAct.endsAt)}
+                      </p>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <VolumeOff
+                    height={100}
+                    width={100}
+                    className="absolute top-1/2 left-1/2 -translate-1/2 opacity-10"
+                  />
+                  <p>{t(messages.map.popup.noNextAct)}</p>
+                </>
+              )}
+            </LocationPopupCard>
           </div>
         </div>
       </motion.div>
