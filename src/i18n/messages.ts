@@ -38,13 +38,9 @@ export const messages = {
     },
   },
   homepage: {
-    about: {
-      en: "About the festival",
-      nl: "Over het festival",
-    },
-    timetable: {
-      en: "Timetable",
-      nl: "Blokkenschema",
+    heading: {
+      en: "Welcome to LoveU!",
+      nl: "Welkom bij LoveU!",
     },
   },
   info: {
@@ -77,6 +73,12 @@ With this gold bracelet they can use the gold toilets and gold marked order poin
       nl: `Studenten van het GLU hebben tijdens het festival speciale privileges en zijn herkenbaar aan een gouden armbandje.
 
 Met dit gouden armbandje kunnen ze tijdens het festival gebruik maken van de gouden toiletten en met goud gemarkeerde bestelpunten aan de bars zonder in een rij te hoeven staan.`,
+    },
+  },
+  news: {
+    heading: {
+      en: "News",
+      nl: "Nieuws",
     },
   },
   map: {

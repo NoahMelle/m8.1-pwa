@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  Home,
-  Info,
-  LucideIcon,
-  MapPin,
-  Newspaper,
-  SquareChartGantt,
-} from "lucide-react";
+import { Home, Info, LucideIcon, MapPin, SquareChartGantt } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect } from "react";
@@ -16,6 +9,7 @@ interface Link {
   url: string;
   text: string;
   iconUrl: LucideIcon;
+  possibleUrls?: string[];
 }
 
 export default function Navbar() {
@@ -62,11 +56,7 @@ export default function Navbar() {
       url: "/",
       text: "Home",
       iconUrl: Home,
-    },
-    {
-      url: "/news",
-      text: "Nieuws",
-      iconUrl: Newspaper,
+      possibleUrls: ["/news"],
     },
     {
       url: "/info",
@@ -96,20 +86,21 @@ export default function Navbar() {
             href={link.url}
             key={link.url}
             className={`flex grow relative items-center z-20 justify-center gap-2 h-full active:scale-90 ${
-              pathname === link.url || pathname.startsWith(link.url + "/")
+              pathname === link.url ||
+              link.possibleUrls?.some((url) => pathname.startsWith(url))
                 ? "text-black rounded-full active"
                 : ""
             }`}
           >
             <link.iconUrl
-              className={`${
-                pathname === link.url || pathname.startsWith(link.url + "/")
-                  ? "invert"
-                  : ""
-              } transition-all`}
               width={24}
               height={24}
-              color="white"
+              color={
+                pathname === link.url ||
+                link.possibleUrls?.some((url) => pathname.startsWith(url))
+                  ? "black"
+                  : "white"
+              }
             />
           </Link>
         ))}

@@ -50,47 +50,55 @@ export default function ActPopup({
             <button onClick={() => setIsShowing(null)}>X</button>
           </div>
           <div className="flex flex-col gap-4">
-            {act.imageUrl && (
-              <Image
-                src={act.imageUrl}
-                width={0}
-                height={0}
-                alt={act.title}
-                className="aspect-[5/2] object-cover w-full h-full"
-                sizes="100%"
-              />
-            )}
             {act.videoUrl && (
-              <iframe
-                width="560"
-                height="315"
-                src={act.videoUrl}
-                title="YouTube video player"
-                className="w-full aspect-video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-              ></iframe>
-            )}
-            <div className="flex justify-between items-start">
-              <div className="grid grid-cols-[min-content_1fr] gap-x-4 leading-tight">
-                <p className="text-nowrap">Starts at: </p>
-                <p>{formatDateToTime(act.startsAt)}</p>
-                <p className="text-nowrap">Ends at: </p>
-                <p>{formatDateToTime(act.endsAt)}</p>
-                <p className="text-nowrap">Stage:</p>
-                <p>{act.stage?.name}</p>
+              <div className="aspect-video min-h-0">
+                <iframe
+                  width="560"
+                  height="315"
+                  src={act.videoUrl}
+                  title="YouTube video player"
+                  className="w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                ></iframe>
               </div>
-              {favouriteActs && (
-                <button onClick={() => toggleFavouriteAct(act.id)}>
-                  <Star
-                    fill={
-                      favouriteActs?.includes(act.id) ? "white" : "transparent"
-                    }
-                    width={20}
-                    height={20}
-                  />
-                </button>
+            )}
+            <div className="flex justify-between items-center gap-4">
+              {act.imageUrl && (
+                <Image
+                  src={act.imageUrl}
+                  width={0}
+                  height={0}
+                  alt={act.title}
+                  className="object-cover aspect-square rounded-full h-20 w-20 "
+                  sizes="100%"
+                />
               )}
+              <div className="grow justify-between items-start flex">
+                <div className="flex gap-4">
+                  <div className="grid grid-cols-[min-content_1fr] gap-x-4 h-fit leading-tight">
+                    <p className="text-nowrap">Starts at: </p>
+                    <p>{formatDateToTime(act.startsAt)}</p>
+                    <p className="text-nowrap">Ends at: </p>
+                    <p>{formatDateToTime(act.endsAt)}</p>
+                    <p className="text-nowrap">Stage:</p>
+                    <p>{act.stage?.name}</p>
+                  </div>
+                </div>
+                {favouriteActs && (
+                  <button onClick={() => toggleFavouriteAct(act.id)}>
+                    <Star
+                      fill={
+                        favouriteActs?.includes(act.id)
+                          ? "white"
+                          : "transparent"
+                      }
+                      width={20}
+                      height={20}
+                    />
+                  </button>
+                )}
+              </div>
             </div>
             <p className="leading-tight">{t(act.description)}</p>
           </div>

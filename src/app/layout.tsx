@@ -5,7 +5,6 @@ import { cookies } from "next/headers";
 import Navbar from "@/components/Navbar";
 import TopBar from "@/components/TopBar";
 import { LanguageProvider } from "@/context/LanguageContext";
-import BackgroundDecorations from "@/components/reusable/BackgroundDecorations";
 import { getLocaleFromCookies } from "@/i18n/helpers";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { isTheme } from "@/lib/utils";
@@ -33,9 +32,9 @@ export default async function RootLayout({
       <body>
         <ThemeProvider initialTheme={theme}>
           <LanguageProvider initialLanguage={language}>
-            <BackgroundDecorations />
+            {/* <BackgroundDecorations /> */}
             <TopBar />
-            <main className={"grow flex flex-col"}>{children}</main>
+            <main className={"grow flex flex-col pb-20"}>{children}</main>
             <Navbar />
             <ServiceWorker />
           </LanguageProvider>

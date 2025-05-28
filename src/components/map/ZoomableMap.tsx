@@ -134,7 +134,7 @@ export default function ZoomableMap({ stages }: { stages: StageType[] }) {
         centerOnInit={true}
         centerZoomedOut
         limitToBounds
-        minScale={1}
+        minScale={0.4}
         onTransformed={(e) => handleTransform(e)}
         onInit={() => setHasInitialized(true)}
       >

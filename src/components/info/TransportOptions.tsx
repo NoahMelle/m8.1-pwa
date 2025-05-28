@@ -136,7 +136,7 @@ De bus rijdt tussen 12:00 uur & 19:00 uur richting het festival en vanaf 21:00 u
           !isShowingMore && i >= mapScreenSizeToGridColumns() ? null : (
             <div
               key={transportOption.id}
-              className="relative aspect-square flex flex-col justify-between dark:bg-neutral-800/50 bg-white/30 backdrop-blur-lg rounded-lg p-4 border dark:border-white/20 border-black/10 shadow-sm"
+              className="relative aspect-square flex flex-col justify-between dark:bg-neutral-800/50 bg-white/30 backdrop-blur-lg rounded-lg p-4 border dark:border-white/20 border-black/10"
             >
               <div className="w-full justify-end flex">
                 <button onClick={() => setHighlightedOption(transportOption)}>

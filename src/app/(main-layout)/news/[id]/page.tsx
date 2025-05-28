@@ -19,7 +19,7 @@ export default async function Article({
   return (
     <div className="flex flex-col gap-4">
       <div>
-        <Link href={"/news"}>
+        <Link href={"/"}>
           <ArrowLeft />
         </Link>
       </div>

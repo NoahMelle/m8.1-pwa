@@ -26,7 +26,7 @@ export default function Marker({
       }`}
     >
       <div className="h-6 w-6 flex items-center justify-center rounded-full bg-red border-red-700 dark:bg-red-700 dark:border-red-800 border-2">
-        <Icon height={12} width={12} />
+        <Icon height={12} width={12} color="white" />
       </div>
     </KeepScale>
   );

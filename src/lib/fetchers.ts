@@ -135,6 +135,8 @@ export async function getAllArticles() {
     .select({
       id: articlesTable.id,
       createdAt: articlesTable.createdAt,
+      urgence: articlesTable.urgence,
+
       title: {
         en: articlesTable.englishTitle,
         nl: articlesTable.dutchTitle,
@@ -154,6 +156,7 @@ export async function getArticleById(id: number) {
     .select({
       id: articlesTable.id,
       createdAt: articlesTable.createdAt,
+      urgence: articlesTable.urgence,
       title: {
         en: articlesTable.englishTitle,
         nl: articlesTable.dutchTitle,
