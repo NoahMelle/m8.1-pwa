@@ -38,13 +38,9 @@ export const messages = {
     },
   },
   homepage: {
-    about: {
-      en: "About the festival",
-      nl: "Over het festival",
-    },
-    timetable: {
-      en: "Timetable",
-      nl: "Blokkenschema",
+    heading: {
+      en: "Welcome to LoveU!",
+      nl: "Welkom bij LoveU!",
     },
   },
   info: {

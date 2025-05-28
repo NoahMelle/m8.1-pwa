@@ -5,7 +5,6 @@ import { cookies } from "next/headers";
 import Navbar from "@/components/Navbar";
 import TopBar from "@/components/TopBar";
 import { LanguageProvider } from "@/context/LanguageContext";
-import BackgroundDecorations from "@/components/reusable/BackgroundDecorations";
 import { getLocaleFromCookies } from "@/i18n/helpers";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { isTheme } from "@/lib/utils";
