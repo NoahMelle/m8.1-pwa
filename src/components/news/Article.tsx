@@ -6,12 +6,13 @@ import React from "react";
 import Logo from "../Logo";
 import Image from "next/image";
 import Link from "next/link";
+import Card from "../reusable/Card";
 
 export default function Article({ article }: { article: ArticleType }) {
   const t = useTranslations();
 
   return (
-    <div className="relative items-center aspect-[3/4] shrink-0 w-[200px] rounded-xl bg-background border-foreground/10 grid grid-cols-1 grid-rows-[3fr_1fr] overflow-hidden border">
+    <Card className="relative items-center aspect-[3/4] shrink-0 w-[200px] grid grid-cols-1 grid-rows-[3fr_1fr] overflow-hidden p-0">
       <Link
         href={`/news/${article.id}`}
         className="absolute h-full w-full top-0 left-0"
@@ -34,6 +35,6 @@ export default function Article({ article }: { article: ArticleType }) {
           {t(article.title)}
         </span>
       </div>
-    </div>
+    </Card>
   );
 }

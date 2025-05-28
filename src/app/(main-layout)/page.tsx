@@ -1,3 +1,4 @@
+import CurrentActs from "@/components/homepage/CurrentActs";
 import Article from "@/components/news/Article";
 import Translated from "@/components/reusable/Translated";
 import { messages } from "@/i18n/messages";
@@ -7,7 +8,6 @@ import {
   getStages,
 } from "@/lib/fetchers";
 import { nanoid } from "nanoid";
-import Image from "next/image";
 
 export default async function Home() {
   const articles = await getAllArticles();
@@ -45,37 +45,7 @@ export default async function Home() {
             <Translated message={messages.map.popup.currentAct} />s
           </h2>
         </div>
-        <div className="w-full gap-2 flex flex-col">
-          {stages.map((stage, index) => (
-            <div
-              key={nanoid()}
-              className=" rounded-xl p-4 border-foreground/10 border grid grid-cols-[1fr_3fr] gap-4 bg-background"
-            >
-              <div>
-                <Image
-                  className="aspect-square object-cover rounded-full"
-                  src={`/img/stages/${stage.name
-                    .toLocaleLowerCase()
-                    .replaceAll(" ", "-")}.png`}
-                  alt={stage.name}
-                  width={70}
-                  height={70}
-                />
-              </div>
-              <div className="flex flex-col justify-center leading-tight">
-                <h3>{stage.name}</h3>
-                <p className="text-foreground/50">
-                  {" "}
-                  {currentlyPlaying[index] ? (
-                    currentlyPlaying[index].title
-                  ) : (
-                    <Translated message={messages.map.popup.noCurrent} />
-                  )}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <CurrentActs stages={stages} currentlyPlaying={currentlyPlaying} />
       </section>
     </>
   );
