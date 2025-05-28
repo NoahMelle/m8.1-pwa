@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { TransportOption } from "./TransportOptions";
 import { motion } from "motion/react";
+import { X } from "lucide-react";
 
 export default function HighlightedPopup({
   option,
@@ -38,11 +39,11 @@ export default function HighlightedPopup({
         <div className="bg-white dark:bg-neutral-900 border-white/10 border p-4 rounded-md relative z-20">
           <div className="w-full justify-between flex items-center mb-2">
             <h3 className="font-semibold text-lg">{option.name}</h3>
-            <button onClick={() => setIsShowing(null)}>X</button>
+            <button onClick={() => setIsShowing(null)}>
+              <X />
+            </button>
           </div>
-          <p className="leading-tight whitespace-pre-wrap">
-            {option.description.trim()}
-          </p>
+          <p className="whitespace-pre-wrap">{option.description.trim()}</p>
         </div>
       </motion.div>
     </motion.div>

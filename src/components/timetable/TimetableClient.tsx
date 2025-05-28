@@ -54,6 +54,8 @@ export default function TimetableClient({
     <div>
       <DaySelector selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
 
+      <hr className="my-4 opacity-20" />
+
       <div className="flex gap-2 my-2 overflow-x-auto">
         {genres.map((genre) => (
           <Filter

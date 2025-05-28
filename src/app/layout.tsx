@@ -34,7 +34,7 @@ export default async function RootLayout({
           <LanguageProvider initialLanguage={language}>
             {/* <BackgroundDecorations /> */}
             <TopBar />
-            <main className={"grow flex flex-col pb-20"}>{children}</main>
+            <main className={"grow flex flex-col"}>{children}</main>
             <Navbar />
             <ServiceWorker />
           </LanguageProvider>

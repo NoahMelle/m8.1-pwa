@@ -34,7 +34,7 @@ export default function CurrentAct({
             height={70}
           />
         </div>
-        <div className="flex flex-col justify-center leading-tight">
+        <div className="flex flex-col justify-center">
           <h3>{stage.name}</h3>
           <p className="text-foreground/50">
             {" "}

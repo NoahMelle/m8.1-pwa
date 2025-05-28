@@ -9,7 +9,7 @@ export default function Card({
   return (
     <div
       className={twMerge(
-        "dark:bg-neutral-800/50 bg-white/30 backdrop-blur-lg rounded-lg p-4 border dark:border-white/20 border-black/10",
+        "dark:bg-foreground/10 bg-foreground/5 backdrop-blur-lg rounded-lg p-4",
         className
       )}
       {...props}

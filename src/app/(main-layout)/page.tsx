@@ -8,6 +8,8 @@ import {
   getStages,
 } from "@/lib/fetchers";
 import { nanoid } from "nanoid";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
 export default async function Home() {
   const articles = await getAllArticles();
@@ -40,10 +42,17 @@ export default async function Home() {
       </section>
 
       <section className="flex flex-col gap-2">
-        <div className="w-full text-left">
+        <div className="w-full flex justify-between">
           <h2 className="mb-0">
             <Translated message={messages.map.popup.currentAct} />s
           </h2>
+          <Link
+            href={"/timetable"}
+            className="not-italic bg-blue flex gap-1 items-center justify-center px-4 rounded-full text-white font-normal"
+          >
+            Timetable
+            <ArrowUpRight width={20} height={20} />
+          </Link>
         </div>
         <CurrentActs stages={stages} currentlyPlaying={currentlyPlaying} />
       </section>

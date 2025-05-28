@@ -18,7 +18,7 @@ export default function DaySelector({
         onClick={() => setSelectedDay("saturday")}
         className={`${
           selectedDay === "saturday" ? "bg-red text-white" : "hover:bg-red/20"
-        } p-4 rounded-md border-2 border-red transition-colors`}
+        } px-4 rounded-md border-2 border-red transition-colors`}
       >
         {t(messages.global.weekdays.saturday)}
       </button>
@@ -26,7 +26,7 @@ export default function DaySelector({
         onClick={() => setSelectedDay("sunday")}
         className={`${
           selectedDay === "sunday" ? "bg-red text-white" : "hover:bg-red/20"
-        } p-4 rounded-md border-2 border-red transition-colors`}
+        } px-4 py-2 rounded-md border-2 border-red transition-colors`}
       >
         {t(messages.global.weekdays.sunday)}
       </button>

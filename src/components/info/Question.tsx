@@ -34,7 +34,7 @@ export default function Question({ question }: { question: QuestionType }) {
         </AnimatePresence>
       </div>
 
-      <hr className="opacity-50" />
+      <div className="opacity-10 w-full h-[2px] bg-foreground" />
     </div>
   );
 }
