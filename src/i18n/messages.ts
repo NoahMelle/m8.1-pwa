@@ -79,6 +79,12 @@ With this gold bracelet they can use the gold toilets and gold marked order poin
 Met dit gouden armbandje kunnen ze tijdens het festival gebruik maken van de gouden toiletten en met goud gemarkeerde bestelpunten aan de bars zonder in een rij te hoeven staan.`,
     },
   },
+  news: {
+    heading: {
+      en: "News",
+      nl: "Nieuws",
+    },
+  },
   map: {
     popup: {
       currentAct: {

@@ -79,7 +79,7 @@ html.light {
   }
 
   h1 {
-    @apply text-5xl text-center;
+    @apply text-3xl text-left w-full;
   }
 }
 

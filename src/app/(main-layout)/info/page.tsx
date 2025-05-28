@@ -9,7 +9,7 @@ import React from "react";
 export default async function Info() {
   return (
     <>
-      <h1 className="text-center pb-0 text-5xl">
+      <h1>
         <Translated message={messages.info.heading} />
       </h1>
       <p>

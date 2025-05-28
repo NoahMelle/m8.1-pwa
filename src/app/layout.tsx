@@ -33,7 +33,7 @@ export default async function RootLayout({
       <body>
         <ThemeProvider initialTheme={theme}>
           <LanguageProvider initialLanguage={language}>
-            <BackgroundDecorations />
+            {/* <BackgroundDecorations /> */}
             <TopBar />
             <main className={"grow flex flex-col pb-20"}>{children}</main>
             <Navbar />

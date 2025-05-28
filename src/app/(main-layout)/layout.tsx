@@ -7,7 +7,7 @@ export default function MainLayout({
 }) {
   return (
     <div className="grow flex flex-col">
-      <div className="px-4 py-12 flex flex-col gap-8 grow">{children}</div>
+      <div className="px-6 py-12 flex flex-col gap-8 grow">{children}</div>
     </div>
   );
 }
