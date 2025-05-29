@@ -5,7 +5,7 @@ import Image from "next/image";
 import { formatDateToTime } from "@/lib/utils";
 import { useTranslations } from "@/i18n/useTranslations";
 import { useTimetable } from "./TimetableContext";
-import { Star } from "lucide-react";
+import { Star, X } from "lucide-react";
 
 export default function ActPopup({
   act,
@@ -47,7 +47,9 @@ export default function ActPopup({
         <div className="bg-white dark:bg-neutral-900 border-white/10 border p-4 rounded-md w-full max-w-[500px] relative z-20 overflow-y-auto max-h-full">
           <div className="w-full justify-between flex items-center mb-2">
             <h3 className="font-semibold text-lg">{act.title}</h3>
-            <button onClick={() => setIsShowing(null)}>X</button>
+            <button onClick={() => setIsShowing(null)}>
+              <X />
+            </button>
           </div>
           <div className="flex flex-col gap-4">
             {act.videoUrl && (
@@ -76,7 +78,7 @@ export default function ActPopup({
               )}
               <div className="grow justify-between items-start flex">
                 <div className="flex gap-4">
-                  <div className="grid grid-cols-[min-content_1fr] gap-x-4 h-fit leading-tight">
+                  <div className="grid grid-cols-[min-content_1fr] gap-x-4 h-fit">
                     <p className="text-nowrap">Starts at: </p>
                     <p>{formatDateToTime(act.startsAt)}</p>
                     <p className="text-nowrap">Ends at: </p>
@@ -100,7 +102,7 @@ export default function ActPopup({
                 )}
               </div>
             </div>
-            <p className="leading-tight">{t(act.description)}</p>
+            <p>{t(act.description)}</p>
           </div>
         </div>
       </motion.div>

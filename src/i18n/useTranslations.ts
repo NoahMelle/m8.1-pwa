@@ -6,6 +6,6 @@ export const useTranslations = () => {
   const { language } = useLanguage();
 
   return (path: Record<Locale, string | null>): string => {
-    return language ? path[language] ?? "" : "";
+    return path[language] ?? "";
   };
 };

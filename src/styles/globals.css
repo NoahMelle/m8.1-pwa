@@ -94,6 +94,12 @@ html.light {
   h1 {
     @apply text-3xl text-left w-full;
   }
+
+  button,
+  a {
+    font-weight: 300;
+    font-style: italic;
+  }
 }
 
 body {
@@ -105,6 +111,8 @@ body {
 
   display: flex;
   flex-direction: column;
+
+  @apply leading-tight;
 }
 
 .gradient-background {
@@ -169,12 +177,6 @@ body {
     background-size: 200% 200%;
     background-position: 0% 0%;
   }
-}
-
-button,
-a {
-  font-weight: 300;
-  font-style: italic;
 }
 
 /* Disable double-tap to zoom */

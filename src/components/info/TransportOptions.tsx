@@ -15,6 +15,7 @@ import {
   LucideIcon,
   Ticket,
 } from "lucide-react";
+import Card from "../reusable/Card";
 
 export interface TransportOption {
   id: number;
@@ -131,12 +132,12 @@ De bus rijdt tussen 12:00 uur & 19:00 uur richting het festival en vanaf 21:00 u
     <div>
       <h2>{t(messages.info.transportOptions)}</h2>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 overflow-hidden">
         {transportOptions.map((transportOption, i) =>
           !isShowingMore && i >= mapScreenSizeToGridColumns() ? null : (
-            <div
+            <Card
               key={transportOption.id}
-              className="relative aspect-square flex flex-col justify-between dark:bg-neutral-800/50 bg-white/30 backdrop-blur-lg rounded-lg p-4 border dark:border-white/20 border-black/10"
+              className="relative aspect-square flex flex-col justify-between"
             >
               <div className="w-full justify-end flex">
                 <button onClick={() => setHighlightedOption(transportOption)}>
@@ -151,7 +152,7 @@ De bus rijdt tussen 12:00 uur & 19:00 uur richting het festival en vanaf 21:00 u
                 />
               </div>
               <h3>{transportOption.name}</h3>
-            </div>
+            </Card>
           )
         )}
       </div>

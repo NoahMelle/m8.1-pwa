@@ -5,8 +5,9 @@ import { getCurrentActForStage, getNextActForStage } from "@/lib/fetchers";
 import { formatDateToTime } from "@/lib/utils";
 import { useTranslations } from "@/i18n/useTranslations";
 import { messages } from "@/i18n/messages";
-import { FastForward, VolumeOff } from "lucide-react";
 import LocationPopupCard from "./LocationPopupCard";
+import Image from "next/image";
+import { X } from "lucide-react";
 
 export default function LocationPopup({
   stage,
@@ -65,21 +66,21 @@ export default function LocationPopup({
         <div className="bg-white dark:bg-neutral-900 border-white/10 border p-4 rounded-md w-full relative z-20">
           <div className="w-full justify-between flex items-center mb-2">
             <h3 className="font-semibold text-lg">{stage.name}</h3>
-            <button onClick={() => setIsShowing(null)}>X</button>
+            <button onClick={() => setIsShowing(null)}>
+              <X />
+            </button>
           </div>
-          <p className="leading-tight whitespace-pre-wrap my-4">
+          <p className="whitespace-pre-wrap my-4">
             {t(stage.description).trim()}
           </p>
-          <div className="grid grid-cols-2 gap-4">
-            <LocationPopupCard title={t(messages.map.popup.currentAct)}>
+          <div className={`grid grid-cols-2 gap-4`}>
+            <LocationPopupCard
+              title={t(messages.map.popup.currentAct)}
+              hasOverlay={!!currentAct?.imageUrl}
+            >
               {!!currentAct ? (
                 <>
-                  <FastForward
-                    height={100}
-                    width={100}
-                    className="absolute top-1/2 left-1/2 -translate-1/2 opacity-10"
-                  />
-                  <div className="z-10 relative text-white">
+                  <div className="z-10 relative">
                     <p>{currentAct.title}</p>
                     <p>
                       {currentAct.startsAt.toLocaleTimeString([], {
@@ -95,27 +96,26 @@ export default function LocationPopup({
                   </div>
                 </>
               ) : (
-                <>
-                  <VolumeOff
-                    height={100}
-                    width={100}
-                    className="absolute top-1/2 left-1/2 -translate-1/2 opacity-10"
-                  />
-                  <p>{t(messages.map.popup.noCurrent)}</p>
-                </>
+                <p>{t(messages.map.popup.noCurrent)}</p>
               )}
             </LocationPopupCard>
-            <LocationPopupCard title={t(messages.map.popup.nextAct)}>
+            <LocationPopupCard
+              title={t(messages.map.popup.nextAct)}
+              hasOverlay={!!nextAct?.imageUrl}
+            >
               {!!nextAct ? (
                 <>
-                  <FastForward
-                    height={0}
-                    width={0}
-                    className="absolute w-full h-full -z-[1] top-0 left-0 p-8 opacity-10"
-                  />
-                  <div className="z-10 relative text-white">
+                  {nextAct.imageUrl && (
+                    <Image
+                      src={nextAct.imageUrl}
+                      alt={nextAct.title}
+                      fill
+                      className="absolute w-full h-full -z-[1] top-0 left-0"
+                    />
+                  )}
+                  <div className="z-10 relative">
                     <p>{nextAct.title}</p>
-                    <div className="opacity-50 text-sm leading-tight">
+                    <div className="opacity-50 text-sm">
                       <p>{nextAct.startsAt.toLocaleDateString()}</p>
                       <p>
                         {formatDateToTime(nextAct.startsAt)} -{" "}
@@ -126,11 +126,6 @@ export default function LocationPopup({
                 </>
               ) : (
                 <>
-                  <VolumeOff
-                    height={100}
-                    width={100}
-                    className="absolute top-1/2 left-1/2 -translate-1/2 opacity-10"
-                  />
                   <p>{t(messages.map.popup.noNextAct)}</p>
                 </>
               )}

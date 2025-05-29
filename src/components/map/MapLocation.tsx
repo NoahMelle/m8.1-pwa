@@ -29,7 +29,7 @@ export default function MapLocation({
       <AnimatePresence>
         {scale > 3 && (
           <motion.h3
-            className="absolute -top-10 left-1/2 -translate-x-1/2 text-nowrap dark:bg-red-700 bg-red border-red-700 border-2 text-white dark:border-red-800 px-2 py-1 leading-tight rounded-sm"
+            className="absolute -top-10 left-1/2 -translate-x-1/2 text-nowrap dark:bg-red-700 bg-red border-red-700 border-2 text-white dark:border-red-800 px-2 py-1 rounded-sm"
             initial={{ y: "100%", opacity: 0, scale: 0 }}
             exit={{ y: "100%", opacity: 0, scale: 0 }}
             animate={{ y: 0, opacity: 1, scale: 1 }}

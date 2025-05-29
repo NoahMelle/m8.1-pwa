@@ -2,7 +2,6 @@ const cacheName = 'v1'
 const excludedRoutes = [
     "/map",
     "/timetable",
-    "/api"
 ]
 
 const cacheClone = async (e) => {
