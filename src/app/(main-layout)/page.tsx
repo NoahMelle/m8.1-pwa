@@ -23,7 +23,8 @@ export default async function Home() {
   return (
     <>
       <h1>
-        <Translated message={messages.homepage.heading} />
+        <Translated message={messages.homepage.heading} />{" "}
+        <span className="text-red">LoveU!</span>
       </h1>
 
       <section className="flex flex-col gap-2">

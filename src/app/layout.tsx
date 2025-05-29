@@ -32,7 +32,6 @@ export default async function RootLayout({
       <body>
         <ThemeProvider initialTheme={theme}>
           <LanguageProvider initialLanguage={language}>
-            {/* <BackgroundDecorations /> */}
             <TopBar />
             <main className={"grow flex flex-col"}>{children}</main>
             <Navbar />

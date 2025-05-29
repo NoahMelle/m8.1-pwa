@@ -39,8 +39,8 @@ export const messages = {
   },
   homepage: {
     heading: {
-      en: "Welcome to LoveU!",
-      nl: "Welkom bij LoveU!",
+      en: "Welcome to",
+      nl: "Welkom bij",
     },
   },
   info: {

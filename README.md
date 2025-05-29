@@ -15,6 +15,10 @@ A progressive web app for the fictional ❤️U festival: a festival for (new) s
   - [Installation (development environment)](#installation-development-environment)
   - [Installation (PWA on a mobile device)](#installation-pwa-on-a-mobile-device)
   - [Project Structure](#project-structure)
+  - [Internationalization](#internationalization)
+    - [Determening the preferred language](#determening-the-preferred-language)
+    - [Translating using a React hook](#translating-using-a-react-hook)
+    - [Defining messages](#defining-messages)
 
 ## Getting Started
 
@@ -97,4 +101,71 @@ m8.1-pwa/
 │ ├── i18n/ # Functions and messages for i18n
 └─└── styles/ # CSS/SCSS Files
 
+```
+
+## Internationalization
+
+This app is bilingual (Dutch and English). To achieve this, I've made my own custom React hooks.
+
+### Determening the preferred language
+
+A middleware function runs on every page request. This function determines the preferred language of the user based on the `accept-language` header and sets the best matching language as a cookie.
+
+### Translating using a React hook
+
+To change all texts on the page to a new language without a full reload, you will need some kind of client-side component that returns the text based on the current language.
+
+The hook returns a function, which accepts an object with entries for all locales and returns the locale for the current language. The hook looks like this:
+
+```ts
+export const useTranslations = () => {
+  const { language } = useLanguage();
+
+  return (path: Record<Locale, string | null>): string => {
+    return language ? path[language] ?? "" : "";
+  };
+};
+```
+
+The function call would look something like this:
+
+```ts
+const t = useTranslations();
+
+console.log(
+  t({
+    en: "Hello World!",
+    nl: "Hallo Wereld!",
+  })
+);
+```
+
+### Defining messages
+
+To keep everything type-safe, I'm storing all messages inside of a constant `messages` TypeScript object. The type looks something like this:
+
+```ts
+// To achieve the best possible type safety, each 'leaf' of must provide a translation for every supported locale
+export type LocalizedString = Record<Locale, string>;
+
+// The branches of the tree, to support nested objects
+type LocalizedTree = {
+  [key: string]: LocalizedString | LocalizedTree | LocalizedTree[];
+};
+```
+
+I can get the translated version of the message easily with a function call like this:
+
+```ts
+
+const messages: LocalizedTree = {
+   global: {
+      heading: {
+          en: "Hello World!",
+          nl: "Hallo Wereld!",
+      }
+   }
+}
+
+console.log(t({ messages.global.heading }))
 ```
