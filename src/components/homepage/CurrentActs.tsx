@@ -23,7 +23,7 @@ export default function CurrentActs({
 
   return (
     <motion.div
-      className="w-full gap-2 flex flex-col"
+      className="w-full gap-2 flex flex-col overflow-hidden"
       variants={containerVars}
       initial="hidden"
       animate="show"
