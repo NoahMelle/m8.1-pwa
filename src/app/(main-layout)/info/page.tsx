@@ -16,7 +16,7 @@ export default async function Info() {
       <p>
         <Translated message={messages.info.subHeading} />
       </p>
-      <div className="text-sm grid grid-cols-2 gap-2 grid-rows-[1fr_1fr] text-white">
+      <div className="text-sm grid grid-cols-2 gap-2 grid-rows-2 md:grid-rows-1 md:grid-cols-3 text-white">
         <InfoCard Icon={MapPin} className="bg-blue">
           Strijkviertel, Utrecht
         </InfoCard>
@@ -24,7 +24,10 @@ export default async function Info() {
           Strijkviertelweg, Utrecht
         </InfoCard>
 
-        <InfoCard Icon={Calendar} className="bg-red col-span-full aspect-auto">
+        <InfoCard
+          Icon={Calendar}
+          className="bg-red col-span-full md:col-span-1 aspect-auto"
+        >
           <Translated message={messages.info.general.date} />
         </InfoCard>
       </div>
