@@ -171,19 +171,3 @@ export async function getArticleById(id: number) {
     .where(eq(articlesTable.id, id))
     .limit(1);
 }
-
-export async function getLatestUrgentArticle() {
-  return await db
-    .select({
-      id: articlesTable.id,
-      createdAt: articlesTable.createdAt,
-      title: {
-        en: articlesTable.englishTitle,
-        nl: articlesTable.dutchTitle,
-      },
-    })
-    .from(articlesTable)
-    .where(eq(articlesTable.urgence, true))
-    .orderBy(desc(articlesTable.createdAt))
-    .limit(1);
-}

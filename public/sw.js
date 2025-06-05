@@ -30,7 +30,6 @@ const cacheClone = async (e) => {
         }
     }
 
-
     let res;
     try {
         res = await fetch(e.request);
