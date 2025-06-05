@@ -15,6 +15,7 @@
     "@t3-oss/env-core": "^0.13.4",
     "@types/jest": "^29.5.14",
     "@types/negotiator": "^0.6.3",
+    "@types/web-push": "^3.6.4",
     "clsx": "^2.1.1",
     "cookies-next": "^5.1.0",
     "dayjs": "^1.11.13",
@@ -33,6 +34,7 @@
     "sass": "^1.87.0",
     "tailwind-merge": "^3.2.0",
     "ts-jest": "^29.3.2",
+    "web-push": "^3.6.7",
     "zod": "^3.24.4"
   },
   "devDependencies": {
