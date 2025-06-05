@@ -5,6 +5,8 @@ const excludedRoutes = [
 ]
 
 const isExcluded = (request) => {
+
+
     const url = new URL(request.url);
 
     if (request.method !== 'GET') return true;
@@ -33,6 +35,10 @@ const cacheClone = async (e) => {
     try {
         res = await fetch(e.request);
     } catch {
+        const cachedResponse = await caches.match(e.request);
+        if (cachedResponse) {
+            return cachedResponse;
+        }
         if (e.request.mode === 'navigate') {
             try {
                 return await fetch("/~offline");
