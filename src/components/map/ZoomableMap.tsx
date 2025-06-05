@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import {
+  KeepScale,
   ReactZoomPanPinchRef,
   TransformComponent,
   TransformWrapper,
@@ -14,7 +15,16 @@ import { AnimatePresence } from "motion/react";
 import UserLocationMarker from "./UserLocationMarker";
 import Loading from "./Loading";
 import Marker, { MarkerProps } from "./Marker";
-import { IceCream, Lock, Martini, Shirt, Utensils } from "lucide-react";
+import {
+  IceCream,
+  Lock,
+  Martini,
+  ShieldPlus,
+  Shirt,
+  Toilet,
+  Utensils,
+} from "lucide-react";
+import Legend from "./Legend";
 
 export default function ZoomableMap({ stages }: { stages: StageType[] }) {
   const [scale, setScale] = useState(1);
@@ -32,6 +42,20 @@ export default function ZoomableMap({ stages }: { stages: StageType[] }) {
       position: {
         xPosition: 15,
         yPosition: 17,
+      },
+    },
+    {
+      Icon: Toilet,
+      position: {
+        xPosition: 25,
+        yPosition: 7,
+      },
+    },
+    {
+      Icon: Toilet,
+      position: {
+        xPosition: 27,
+        yPosition: 51,
       },
     },
     {
@@ -145,6 +169,19 @@ export default function ZoomableMap({ stages }: { stages: StageType[] }) {
             {markers.map((marker, index) => (
               <Marker key={index} {...marker} scale={scale} />
             ))}
+            <KeepScale
+              style={{
+                left: `30.5%`,
+                top: `82%`,
+              }}
+              className={`absolute -translate-1/2 z-[1] ${
+                scale > 2 ? "block" : "hidden"
+              }`}
+            >
+              <div className="h-6 w-6 flex items-center justify-center rounded-full bg-green border-green-900 border-2">
+                <ShieldPlus height={12} width={12} color="white" />
+              </div>
+            </KeepScale>
             {stages.map((stage) => (
               <MapLocation
                 key={stage.name}
@@ -174,6 +211,7 @@ export default function ZoomableMap({ stages }: { stages: StageType[] }) {
           />
         )}
       </AnimatePresence>
+      <Legend />
     </div>
   );
 }

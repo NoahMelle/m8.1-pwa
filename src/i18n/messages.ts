@@ -82,6 +82,10 @@ Met dit gouden armbandje kunnen ze tijdens het festival gebruik maken van de gou
     },
   },
   map: {
+    legend: {
+      en: "Legend",
+      nl: "Legenda",
+    },
     popup: {
       currentAct: {
         nl: "Huidige act",
