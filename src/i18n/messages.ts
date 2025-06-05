@@ -101,4 +101,22 @@ Met dit gouden armbandje kunnen ze tijdens het festival gebruik maken van de gou
       },
     },
   },
+  install: {
+    heading: {
+      en: "Install App",
+      nl: "Installeer App",
+    },
+    noPrompt: {
+      en: "Installation prompt not available. Please try again later.",
+      nl: "Installatie prompt niet beschikbaar. Probeer het later opnieuw.",
+    },
+    iosPrompt: {
+      en: 'To install this app on your iOS device, tap the share button and then "Add to Home Screen".',
+      nl: 'Klik op de shareknop en "Add to Home Screen", om de app te installeren op een iOS device.',
+    },
+    homescreen: {
+      nl: "Voeg toe aan homescreen",
+      en: "Add to homescreen",
+    },
+  },
 } as const satisfies LocalizedTree;
