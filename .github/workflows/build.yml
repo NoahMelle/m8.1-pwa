@@ -22,6 +22,19 @@ jobs:
 
       - run: bun run build
 
+      - name: "Create env file"
+        run: |
+          touch .env
+          echo "DATABASE_URL=${DATABASE_URL}" >> .env
+          echo "NEXT_PUBLIC_VAPID_PUBLIC_KEY=${NEXT_PUBLIC_VAPID_PUBLIC_KEY}" >> .env
+          echo "VAPID_PRIVATE_KEY=${VAPID_PRIVATE_KEY}" >> .env
+
+          cat .env
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          NEXT_PUBLIC_VAPID_PUBLIC_KEY: ${{ secrets.NEXT_PUBLIC_VAPID_PUBLIC_KEY }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+
       - name: Sync build to remote
         if: ${{ success() }}
         uses: burnett01/rsync-deployments@7.0.2
