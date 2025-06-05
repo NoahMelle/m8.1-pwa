@@ -1,13 +1,21 @@
 const cacheName = 'v1'
 const excludedRoutes = [
     "/api",
+    "__nextjs_original-stack-frames"
 ]
 
-const cacheClone = async (e) => {
-    const url = new URL(e.request.url);
+const isExcluded = (request) => {
 
-    // Prevent caching for excluded routes
-    if (excludedRoutes.some(route => url.pathname.startsWith(route))) {
+
+    const url = new URL(request.url);
+
+    if (request.method !== 'GET') return true;
+
+    return excludedRoutes.some(route => url.pathname.startsWith(route));
+}
+
+const cacheClone = async (e) => {
+    if (isExcluded(e.request)) {
         try {
             return await fetch(e.request);
         } catch {
@@ -22,13 +30,34 @@ const cacheClone = async (e) => {
         }
     }
 
-    const res = await fetch(e.request);
 
-    const resClone = res.clone()
+    let res;
+    try {
+        res = await fetch(e.request);
+    } catch {
+        const cachedResponse = await caches.match(e.request);
+        if (cachedResponse) {
+            return cachedResponse;
+        }
+        if (e.request.mode === 'navigate') {
+            try {
+                return await fetch("/~offline");
+            } catch {
+                return new Response('Network error', { status: 408 });
+            }
+        }
+        return new Response('Network error', { status: 408 });
+    }
 
-    const cache = await caches.open(cacheName)
-    await cache.put(e.request, resClone)
-    return res
+    if (!res || !(res instanceof Response)) {
+        return new Response('Network error', { status: 408 });
+    }
+
+    const resClone = res.clone();
+
+    const cache = await caches.open(cacheName);
+    await cache.put(e.request, resClone);
+    return res;
 }
 
 const installEvent = () => {

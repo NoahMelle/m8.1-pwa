@@ -6,6 +6,7 @@ import {
   LucideIcon,
   Martini,
   Plus,
+  ShieldPlus,
   Shirt,
   Toilet,
   Utensils,
@@ -61,7 +62,7 @@ export default function Legend() {
     },
     {
       name: "First Aid",
-      Icon: "3",
+      Icon: ShieldPlus,
     },
     {
       name: "Locker",
@@ -75,11 +76,13 @@ export default function Legend() {
         {isOpen && (
           <motion.div
             className="z-50 bg-background p-4 rounded-lg w-full shadow-lg origin-bottom"
-            initial={{ opacity: 0, y: 20, scale: 0 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0 }}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0 }}
           >
-            <h3 className="text-lg font-semibold mb-2">Legend</h3>
+            <h3 className="text-lg font-semibold mb-2">
+              {t(messages.map.legend)}
+            </h3>
             <ul className="space-y-2">
               {icons.map((icon) => (
                 <li key={icon.name} className="flex items-center space-x-2">
@@ -98,7 +101,7 @@ export default function Legend() {
         )}
       </AnimatePresence>
       <button
-        className="z-50 bg-background text-foreground px-4 h-12 flex items-center gap-2 rounded-full shadow-lg w-full  justify-between transition-colors"
+        className="z-50 bg-background active:scale-[97%] text-foreground px-4 h-12 flex items-center gap-2 rounded-full shadow-lg w-full  justify-between transition-all"
         onClick={() => setIsOpen(!isOpen)}
       >
         {t(messages.map.legend)}
