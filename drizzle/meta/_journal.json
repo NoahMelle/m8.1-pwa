@@ -78,6 +78,13 @@
       "when": 1747637794029,
       "tag": "0010_right_mandroid",
       "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "5",
+      "when": 1749145384602,
+      "tag": "0011_careless_power_man",
+      "breakpoints": true
     }
   ]
 }
