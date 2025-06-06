@@ -105,6 +105,7 @@ export default function Navbar() {
             />
           </Link>
         ))}
+        {/* Current page indicator */}
         <div className="absolute py-1 w-full h-full left-0 top-0 pointer-events-none">
           <div className="relative h-full w-full">
             <div

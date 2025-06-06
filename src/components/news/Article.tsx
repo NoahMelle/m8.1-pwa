@@ -32,7 +32,7 @@ export default function Article({ article }: { article: ArticleType }) {
         )}
       </div>
       <div className="p-2 h-full">
-        <span className="text-base mb-0 font-normal line-clamp-2 not-italic">
+        <span className="text-base mb-0 font-normal line-clamp-2">
           {t(article.title)}
         </span>
       </div>
