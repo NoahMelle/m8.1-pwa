@@ -13,7 +13,7 @@ export default function Question({ question }: { question: QuestionType }) {
           onClick={() => setIsOpen((prev) => !prev)}
           className="flex justify-between w-full py-4 text-start"
         >
-          <span className="not-italic">{question.question}</span>
+          <span>{question.question}</span>
           <Plus
             width={24}
             height={24}

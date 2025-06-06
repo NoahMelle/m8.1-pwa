@@ -72,7 +72,7 @@ export default function InstallPage() {
       {showInstallButton && (
         <button
           onClick={handleInstallClick}
-          className="bg-red max-w-[350px] active:scale-[98%] transition-transform text-white rounded-full w-fit flex justify-center p-4 items-center gap-2 not-italic font-normal"
+          className="bg-red max-w-[350px] active:scale-[98%] transition-transform text-white rounded-full w-fit flex justify-center p-4 items-center gap-2"
         >
           <Download width={20} height={20} />
           {t(messages.install.homescreen)}

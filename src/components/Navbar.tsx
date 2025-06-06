@@ -91,6 +91,7 @@ export default function Navbar() {
                 ? "text-black rounded-full active"
                 : ""
             }`}
+            aria-label={link.text}
           >
             <link.iconUrl
               width={24}
@@ -104,13 +105,14 @@ export default function Navbar() {
             />
           </Link>
         ))}
+        {/* Current page indicator */}
         <div className="absolute py-1 w-full h-full left-0 top-0 pointer-events-none">
           <div className="relative h-full w-full">
             <div
               className="absolute bg-white rounded-full transition-all duration-300 z-10 ease-in-out h-full"
               style={{
-                left: `${highlightPosition}%`,
-                width: `${highlightWidth}px`,
+                left: `${highlightPosition ?? 0}%`,
+                width: `${highlightWidth ?? 0}px`,
                 height: "100%",
               }}
             ></div>

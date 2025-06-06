@@ -29,26 +29,32 @@ export default function Act({
         }%`,
       }}
     >
-      <button
-        className="absolute w-full h-full left-0 top-0"
-        onClick={() => setHighlightedAct(act)}
-      ></button>
-      <div className="bg-red group-active:border-0 p-2 border-b-4 border-red-900/30 transition-[border_0.1s] flex flex-col h-full w-full rounded-md text-start text-nowrap truncate justify-between items-end act-block">
-        <div className="flex flex-col text-start w-full">
-          <span className="truncate">{act.title}</span>
-          <span className="text-xs truncate">
-            {formatDateToTime(act.startsAt)} - {formatDateToTime(act.endsAt)}
-          </span>
+      <div className="w-full h-full relative">
+        <button
+          className="absolute w-full h-full left-0 top-0"
+          onClick={() => setHighlightedAct(act)}
+          aria-label={`Show details for ${act.title}`}
+        ></button>
+        <div className="bg-red group-active:border-0 p-2 border-b-4 border-red-900/30 transition-[border_0.1s] flex flex-col h-full w-full rounded-md text-start text-nowrap truncate justify-between items-end act-block">
+          <div className="flex flex-col text-start w-full">
+            <span className="truncate">{act.title}</span>
+            <span className="text-xs truncate">
+              {formatDateToTime(act.startsAt)} - {formatDateToTime(act.endsAt)}
+            </span>
+          </div>
+          <button
+            onClick={() => toggleFavouriteAct(act.id)}
+            aria-label="Mark act as favourite"
+          >
+            <Star
+              className="invert-0"
+              fill={favouriteActs?.includes(act.id) ? "white" : "transparent"}
+              color="white"
+              width={20}
+              height={20}
+            />
+          </button>
         </div>
-        <button onClick={() => toggleFavouriteAct(act.id)}>
-          <Star
-            className="invert-0"
-            fill={favouriteActs?.includes(act.id) ? "white" : "transparent"}
-            color="white"
-            width={20}
-            height={20}
-          />
-        </button>
       </div>
     </div>
   );

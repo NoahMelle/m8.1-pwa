@@ -21,11 +21,14 @@ export default function MapLocation({
         top: `${stage.yPosition}%`,
       }}
       className="absolute -translate-1/2 z-[1]"
-      onClick={() => setHighlightedLocation(stage)}
     >
-      <div className="h-8 w-8 flex items-center text-white justify-center rounded-full bg-red border-red-700 dark:bg-red-700 dark:border-red-800 border-2">
+      <button
+        className="h-8 w-8 flex items-center text-white justify-center rounded-full bg-red border-red-700 dark:bg-red-700 dark:border-red-800 border-2"
+        onClick={() => setHighlightedLocation(stage)}
+        aria-label={`Show details for stage ${stage.name}`}
+      >
         {stage.id}
-      </div>
+      </button>
       <AnimatePresence>
         {scale > 3 && (
           <motion.h3
