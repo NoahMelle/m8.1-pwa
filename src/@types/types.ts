@@ -1,3 +1,4 @@
+import { LocalizedString } from "@/i18n/messages";
 import {
   getActsForDate,
   getAllArticles,
@@ -5,6 +6,7 @@ import {
   getPerformances,
   getStages,
 } from "@/lib/fetchers";
+import { LucideIcon } from "lucide-react";
 
 export interface UserLocation {
   latitude: number;
@@ -20,3 +22,9 @@ export type PerformanceWithStageType = Awaited<
 >[0];
 export type GenreType = Awaited<ReturnType<typeof getAllGenres>>[0];
 export type ArticleType = Awaited<ReturnType<typeof getAllArticles>>[0];
+export interface TransportOption {
+  id: number;
+  name: LocalizedString;
+  description: LocalizedString;
+  image: LucideIcon;
+}

@@ -71,7 +71,7 @@ export default function Legend() {
   ];
 
   return (
-    <div className="fixed bottom-18 left-0 px-2 w-full flex flex-col space-y-2 z-50">
+    <div className="fixed bottom-18 left-0 px-2 w-full flex flex-col space-y-2 z-10">
       <AnimatePresence>
         {isOpen && (
           <motion.div
