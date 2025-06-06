@@ -21,6 +21,7 @@ export default function TopBar() {
       <button
         onClick={toggleTheme}
         className="red-gradient bg-gradient-to-b text-white rounded-md w-fit flex p-2 justify-center aspect-square"
+        aria-label="Toggle color scheme"
       >
         <span className="h-6 overflow-hidden">
           <span className="dark:-translate-y-1/2 block transition-all dark:invert-0 invert">

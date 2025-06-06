@@ -16,6 +16,7 @@ export default function Article({ article }: { article: ArticleType }) {
       <Link
         href={`/news/${article.id}`}
         className="absolute h-full w-full top-0 left-0"
+        aria-label={`View content for article ${article.title}`}
       ></Link>
       <div className="h-full min-h-0 bg-foreground/10">
         {article.image ? (

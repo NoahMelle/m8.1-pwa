@@ -18,7 +18,11 @@ export default function Popup({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <button className="w-full h-full absolute" onClick={hidePopup}></button>
+      <button
+        className="w-full h-full absolute"
+        aria-label="Hide popup"
+        onClick={hidePopup}
+      ></button>
       <motion.div
         className="h-full w-full flex items-center justify-center p-4"
         initial={{
@@ -37,7 +41,7 @@ export default function Popup({
         <div className="bg-white dark:bg-neutral-900 border-white/10 border p-4 rounded-md relative z-20 w-full">
           <div className="w-full justify-between flex items-center mb-2">
             <h3 className="font-semibold text-lg">{heading}</h3>
-            <button onClick={hidePopup}>
+            <button onClick={hidePopup} aria-label="Hide popup">
               <X />
             </button>
           </div>

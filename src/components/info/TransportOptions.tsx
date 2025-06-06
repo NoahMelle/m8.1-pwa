@@ -5,13 +5,14 @@ import { useTranslations } from "@/i18n/useTranslations";
 import React, { useEffect, useState } from "react";
 import HighlightedPopup from "./HighlightedPopup";
 import { AnimatePresence } from "motion/react";
-import { ChevronDown, Info } from "lucide-react";
-import Card from "../reusable/Card";
-import { TransportOption } from "@/@types/types";
+import { ChevronDown } from "lucide-react";
+import { nanoid } from "nanoid";
+import TransportOption from "./TransportOption";
+import { TransportOptionType } from "@/@types/types";
 
 export default function TransportOptions() {
   const [highlightedOption, setHighlightedOption] =
-    useState<TransportOption | null>(null);
+    useState<TransportOptionType | null>(null);
   const [isShowingMore, setIsShowingMore] = useState(false);
   const [screenSize, setScreenSize] = useState<number | null>(null);
 
@@ -52,24 +53,11 @@ export default function TransportOptions() {
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 overflow-hidden">
         {transportOptions.map((transportOption, i) =>
           !isShowingMore && i >= mapScreenSizeToGridColumns() ? null : (
-            <Card
-              key={transportOption.id}
-              className="relative aspect-square flex flex-col justify-between"
-            >
-              <div className="w-full justify-end flex">
-                <button onClick={() => setHighlightedOption(transportOption)}>
-                  <Info height={24} width={24} />
-                </button>
-              </div>{" "}
-              <div className="absolute pointer-events-none w-full h-full top-1/2 left-1/2 -translate-1/2 flex items-center justify-center">
-                <transportOption.image
-                  width={64}
-                  height={64}
-                  strokeWidth={1.5}
-                />
-              </div>
-              <h3>{t(transportOption.name)}</h3>
-            </Card>
+            <TransportOption
+              key={nanoid()}
+              transportOption={transportOption}
+              setHighlightedOption={setHighlightedOption}
+            />
           )
         )}
       </div>

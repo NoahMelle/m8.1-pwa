@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { TransportOption } from "@/@types/types";
+import { TransportOptionType } from "@/@types/types";
 import { useTranslations } from "@/i18n/useTranslations";
 import Popup from "../reusable/Popup";
 
@@ -7,8 +7,8 @@ export default function HighlightedPopup({
   option,
   setIsShowing,
 }: {
-  option: TransportOption;
-  setIsShowing: Dispatch<SetStateAction<TransportOption | null>>;
+  option: TransportOptionType;
+  setIsShowing: Dispatch<SetStateAction<TransportOptionType | null>>;
 }) {
   const t = useTranslations();
 

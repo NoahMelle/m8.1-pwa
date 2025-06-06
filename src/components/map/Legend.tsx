@@ -102,7 +102,8 @@ export default function Legend() {
       </AnimatePresence>
       <button
         className="z-50 bg-background text-foreground px-4 h-12 flex items-center gap-2 rounded-full shadow-lg w-full  justify-between transition-all"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => setIsOpen((prev) => !prev)}
+        aria-label="Toggle legend"
       >
         {t(messages.map.legend)}
         <Plus className={`${isOpen ? "rotate-45" : ""} transition-transform`} />

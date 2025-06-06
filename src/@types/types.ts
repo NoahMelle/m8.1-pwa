@@ -22,7 +22,7 @@ export type PerformanceWithStageType = Awaited<
 >[0];
 export type GenreType = Awaited<ReturnType<typeof getAllGenres>>[0];
 export type ArticleType = Awaited<ReturnType<typeof getAllArticles>>[0];
-export interface TransportOption {
+export interface TransportOptionType {
   id: number;
   name: LocalizedString;
   description: LocalizedString;

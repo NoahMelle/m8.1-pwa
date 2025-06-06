@@ -57,7 +57,10 @@ export default function ActPopup({
               </div>
             </div>
             {favouriteActs && (
-              <button onClick={() => toggleFavouriteAct(act.id)}>
+              <button
+                onClick={() => toggleFavouriteAct(act.id)}
+                aria-label="Mark act as favourite"
+              >
                 <Star
                   fill={
                     favouriteActs?.includes(act.id) ? "white" : "transparent"

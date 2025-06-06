@@ -1,4 +1,4 @@
-import { TransportOption } from "@/@types/types";
+import { TransportOptionType } from "@/@types/types";
 import { Locale } from "./settings";
 import { Bike, Bus, Car, CarTaxiFront, Ticket } from "lucide-react";
 
@@ -127,7 +127,7 @@ Met dit gouden armbandje kunnen ze tijdens het festival gebruik maken van de gou
   },
 } as const satisfies LocalizedTree;
 
-export const transportOptions: TransportOption[] = [
+export const transportOptions: TransportOptionType[] = [
   {
     id: 0,
     name: {

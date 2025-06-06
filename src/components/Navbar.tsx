@@ -91,6 +91,7 @@ export default function Navbar() {
                 ? "text-black rounded-full active"
                 : ""
             }`}
+            aria-label={link.text}
           >
             <link.iconUrl
               width={24}
