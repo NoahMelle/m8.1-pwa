@@ -38,14 +38,16 @@ export default function Popup({
           duration: 0.2,
         }}
       >
-        <div className="bg-white dark:bg-neutral-900 border-white/10 border p-4 rounded-md relative z-20 w-full">
+        <div className="bg-white dark:bg-neutral-900 border-white/10 border p-4 rounded-md relative z-20 w-full max-w-[400px] max-h-full overflow-hidden flex flex-col">
           <div className="w-full justify-between flex items-center mb-2">
             <h3 className="font-semibold text-lg">{heading}</h3>
             <button onClick={hidePopup} aria-label="Hide popup">
               <X />
             </button>
           </div>
-          {children}
+          <div className="h-full overflow-y-auto min-h-0">
+            <div>{children}</div>
+          </div>
         </div>
       </motion.div>
     </motion.div>
