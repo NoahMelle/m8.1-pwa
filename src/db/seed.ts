@@ -597,7 +597,23 @@ async function main() {
       columns: {
         dutchTitle: f.loremIpsum({ sentencesCount: 1 }),
         englishTitle: f.loremIpsum({ sentencesCount: 1 }),
-        image: f.default({ defaultValue: undefined }),
+        image: f.valuesFromArray({
+          values: [
+            {
+              values: [undefined],
+              weight: 0.5,
+            },
+            {
+              values: [
+                "/img/stages/hangar.png",
+                "/img/stages/poton.png",
+                "/img/stages/the-club.png",
+                "/img/stages/the-lake.png",
+              ],
+              weight: 0.5,
+            },
+          ],
+        }),
 
         englishContent: f.loremIpsum(),
         dutchContent: f.loremIpsum(),

@@ -117,71 +117,9 @@ body {
   display: flex;
   flex-direction: column;
 
+  transition: background 0.2s, color 0.2s;
+
   @apply leading-tight;
-}
-
-.gradient-background {
-  background: radial-gradient(
-      circle at top right,
-      var(--color-red-500),
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at bottom left,
-      var(--color-red-500),
-      transparent 50%
-    );
-  background-size: 150% 150%;
-  background-attachment: fixed;
-
-  animation: moveCorners 10s ease-in-out infinite alternate;
-}
-
-@keyframes moveCorners {
-  0% {
-    background-size: 150% 150%;
-    background-position: 0% 0%;
-  }
-  10% {
-    background-size: 200% 200%;
-    background-position: 20% 40%;
-  }
-  20% {
-    background-size: 200% 200%;
-    background-position: 40% 20%;
-  }
-  30% {
-    background-size: 200% 200%;
-    background-position: 60% 40%;
-  }
-  40% {
-    background-size: 200% 200%;
-    background-position: 80% 20%;
-  }
-  50% {
-    background-size: 200% 200%;
-    background-position: 100% 0%;
-  }
-  60% {
-    background-size: 200% 200%;
-    background-position: 80% 20%;
-  }
-  70% {
-    background-size: 150% 100%;
-    background-position: 60% 40%;
-  }
-  80% {
-    background-size: 200% 200%;
-    background-position: 40% 20%;
-  }
-  90% {
-    background-size: 200% 200%;
-    background-position: 20% 40%;
-  }
-  100% {
-    background-size: 200% 200%;
-    background-position: 0% 0%;
-  }
 }
 
 /* Disable double-tap to zoom */

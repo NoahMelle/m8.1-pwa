@@ -14,19 +14,19 @@ export default function TransportOption({
   const t = useTranslations();
 
   return (
-    <Card className="relative aspect-square flex flex-col justify-between">
-      <div className="w-full justify-end flex">
-        <button
-          onClick={() => setHighlightedOption(transportOption)}
-          aria-label="Show info for transport option"
-        >
+    <Card className="relative aspect-square flex flex-col justify-between active:scale-[97%] transition-transform">
+      <button
+        onClick={() => setHighlightedOption(transportOption)}
+        className="h-full w-full flex flex-col justify-between items-start"
+      >
+        <span className="w-full justify-end flex">
           <Info height={24} width={24} />
-        </button>
-      </div>{" "}
-      <div className="absolute pointer-events-none w-full h-full top-1/2 left-1/2 -translate-1/2 flex items-center justify-center">
-        <transportOption.image width={64} height={64} strokeWidth={1.5} />
-      </div>
-      <h3>{t(transportOption.name)}</h3>
+        </span>{" "}
+        <span>{t(transportOption.name)}</span>
+        <span className="absolute pointer-events-none w-full h-full top-1/2 left-1/2 -translate-1/2 flex items-center justify-center">
+          <transportOption.image width={64} height={64} strokeWidth={1.5} />
+        </span>
+      </button>
     </Card>
   );
 }

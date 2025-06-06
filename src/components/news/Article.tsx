@@ -12,30 +12,27 @@ export default function Article({ article }: { article: ArticleType }) {
   const t = useTranslations();
 
   return (
-    <Card className="relative items-center aspect-[3/4] shrink-0 w-[200px] grid grid-cols-1 grid-rows-[3fr_1fr] overflow-hidden p-0">
-      <Link
-        href={`/news/${article.id}`}
-        className="absolute h-full w-full top-0 left-0"
-        aria-label={`View content for article ${article.title}`}
-      ></Link>
-      <div className="h-full min-h-0 bg-foreground/10">
-        {article.image ? (
-          <Image
-            src={article.image}
-            alt="Article Image"
-            height={200}
-            width={200}
-            className="object-cover rounded-sm h-full"
-          />
-        ) : (
-          <Logo height={200} width={200} className="object-cover h-full" />
-        )}
-      </div>
-      <div className="p-2 h-full">
-        <span className="text-base mb-0 font-normal line-clamp-2">
-          {t(article.title)}
+    <Card className="shrink-0 w-[200px] p-0 overflow-hidden">
+      <Link href={`/news/${article.id}`} className="block h-full">
+        <span className="w-full block min-h-0 bg-foreground/10 aspect-square">
+          {article.image ? (
+            <Image
+              src={article.image}
+              alt="Article Image"
+              height={200}
+              width={200}
+              className="object-cover rounded-sm h-full"
+            />
+          ) : (
+            <Logo height={200} width={200} className="object-cover h-full" />
+          )}
         </span>
-      </div>
+        <span className="overflow-hidden p-4 block">
+          <span className="text-base mb-0 font-normal h-fit line-clamp-2 overflow-hidden break-all">
+            {t(article.title)}
+          </span>
+        </span>
+      </Link>
     </Card>
   );
 }

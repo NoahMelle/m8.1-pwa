@@ -3,7 +3,7 @@ import "@/styles/globals.css";
 import "@/styles/app.scss";
 import { cookies } from "next/headers";
 import Navbar from "@/components/Navbar";
-import TopBar from "@/components/TopBar";
+import TopBar from "@/components/global/TopBar";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { getLocaleFromCookies } from "@/i18n/helpers";
 import { ThemeProvider } from "@/context/ThemeContext";

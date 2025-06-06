@@ -111,8 +111,8 @@ export default function Navbar() {
             <div
               className="absolute bg-white rounded-full transition-all duration-300 z-10 ease-in-out h-full"
               style={{
-                left: `${highlightPosition}%`,
-                width: `${highlightWidth}px`,
+                left: `${highlightPosition ?? 0}%`,
+                width: `${highlightWidth ?? 0}px`,
                 height: "100%",
               }}
             ></div>

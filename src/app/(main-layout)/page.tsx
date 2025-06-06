@@ -49,7 +49,7 @@ export default async function Home() {
           </h2>
           <Link
             href={"/timetable"}
-            className="bg-blue active:scale-[98%] transition-transform flex gap-1 items-center justify-center px-4 rounded-full text-white"
+            className="bg-blue active:bg-blue-600 transition-colors flex gap-1 items-center justify-center px-4 rounded-full text-white"
           >
             Timetable
             <ArrowUpRight width={20} height={20} />
