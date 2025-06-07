@@ -1,8 +1,7 @@
 import { PerformanceWithStageType } from "@/@types/types";
-import { getDatePercent } from "@/lib/dateUtils";
+import { formatDateToTime, getDatePercent } from "@/lib/dateUtils";
 import React, { Dispatch, SetStateAction } from "react";
 import { useTimetable } from "./TimetableContext";
-import { formatDateToTime } from "@/lib/utils";
 import { Star } from "lucide-react";
 
 export default function Act({
@@ -13,7 +12,6 @@ export default function Act({
   setHighlightedAct: Dispatch<SetStateAction<PerformanceWithStageType | null>>;
 }) {
   const { favouriteActs, toggleFavouriteAct } = useTimetable();
-
   return (
     <div
       key={act.id}

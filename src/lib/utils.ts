@@ -9,16 +9,6 @@ export function isTheme(value: string): value is Theme {
   return (themes as readonly string[]).includes(value);
 }
 
-/**
- * Formats a date to time only (excluding seconds)
- * @param date The date you want to format
- */
-export function formatDateToTime(date: Date) {
-  const hours = date.getUTCHours().toString().padStart(2, "0");
-  const minutes = date.getUTCMinutes().toString().padStart(2, "0");
-  return `${hours}:${minutes}`;
-}
-
 export function groupPerformancesByStage(
   acts: PerformanceWithStageType[],
   stages: StageType[]

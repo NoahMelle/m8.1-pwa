@@ -1,11 +1,11 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { PerformanceWithStageType } from "@/@types/types";
 import Image from "next/image";
-import { formatDateToTime } from "@/lib/utils";
 import { useTranslations } from "@/i18n/useTranslations";
 import { useTimetable } from "./TimetableContext";
 import { Star } from "lucide-react";
 import Popup from "../reusable/Popup";
+import { formatDateToTime } from "@/lib/dateUtils";
 
 export default function ActPopup({
   act,
