@@ -14,6 +14,14 @@ export const messages = {
       en: "Loading",
       nl: "Aan het laden",
     },
+    startsAt: {
+      en: "Starts at",
+      nl: "Start om",
+    },
+    endsAt: {
+      en: "Ends at",
+      nl: "Eindigt om",
+    },
     placedAt: {
       en: "Placed at",
       nl: "Geplaatst op",
