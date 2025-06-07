@@ -47,22 +47,28 @@ Ensure you have the following installed before proceeding:
     cp .env.example .env
    ```
 
-4. Fill in the database url in the `.env` file with your own password and database name
-5. Migrate the database:
+4. Generate private/public VAPID keys:
+   ```bash
+   bunx web-push generate-vapid-keys
+   ```
+5. Fill in the `.env` file:
+   1. Fill in the database url with your own password and database name
+   2. Fill in the VAPID keys with the keys generated in step 4
+6. Migrate the database:
    ```
    bunx drizzle-kit migrate
    ```
-6. Seed the database:
+7. Seed the database:
    ```
    bun ./src/db/seed.ts
    ```
-7. Run the dev server:
+8. Run the dev server:
 
-   ```
-   bun run dev
-   ```
+```
+bun run dev
+```
 
-8. Visit http://localhost:3000 to view the site! 🚀\*
+10. Visit http://localhost:3000 to view the site! 🚀\*
 
 \*_Tip: use your browser's responsive development tools to simulate the dimensions of a mobile device_
 
