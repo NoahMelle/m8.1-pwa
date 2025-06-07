@@ -1,11 +1,19 @@
 import React from "react";
+import { twMerge } from "tailwind-merge";
 
-export default function Spinner() {
+export default function Spinner({
+  className,
+  ...props
+}: React.SVGProps<SVGSVGElement>) {
   return (
     <div role="status">
       <svg
+        {...props}
         aria-hidden="true"
-        className="w-8 h-8 text-white animate-spin dark:text-white fill-black"
+        className={twMerge(
+          "w-8 h-8 text-neutral-400 dark:text-neutral-500 animate-spin fill-black",
+          className
+        )}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

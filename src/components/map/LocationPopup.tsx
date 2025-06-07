@@ -7,6 +7,7 @@ import { messages } from "@/i18n/messages";
 import LocationPopupCard from "./LocationPopupCard";
 import Image from "next/image";
 import Popup from "../reusable/Popup";
+import Spinner from "../reusable/Spinner";
 
 export default function LocationPopup({
   stage,
@@ -16,23 +17,19 @@ export default function LocationPopup({
   setIsShowing: Dispatch<SetStateAction<StageType | null>>;
 }) {
   const [nextAct, setNextAct] = useState<PerformanceType | null | undefined>(
-    null
+    undefined
   );
   const [currentAct, setCurrentAct] = useState<
     PerformanceType | null | undefined
-  >(null);
+  >(undefined);
   const t = useTranslations();
 
   useEffect(() => {
     getNextActForStage(stage.id).then((data) => {
-      if (data) {
-        setNextAct(data);
-      }
+      setNextAct(data);
     });
     getCurrentActForStage(stage.id).then((data) => {
-      if (data) {
-        setCurrentAct(data);
-      }
+      setCurrentAct(data);
     });
   }, [stage]);
 
@@ -61,8 +58,12 @@ export default function LocationPopup({
                 </p>
               </div>
             </>
-          ) : (
+          ) : currentAct === null ? (
             <p>{t(messages.map.popup.noCurrent)}</p>
+          ) : (
+            <div className="h-full w-full flex items-center justify-center">
+              <Spinner />
+            </div>
           )}
         </LocationPopupCard>
         <LocationPopupCard
@@ -90,10 +91,14 @@ export default function LocationPopup({
                 </div>
               </div>
             </>
-          ) : (
+          ) : currentAct === null ? (
             <>
               <p>{t(messages.map.popup.noNextAct)}</p>
             </>
+          ) : (
+            <div className="h-full w-full flex items-center justify-center">
+              <Spinner />
+            </div>
           )}
         </LocationPopupCard>
       </div>
