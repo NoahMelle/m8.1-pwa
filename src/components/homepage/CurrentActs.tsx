@@ -1,18 +1,12 @@
 "use client";
 
-import { PerformanceType, StageType } from "@/@types/types";
+import { StageType } from "@/@types/types";
 import React from "react";
 import CurrentAct from "./CurrentAct";
 import { nanoid } from "nanoid";
 import { motion } from "motion/react";
 
-export default function CurrentActs({
-  stages,
-  currentlyPlaying,
-}: {
-  stages: StageType[];
-  currentlyPlaying: (PerformanceType | null)[];
-}) {
+export default function CurrentActs({ stages }: { stages: StageType[] }) {
   const containerVars = {
     show: {
       transition: {
@@ -28,12 +22,8 @@ export default function CurrentActs({
       initial="hidden"
       animate="show"
     >
-      {stages.map((stage, index) => (
-        <CurrentAct
-          key={nanoid()}
-          stage={stage}
-          currentlyPlaying={currentlyPlaying[index]}
-        />
+      {stages.map((stage) => (
+        <CurrentAct key={nanoid()} stage={stage} />
       ))}
     </motion.div>
   );

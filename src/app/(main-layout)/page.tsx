@@ -2,11 +2,7 @@ import CurrentActs from "@/components/homepage/CurrentActs";
 import Article from "@/components/news/Article";
 import Translated from "@/components/reusable/Translated";
 import { messages } from "@/i18n/messages";
-import {
-  getAllArticles,
-  getCurrentActForStage,
-  getStages,
-} from "@/lib/fetchers";
+import { getAllArticles, getStages } from "@/lib/fetchers";
 import { nanoid } from "nanoid";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
@@ -15,10 +11,6 @@ export default async function Home() {
   const articles = await getAllArticles();
 
   const stages = await getStages();
-
-  const currentlyPlaying = await Promise.all(
-    stages.map((stage) => getCurrentActForStage(stage.id))
-  );
 
   return (
     <>
@@ -55,7 +47,7 @@ export default async function Home() {
             <ArrowUpRight width={20} height={20} />
           </Link>
         </div>
-        <CurrentActs stages={stages} currentlyPlaying={currentlyPlaying} />
+        <CurrentActs stages={stages} />
       </section>
     </>
   );

@@ -9,21 +9,19 @@ import dayjs from "dayjs";
 import "dotenv/config";
 import * as schema from "./schemas/index";
 import { drizzle } from "drizzle-orm/mysql2";
-import utc from "dayjs/plugin/utc";
 import { genresToPerformancesTable } from "./schemas/genresToPerformances";
 
 function constructDateWithTime(
   date: "saturday" | "sunday",
   time: { hour: number; minute: number }
 ): Date {
-  dayjs.extend(utc);
-
-  const day = dayjs
-    .utc(date === "saturday" ? "2025-09-06" : "2025-09-07")
+  const baseDate = date === "saturday" ? "2025-09-06" : "2025-09-07";
+  const day = dayjs(baseDate)
     .hour(time.hour)
     .minute(time.minute)
     .second(0)
     .millisecond(0);
+
   return day.toDate();
 }
 

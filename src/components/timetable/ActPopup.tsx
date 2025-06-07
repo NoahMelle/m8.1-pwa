@@ -1,11 +1,12 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { PerformanceWithStageType } from "@/@types/types";
 import Image from "next/image";
-import { formatDateToTime } from "@/lib/utils";
 import { useTranslations } from "@/i18n/useTranslations";
 import { useTimetable } from "./TimetableContext";
 import { Star } from "lucide-react";
 import Popup from "../reusable/Popup";
+import { formatDateToTime } from "@/lib/dateUtils";
+import { messages } from "@/i18n/messages";
 
 export default function ActPopup({
   act,
@@ -38,19 +39,19 @@ export default function ActPopup({
           {act.imageUrl && (
             <Image
               src={act.imageUrl}
-              width={0}
-              height={0}
+              width={80}
+              height={80}
               alt={act.title}
-              className="object-cover aspect-square rounded-full h-20 w-20 "
+              className="object-cover rounded-full shrink-0 h-20 w-20"
               sizes="100%"
             />
           )}
           <div className="grow justify-between items-start flex">
             <div className="flex gap-4">
               <div className="grid grid-cols-[min-content_1fr] gap-x-4 h-fit">
-                <p className="text-nowrap">Starts at: </p>
+                <p className="text-nowrap">{t(messages.global.startsAt)}: </p>
                 <p>{formatDateToTime(act.startsAt)}</p>
-                <p className="text-nowrap">Ends at: </p>
+                <p className="text-nowrap">{t(messages.global.endsAt)}: </p>
                 <p>{formatDateToTime(act.endsAt)}</p>
                 <p className="text-nowrap">Stage:</p>
                 <p>{act.stage?.name}</p>

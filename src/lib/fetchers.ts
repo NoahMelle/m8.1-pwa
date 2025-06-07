@@ -8,7 +8,6 @@ import {
   stagesTable,
 } from "@/db/schemas";
 import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
 import { and, desc, eq, gte, lt, lte } from "drizzle-orm";
 import { groupPerformancesByStage } from "./utils";
 import { formatDatabaseEntryToLocales } from "@/i18n/helpers";
@@ -53,13 +52,15 @@ export async function getNextActForStage(stageId: number) {
 }
 
 export async function getCurrentActForStage(stageId: number) {
+  const now = new Date();
+
   const currentAct = await db
     .select()
     .from(performancesTable)
     .where(
       and(
-        gte(performancesTable.endsAt, new Date()),
-        lt(performancesTable.startsAt, new Date()),
+        gte(performancesTable.endsAt, now),
+        lt(performancesTable.startsAt, now),
         eq(performancesTable.stageId, stageId)
       )
     )
@@ -70,8 +71,7 @@ export async function getCurrentActForStage(stageId: number) {
 }
 
 export async function getActsForDate(date: "saturday" | "sunday") {
-  dayjs.extend(utc);
-  const day = dayjs.utc(date === "saturday" ? "2025-09-06" : "2025-09-07");
+  const day = dayjs(date === "saturday" ? "2025-09-06" : "2025-09-07");
 
   const startOfDay = day.startOf("day").toDate();
   const endOfDay = day.endOf("day").toDate();

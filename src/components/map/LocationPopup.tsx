@@ -1,13 +1,13 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { PerformanceType, StageType } from "@/@types/types";
 import { getCurrentActForStage, getNextActForStage } from "@/lib/fetchers";
-import { formatDateToTime } from "@/lib/utils";
 import { useTranslations } from "@/i18n/useTranslations";
 import { messages } from "@/i18n/messages";
 import LocationPopupCard from "./LocationPopupCard";
 import Image from "next/image";
 import Popup from "../reusable/Popup";
 import Spinner from "../reusable/Spinner";
+import { formatDateToTime } from "@/lib/dateUtils";
 
 export default function LocationPopup({
   stage,
