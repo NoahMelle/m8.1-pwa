@@ -1,7 +1,7 @@
 module.exports = {
   apps : [
 	          {
-            name: "LoveU Festival",
+            name: "loveu_festival",
             script: "bun",
             args: "run start",
             env: {
