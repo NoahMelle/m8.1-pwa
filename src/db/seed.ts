@@ -252,7 +252,7 @@ async function main() {
   const potonPerformances: PerformanceInsertType = [
     {
       title: "Armin van Buuren",
-      dutchDescription: `Five-time “World's No. 1 DJ” and trance icon, Armin delivers euphoric, high-energy sets that have headlined festivals from Tomorrowland to Ultra. His uplifting melodies and impeccable mixing keep crowds dancing for hours.`,
+      dutchDescription: `Armin, vijfvoudig 's werelds nummer 1 dj en trance-icoon, levert euforische, energieke sets die headliner waren op festivals van Tomorrowland tot Ultra. Zijn opzwepende melodieën en onberispelijke mix zorgen ervoor dat het publiek urenlang kan dansen.`,
       englishDescription: `Five-time “World's No. 1 DJ” and trance icon, Armin delivers euphoric, high-energy sets that have headlined festivals from Tomorrowland to Ultra. His uplifting melodies and impeccable mixing keep crowds dancing for hours.`,
       stageId: stageIds.poton,
       imageUrl: "/img/acts/armin_van_buuren.png",
@@ -263,7 +263,7 @@ async function main() {
     },
     {
       title: "Kensington",
-      dutchDescription: `Rotterdam-born indie rock quintet known for soaring choruses and driving guitar riffs. Hits like “Streets” and “Riddles” showcase their knack for arena-ready hooks and emotionally charged lyricism.`,
+      dutchDescription: `Het in Rotterdam geboren indierockkwintet staat bekend om zijn meeslepende refreinen en opzwepende gitaarriffs. Hits als "Streets" en "Riddles" tonen hun talent voor arenaklare hooks en emotioneel geladen teksten.`,
       englishDescription: `Rotterdam-born indie rock quintet known for soaring choruses and driving guitar riffs. Hits like “Streets” and “Riddles” showcase their knack for arena-ready hooks and emotionally charged lyricism.`,
       videoUrl: "https://www.youtube.com/embed/IH77eOyV95o?si=F0AFd5Ub6cgQueMC",
       stageId: stageIds.poton,
@@ -275,7 +275,7 @@ async function main() {
 
     {
       title: "De Staat",
-      dutchDescription: `Experimental rock outfit from Nijmegen, blending funky grooves with angular guitar work and theatrical stagecraft. Tracks like “Witch Doctor” and “Down Town” highlight their genre-bending approach and infectious energy.`,
+      dutchDescription: `Experimentele rockformatie uit Nijmegen, die funky grooves combineert met hoekige gitaarpartijen en theatrale podiumkunst. Nummers als "Witch Doctor" en "Down Town" benadrukken hun genre-overschrijdende aanpak en aanstekelijke energie.`,
       englishDescription: `Experimental rock outfit from Nijmegen, blending funky grooves with angular guitar work and theatrical stagecraft. Tracks like “Witch Doctor” and “Down Town” highlight their genre-bending approach and infectious energy.`,
       videoUrl: "https://www.youtube.com/embed/0ttGgIQpAUc?si=7YCNukWo43p6y-qW",
       stageId: stageIds.poton,
@@ -286,7 +286,7 @@ async function main() {
     },
     {
       title: "Navarone",
-      dutchDescription: `Utrecht's hard-hitting rock four-piece, delivering riff-driven anthems and dynamic vocals. With a live reputation for raw intensity, they're tailor-made for late-night main stages.`,
+      dutchDescription: `Utrechts hardrock-vierkoppige band, die riffgedreven anthems en dynamische vocalen levert. Met een live reputatie voor pure intensiteit zijn ze perfect geschikt voor de late night mainstages.`,
       englishDescription: `Utrecht's hard-hitting rock four-piece, delivering riff-driven anthems and dynamic vocals. With a live reputation for raw intensity, they're tailor-made for late-night main stages.`,
       videoUrl: "https://www.youtube.com/embed/EvLpaCSnc4k?si=pfWsK1wAuBbvAkQn",
       stageId: stageIds.poton,
@@ -297,7 +297,7 @@ async function main() {
     },
     {
       title: "Dotan",
-      dutchDescription: `Folk-pop singer-songwriter whose intimate voice and acoustic arrangements (notably on “Home”) have earned him platinum sales and sell-out shows. His heartfelt storytelling connects deeply on festival acoustic stages.`,
+      dutchDescription: `Folkpop singer-songwriter wiens intieme stem en akoestische arrangementen (met name op "Home") hem platina-verkopen en uitverkochte concerten hebben opgeleverd. Zijn oprechte verhalen komen goed tot hun recht op akoestische festivalpodia.`,
       englishDescription: `Folk-pop singer-songwriter whose intimate voice and acoustic arrangements (notably on “Home”) have earned him platinum sales and sell-out shows. His heartfelt storytelling connects deeply on festival acoustic stages.`,
       videoUrl: "https://www.youtube.com/embed/FZEuqzW16Nw?si=sf-cFGrobFzRZyYt",
       imageUrl: "/img/acts/dotan.png",
@@ -308,7 +308,7 @@ async function main() {
     },
     {
       title: "Froukje",
-      dutchDescription: `Breakthrough pop singer Froukje Veenstra combines candid lyrics with catchy, synth-driven hooks. Since her 2021 debut, she's become a voice of her generation—ideal for mid-day festival stages.`,
+      dutchDescription: `De doorbraakpopzangeres Froukje Veenstra combineert openhartige teksten met pakkende, synthgedreven hooks. Sinds haar debuut in 2021 is ze uitgegroeid tot een stem van haar generatie - ideaal voor op festivals halverwege de dag.`,
       englishDescription: `Breakthrough pop singer Froukje Veenstra combines candid lyrics with catchy, synth-driven hooks. Since her 2021 debut, she's become a voice of her generation—ideal for mid-day festival stages.`,
       videoUrl: "https://www.youtube.com/embed/g4PlReX9e-E?si=UvSJ2iNJsECGXVQ0",
       imageUrl: "/img/acts/froukje.png",
@@ -321,7 +321,7 @@ async function main() {
     // SUNDAY
     {
       title: "Martin Garrix",
-      dutchDescription: `Broke through as a teenager with “Animals,” Martin Garrix has become one of the biggest names in EDM. His anthemic big-room tracks and stadium-sized drops make him a festival favorite across Europe.`,
+      dutchDescription: `Martin Garrix brak als tiener door met "Animals" en is uitgegroeid tot een van de grootste namen in de EDM. Zijn anthem big-room tracks en stadiongrote drops maken hem een festivalfavoriet in heel Europa.`,
       englishDescription: `Broke through as a teenager with “Animals,” Martin Garrix has become one of the biggest names in EDM. His anthemic big-room tracks and stadium-sized drops make him a festival favorite across Europe.`,
       videoUrl: "https://www.youtube.com/embed/Zv1QV6lrc_Y?si=_yWEtH6m_uDtDJEd",
       stageId: stageIds.poton,
@@ -333,7 +333,7 @@ async function main() {
 
     {
       title: "Within Temptation",
-      dutchDescription: `Symphonic metal pioneers fronted by Sharon den Adel. Their cinematic soundscapes and operatic vocals (think “Ice Queen,” “Mother Earth”) translate into dramatic, visually stunning festival performances.`,
+      dutchDescription: `Pioniers van de symfonische metal, met Sharon den Adel als frontman. Hun filmische soundscapes en operazang (denk aan "Ice Queen", "Mother Earth") vertalen zich naar dramatische, visueel verbluffende festivaloptredens.`,
       englishDescription: `Symphonic metal pioneers fronted by Sharon den Adel. Their cinematic soundscapes and operatic vocals (think “Ice Queen,” “Mother Earth”) translate into dramatic, visually stunning festival performances.`,
       videoUrl: "https://www.youtube.com/embed/iQVei5C2N4E?si=_Vn5BfzP9sVRNYBa",
       imageUrl: "/img/acts/within_temptation.png",
@@ -345,7 +345,7 @@ async function main() {
 
     {
       title: "Chef'Special",
-      dutchDescription: `A four-piece from Haarlem mixing funk, pop, rock and hip-hop. Their upbeat, genre-fluid sound on songs like “Amigo” and “In Your Arms” makes for joyous, dance-floor-friendly live shows.`,
+      dutchDescription: `Een vierkoppige band uit Haarlem die funk, pop, rock en hiphop mixt. Hun vrolijke, genre-vloeiende sound op nummers als "Amigo" en "In Your Arms" zorgt voor vrolijke, dansvloervriendelijke liveshows.`,
       englishDescription: `A four-piece from Haarlem mixing funk, pop, rock and hip-hop. Their upbeat, genre-fluid sound on songs like “Amigo” and “In Your Arms” makes for joyous, dance-floor-friendly live shows.`,
       videoUrl: "https://www.youtube.com/embed/l3jRIr44lss?si=dx6f-EsHYDJD8HPc",
       imageUrl: "/img/acts/chef_special.png",
@@ -357,7 +357,7 @@ async function main() {
 
     {
       title: "Eefje de Visser",
-      dutchDescription: `Indie-pop artist crafting atmospheric, electronic-tinged songs. Her hypnotic vocals and lush production (as heard on “Ongeveer”) create a dreamlike vibe perfect for twilight festival slots.`,
+      dutchDescription: `Indiepopartiest die sfeervolle, elektronisch getinte nummers maakt. Haar hypnotiserende zang en weelderige productie (zoals te horen op "Ongeveer") creëren een dromerige sfeer, perfect voor een avondje uit op een festival.`,
       englishDescription: `Indie-pop artist crafting atmospheric, electronic-tinged songs. Her hypnotic vocals and lush production (as heard on “Ongeveer”) create a dreamlike vibe perfect for twilight festival slots.`,
       videoUrl: "https://www.youtube.com/embed/6IlLJNmLDMg?si=rDs2psBL8oI4VgNt",
       imageUrl: "/img/acts/eefje_de_visser.png",
@@ -370,7 +370,7 @@ async function main() {
     {
       title: "Spinvis",
       englishDescription: `Erik de Jong performs under the moniker Spinvis, crafting poetic, collage-like songs that blend spoken-word snippets, lo-fi electronics and wistful pop. Since his debut album in 2002—recorded in his attic—he's become a fixture of Dutch indie, renowned for narratives that feel both intimate and surreal. His live shows turn everyday observations into shared, dreamlike experiences.`,
-      dutchDescription: `Erik de Jong performs under the moniker Spinvis, crafting poetic, collage-like songs that blend spoken-word snippets, lo-fi electronics and wistful pop. Since his debut album in 2002—recorded in his attic—he's become a fixture of Dutch indie, renowned for narratives that feel both intimate and surreal. His live shows turn everyday observations into shared, dreamlike experiences.`,
+      dutchDescription: `Erik de Jong treedt op onder de naam Spinvis en maakt poëtische, collageachtige nummers die spoken-word fragmenten, lo-fi elektronica en weemoedige pop combineren. Sinds zijn debuutalbum uit 2002 - opgenomen op zijn zolder - is hij een begrip geworden in de Nederlandse indie, bekend om zijn verhalen die zowel intiem als surrealistisch aanvoelen. Zijn liveshows veranderen alledaagse observaties in gedeelde, dromerige ervaringen.`,
       imageUrl: "/img/acts/spinvis.png",
       videoUrl: "https://www.youtube.com/embed/F3ZTrGWSLf4?si=11hberv0K9fE6gtD",
       stageId: stageIds.poton,
